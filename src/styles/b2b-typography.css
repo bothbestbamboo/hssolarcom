@@ -128,10 +128,13 @@ header .header {
   color: var(--b2b-brand) !important;
 }
 
-/* 3. 内页 Banner */
+/* 3. 内页 Banner：按原图比例完整展示，绝不裁切文字 */
 .inner_banner {
   position: relative;
   width: 100%;
+  height: auto !important;
+  max-height: none !important;
+  margin-top: 0 !important;
   overflow: hidden;
   background: #f3f4f6;
 }
@@ -139,8 +142,9 @@ header .header {
 .inner_banner img {
   width: 100% !important;
   height: auto !important;
-  max-height: 420px;
-  object-fit: cover;
+  max-height: 460px !important;
+  object-fit: cover !important;
+  object-position: center top !important;
   display: block;
 }
 
