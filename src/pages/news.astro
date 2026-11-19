@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerBanner from '../components/InnerBanner.astro';
+import NewsListView from '../components/NewsListView.astro';
+
+const newsItems = (await getCollection('news'))
+  .filter((n) => n.data.type === 'news')
+  .sort((a, b) => {
+    const timeDiff = new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+    return timeDiff !== 0 ? timeDiff : b.data.id - a.data.id;
+  });
+---
+
+<BaseLayout
+  title="News & Events - Homesun Solar"
+  description="Latest solar industry news, technology trends, and Homesun Solar company updates."
+>
+  <InnerBanner
+    title="News & Events"
+    bannerImg="/Uploads/images/20241119/673c9f55de2e1.jpg"
+    breadcrumbs={[{ label: 'News & Events' }]}
+  />
+
+  <NewsListView
+    items={newsItems}
+    activeType="news"
+    buttonText="Read More"
+    emptyText="No news articles published yet."
+  />
+</BaseLayout>

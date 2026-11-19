@@ -1,0 +1,103 @@
+---
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  bannerImg: string;
+  bannerAlt?: string;
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+const {
+  title,
+  bannerImg,
+  bannerAlt = title,
+  breadcrumbs = [],
+} = Astro.props;
+---
+
+<div class="height"></div>
+<div class="inner_banner">
+  <picture>
+    <img src={bannerImg} alt={bannerAlt} />
+  </picture>
+  <div class="inner_banner_text">
+    <div class="container">
+      <h1>{title}</h1>
+    </div>
+  </div>
+</div>
+
+{breadcrumbs.length > 0 && (
+  <div class="crumb_box">
+    <div class="container">
+      <ul class="crumb_list clearfix">
+        <li><a href="/">Home</a></li>
+        {breadcrumbs.map((item, idx) => (
+          <li>
+            <span class="sep">/</span>
+            {item.href && idx < breadcrumbs.length - 1 ? (
+              <a href={item.href}>{item.label}</a>
+            ) : (
+              <span>{item.label}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+)}
+
+<style>
+  .inner_banner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #1a2433;
+  }
+  .inner_banner img {
+    width: 100%;
+    min-height: 220px;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+  }
+  .inner_banner_text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.35);
+  }
+  .inner_banner_text h1 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .crumb_box {
+    background: #f5f6f8;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+  .crumb_list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .crumb_list li {
+    float: left;
+    color: #666;
+  }
+  .crumb_list li a {
+    color: #333;
+  }
+  .crumb_list li .sep {
+    margin: 0 8px;
+    color: #999;
+  }
+</style>

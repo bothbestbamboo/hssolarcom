@@ -1,0 +1,75 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map((page) => {
+    const slug = page.id.replace(/\.md$/, '');
+    return {
+      params: { slug },
+      props: { page, slug },
+    };
+  });
+}
+
+const { page, slug } = Astro.props;
+const { Content } = await render(page);
+
+const isAboutGroup = slug === 'about-us' || slug === 'why-we-different';
+const defaultBanner = isAboutGroup
+  ? '/Public/theme/default/image/about-us-banner.jpg'
+  : '/Uploads/images/20241119/673c9f32ace84.jpg';
+---
+
+<BaseLayout
+  title={page.data.seoTitle || `${page.data.title} - Homesun Solar`}
+  description={page.data.description}
+  keywords={page.data.keywords}
+>
+  <div class="height"></div>
+  <div class="inner_banner">
+    <a>
+      <picture>
+        <img src={page.data.bannerImg || defaultBanner} alt={page.data.title} />
+      </picture>
+    </a>
+    <div class="ovrly"></div>
+    <div class="bgs"></div>
+  </div>
+
+  <div class="mbx_section">
+    <div class="container">
+      <div class="maintitle">{page.data.title}</div>
+      <div class="mbx">
+        <a href="/"><i class="fa fa-home"></i> Home</a>
+        <span>/</span>
+        <h2>{page.data.title}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="n_main">
+    <div class="container">
+      {isAboutGroup && (
+        <div class="quick_links clearfix">
+          <ul>
+            <li class={slug === 'about-us' ? 'active' : ''}>
+              <a href="/about-us.html">Company Introduction</a>
+            </li>
+            <li class={slug === 'why-we-different' ? 'active' : ''}>
+              <a href="/why-we-different.html">Why We Are Different</a>
+            </li>
+            <li>
+              <a href="/news.html">News &amp; Events</a>
+            </li>
+          </ul>
+        </div>
+      )}
+
+      <div class="about page phone">
+        <Content />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

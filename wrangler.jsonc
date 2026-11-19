@@ -1,0 +1,10 @@
+{
+  "name": "hssolar",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    // 关键配置：禁止 Cloudflare 自动重定向去掉 .html 后缀
+    "html_handling": "none",
+    "not_found_handling": "404-page"
+  }
+}

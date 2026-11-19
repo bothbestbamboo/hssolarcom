@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerBanner from '../components/InnerBanner.astro';
+
+// 将旧站 faq.html 中的实际问答替换到这里，增删非常直观
+const faqs = [
+  {
+    question: 'What solar products does Homesun Solar manufacture and supply?',
+    answer:
+      'Homesun Solar supplies N-Type TOPCon, HJT, PERC, and shingled PV modules (up to 730W+), grid-tie/hybrid/off-grid inverters, residential & commercial BESS battery storage, mounting structures, and full PV accessories.',
+  },
+  {
+    question: 'What certifications do Homesun solar panels carry?',
+    answer:
+      'Our PV modules undergo strict quality control at every stage of production and are tested and certified by independent organizations including TÜV and Intertek.',
+  },
+  {
+    question: 'Do you support OEM/ODM orders and worldwide shipping?',
+    answer:
+      'Yes. Our factory in Xuancheng, China supports OEM/ODM customization and ships full-container and project orders to over 100 countries worldwide.',
+  },
+  {
+    question: 'What is the warranty period for your solar modules?',
+    answer:
+      'We provide up to 12–15 years product material & workmanship warranty and 25–30 years linear power output warranty depending on the module series (PERC, TOPCon, or HJT).',
+  },
+  {
+    question: 'How can I get a quotation or system design proposal?',
+    answer:
+      'You can submit your project location, required wattage or system capacity, and product model via our Contact Us page or email info@hssolar.com. Our sales engineers reply within 12 hours.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title="FAQ - Homesun Solar"
+  description="Frequently asked questions about Homesun solar panels, inverters, battery storage, certifications, warranty, and worldwide shipping."
+  keywords="solar panels faq, homesun solar warranty, china solar supplier"
+>
+  <InnerBanner
+    title="Frequently Asked Questions"
+    bannerImg="/Uploads/images/20241119/673c9f55de2e1.jpg"
+    breadcrumbs={[
+      { label: 'Play Solar', href: '/play-solar.html' },
+      { label: 'FAQ' },
+    ]}
+  />
+
+  <div class="container" style="padding: 45px 15px 65px; max-width: 920px;">
+    <div class="faq-list">
+      {faqs.map((item, index) => (
+        <details class="faq-item" open={index === 0}>
+          <summary class="faq-question">
+            <span class="faq-num">Q{index + 1}.</span>
+            <span>{item.question}</span>
+          </summary>
+          <div class="faq-answer">
+            <p>{item.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div class="well text-center" style="margin-top: 40px;">
+      <h4 style="margin-top: 0;">Still have technical or pricing questions?</h4>
+      <p style="color: #666;">Send us your project specifications and our team will respond within 12 hours.</p>
+      <a href="/contact-us.html" class="btn btn-primary">Contact Our Team</a>
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</BaseLayout>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .faq-item {
+    border: 1px solid #e2e6ea;
+    border-radius: 4px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .faq-question {
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9fafb;
+  }
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+  .faq-question::after {
+    content: '+';
+    margin-left: auto;
+    font-size: 20px;
+    color: #0d6efd;
+    font-weight: 400;
+  }
+  .faq-item[open] .faq-question::after {
+    content: '−';
+  }
+  .faq-num {
+    color: #0d6efd;
+    flex-shrink: 0;
+  }
+  .faq-answer {
+    padding: 16px 20px 18px;
+    border-top: 1px solid #eee;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .faq-answer p {
+    margin: 0;
+  }
+</style>

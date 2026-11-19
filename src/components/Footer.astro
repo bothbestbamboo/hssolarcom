@@ -1,0 +1,265 @@
+---
+import { getCollection } from 'astro:content';
+import { SITE, PRODUCT_CATEGORIES, POPULAR_TAGS } from '../data/site';
+
+interface Props {
+  isHome?: boolean;
+}
+const { isHome = false } = Astro.props;
+
+const allNews = await getCollection('news', ({ data }) => data.type === 'news');
+const latestThreeNews = allNews
+  .sort((a, b) => b.data.date.localeCompare(a.data.date) || b.data.id - a.data.id)
+  .slice(0, 3);
+---
+
+<div id="footer">
+    <div class="foot_top clearfix">
+        <div class="container clearfix">
+            <div class="foot_left">
+                <div class="bottom_logo">
+                    <picture>
+                        <img class="img" width="150" src={SITE.logoLight} alt="Homesun Logo">
+                    </picture>
+                </div>
+                <div class="text">
+                    When you want to 'taste the sun', you will find Homesun New Energy
+                    <a href="/contact-us.html">More</a>
+                </div>
+            </div>
+            <div class="foot_right">
+                <ul>
+                    <li><img src="/Public/theme/default/picture/tel.png" alt="tel"><a rel="nofollow" href={`Tel:${SITE.phone}`}>Call us : {SITE.phone}</a></li>
+                    <li><img src="/Public/theme/default/picture/mail.png" alt="mail"><a rel="nofollow" target="_blank" href={`mailto:${SITE.email}`}>Mail us : {SITE.email}</a></li>
+                    <li><img src="/Public/theme/default/picture/add.png" alt="address"><span>Add : {SITE.address}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer_list clearfix">
+        <div class="container clearfix">
+            <div class="newsletter">
+                <div class="title_h4">Communication</div>
+                <div class="text">Please continue to read, follow, subscribe, and we welcome you to tell us what you think.</div>
+                <div class="letter_box">
+                    <form class="layui-form" id="emailForm">
+                        <input name="email" id="user_email" type="text" placeholder="Your Email.." lay-verify="required" lay-reqText="Please enter your email">
+                        <input name="content" type="hidden" value="Newsletter Subscription (Footer)">
+                        <button type="button" lay-submit lay-filter="send"><img src="/Public/theme/default/picture/send.png" alt="send"></button>
+                    </form>
+                </div>
+            </div>
+            <section class="footer_link">
+                <div class="title_h4">Support</div>
+                <ul>
+                    <li><a href="/technical-services.html">Technical Services</a></li>
+                </ul>
+            </section>
+            <section class="footer_pro">
+                <div class="title_h4">Product</div>
+                <ul>
+                    {PRODUCT_CATEGORIES.map((cat) => (
+                        <li><a href={`/category-${cat.id}.html`}>{cat.name}</a></li>
+                    ))}
+                </ul>
+            </section>
+            <section class="footer_so">
+                <div class="title_h4">News</div>
+                <ul>
+                    {latestThreeNews.map((item) => (
+                        <li><a href={`/news-${item.data.id}.html`}>{item.data.title}</a></li>
+                    ))}
+                </ul>
+            </section>
+            <section class="footer_tags">
+                <div class="title_h4">Popular tags</div>
+                <ul>
+                    {POPULAR_TAGS.map((tag) => (
+                        <li><a href={`/category-tags-${tag.id}.html`}>{tag.name}</a></li>
+                    ))}
+                </ul>
+            </section>
+        </div>
+    </div>
+    <div class="footer_bottom clearfix">
+        <div class="container clearfix">
+            <div class="footer_nav">
+                {SITE.copyright}
+                <img src="/Public/theme/default/picture/ipv6.png" alt="IPv6"> Support for IPv6 networks
+            </div>
+            <div class="links">
+                <a href="/privacy-policy.html">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="container clearfix">
+            <div class="footer-links" style="margin:20px 0 0 0">
+                <p>friendly links:</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="javascript:;" class="back_top">Top</a>
+
+<div id="online_qq_layer">
+    <div id="online_qq_tab">
+        <a id="floatShow" rel="nofollow" href="javascript:void(0);">
+            <div class="livechat-girl animated">
+                <img class="girl" src="/Public/theme/default/picture/en_3.png" alt="">
+                <div class="animated-circles">
+                    <div class="circle c-1"></div>
+                    <div class="circle c-2"></div>
+                    <div class="circle c-3"></div>
+                </div>
+            </div>
+        </a>
+        <a id="floatHide" rel="nofollow" href="javascript:void(0);"><i></i></a>
+    </div>
+    <div id="onlineService">
+        <div class="online_form">
+            <div class="i_message_inquiry">
+                <em class="title">Message</em>
+                <div class="text">If you are interested in our solar products, want to know more details and get our quotation, please leave a message here and we will reply you within 12 hours.</div>
+                <div class="inquiry">
+                    <form method="post" id="floatingForm" class="layui-form" action="">
+                        <div class="input-group">
+                            <span class="ms_e">
+                                <input lay-verType="tips" lay-verify="required" lay-reqText="Please enter your email" class="form-control" name="email" tabindex="10" type="text" placeholder="Your Email *">
+                            </span>
+                        </div>
+                        <div class="input-group">
+                            <span class="ms_p">
+                                <input class="form-control" name="phone" tabindex="10" type="text" placeholder="Phone">
+                            </span>
+                        </div>
+                        <div class="input-group">
+                            <span class="ms_m">
+                                <textarea lay-verType="tips" lay-verify="required" lay-reqText="Please enter your query details" name="content" class="form-control" tabindex="13" placeholder="Enter your inquiry details (such as your country, product model and quantity, etc.) and other specific requirements to get an accurate quote *"></textarea>
+                            </span>
+                        </div>
+                        <button type="button" lay-submit lay-filter="contact" class="main_more">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fixed-contact">
+    <ul class="item-list clearfix">
+        <li class="online_p">
+            <div class="column">
+                <i class="icon"></i>
+                <a rel="nofollow" href={`Tel:${SITE.phone}`}>{SITE.phone}</a>
+            </div>
+        </li>
+        <li class="online_e">
+            <div class="column">
+                <i class="icon"></i>
+                <a rel="nofollow" target="_blank" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+            </div>
+        </li>
+        <li class="online_code">
+            <div class="column">
+                <i class="icon"></i>
+                <a>
+                    <p>Scan to WeChat:</p><img src={SITE.wechatQr} alt="WeChat QR">
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="mobile_nav clearfix">
+    <a href="/">
+        <i style="background-position: -323px -160px"></i>
+        <p>Home</p>
+    </a>
+    <a href="/category.html">
+        <i style="background-position: -366px -160px"></i>
+        <p>Product</p>
+    </a>
+</div>
+
+<script is:inline type="text/javascript" src="/Public/layui/layui.js"></script>
+<script is:inline type="text/javascript" src="/Public/theme/default/js/bootstrap.min.js"></script>
+<script is:inline type="text/javascript" src="/Public/theme/default/js/swiper.min.js"></script>
+<script is:inline type="text/javascript" src="/Public/theme/default/js/main.js"></script>
+<script is:inline type="text/javascript" src="/Public/theme/default/js/demo.js"></script>
+<script is:inline type="text/javascript" src="/Public/theme/default/js/slick_a.min.js"></script>
+<script is:inline type="text/javascript" src="/Public/theme/default/js/app.js"></script>
+
+<script is:inline define:vars={{ formEndpoint: SITE.formEndpoint }}>
+    if (document.querySelector('#pro_img_gallery')) {
+        new Swiper('#pro_img_gallery', {
+            autoHeight: true,
+            effect: 'fade',
+            thumbs: {
+                swiper: {
+                    el: '#pro_img_thumbs',
+                    spaceBetween: 5,
+                    slidesPerView: 6,
+                    watchSlidesVisibility: true,
+                },
+                autoScrollOffset: 1,
+            }
+        });
+    }
+
+    layui.use(function () {
+        var form = layui.form, layer = layui.layer;
+
+        function submitInquiry(payload, successMsg, formEl) {
+            var loadIdx = layer.load(1, { shade: 0.3 });
+            fetch(formEndpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(function (res) {
+                layer.close(loadIdx);
+                if (res.ok) {
+                    if (formEl) formEl.reset();
+                    layer.alert(successMsg, { title: 'Success Message', btn: ['OK'], shade: 0.5, icon: 1 });
+                } else {
+                    layer.alert('Submission failed! Please email info@hssolar.com directly.', { title: 'Error Message', btn: ['OK'], shade: 0.5, icon: 2 });
+                }
+            })
+            .catch(function () {
+                layer.close(loadIdx);
+                layer.alert('Network error! Please email info@hssolar.com directly.', { title: 'Error Message', btn: ['OK'], shade: 0.5, icon: 2 });
+            });
+        }
+
+        form.on('submit(contact)', function (data) {
+            submitInquiry(
+                data.field,
+                'Your message has been submitted successfully<br>we will arrange for a sales specialist to contact you as soon as possible!',
+                data.form
+            );
+            return false;
+        });
+
+        form.on('submit(send)', function (data) {
+            submitInquiry(
+                data.field,
+                'Thank you for your attention!',
+                data.form
+            );
+            return false;
+        });
+    });
+</script>
+
+{isHome && (
+    <script is:inline type="text/javascript">
+        \$('.ewt-fade-in').each(function () {
+            if (this.complete) {
+                \$(this).addClass('loaded');
+            } else {
+                $(this).on('load', function () {$(this).addClass('loaded');
+                });
+            }
+        });
+    </script>
+)}

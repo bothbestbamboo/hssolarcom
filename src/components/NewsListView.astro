@@ -1,0 +1,94 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import NewsSidebar from './NewsSidebar.astro';
+
+interface Props {
+  items: CollectionEntry<'news'>[];
+  activeType?: 'news' | 'case' | 'solution' | 'knowledge';
+  buttonText?: string;
+  emptyText?: string;
+}
+
+const {
+  items,
+  activeType = 'news',
+  buttonText = 'Read More',
+  emptyText = 'No articles published in this section yet.',
+} = Astro.props;
+---
+
+<div class="container" style="padding: 40px 15px 60px;">
+  <div class="row">
+    <!-- 左侧主内容列表 -->
+    <main class="col-md-9 col-sm-12">
+      {items.length > 0 ? (
+        <div class="row">
+          {items.map((item) => (
+            <div class="col-md-6 col-sm-6" style="margin-bottom: 30px;">
+              <article class="thumbnail news-card">
+                <a href={`/news-${item.data.id}.html`} class="news-thumb-link">
+                  <img
+                    src={item.data.image}
+                    alt={item.data.title}
+                    loading="lazy"
+                    style="width:100%; height:220px; object-fit:cover;"
+                  />
+                </a>
+                <div class="caption">
+                  {item.data.date && (
+                    <div class="news-date">{item.data.date}</div>
+                  )}
+                  <h3 class="news-title">
+                    <a href={`/news-${item.data.id}.html`}>{item.data.title}</a>
+                  </h3>
+                  <p class="news-summary">{item.data.summary}</p>
+                  <a href={`/news-${item.data.id}.html`} class="btn btn-default btn-sm">
+                    {buttonText}
+                  </a>
+                </div>
+              </article>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="alert alert-info">{emptyText}</div>
+      )}
+    </main>
+
+    <!-- 右侧边栏 -->
+    <div class="col-md-3 col-sm-12">
+      <NewsSidebar activeType={activeType} />
+    </div>
+  </div>
+</div>
+
+<style>
+  .news-card {
+    height: 100%;
+    margin-bottom: 0;
+  }
+  .news-date {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .news-title {
+    font-size: 17px;
+    line-height: 1.4;
+    margin: 0 0 10px;
+    min-height: 48px;
+  }
+  .news-title a {
+    color: #222;
+  }
+  .news-summary {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 66px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

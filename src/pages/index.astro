@@ -1,0 +1,316 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const allProducts = await getCollection('products');
+const hotProducts = allProducts
+  .filter((p) => p.data.isHot)
+  .sort((a, b) => a.data.id - b.data.id);
+
+const allNews = await getCollection('news');
+const caseStudies = allNews
+  .filter((n) => n.data.type === 'case')
+  .sort((a, b) => a.data.id - b.data.id);
+
+const solutions = allNews
+  .filter((n) => n.data.type === 'solution')
+  .sort((a, b) => a.data.id - b.data.id)
+  .slice(0, 2);
+
+const knowledgeList = allNews
+  .filter((n) => n.data.type === 'knowledge')
+  .sort((a, b) => a.data.id - b.data.id)
+  .slice(0, 4);
+
+const latestNews = allNews
+  .filter((n) => n.data.type === 'news')
+  .sort((a, b) => {
+    const timeDiff = new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+    return timeDiff !== 0 ? timeDiff : b.data.id - a.data.id;
+  })
+  .slice(0, 3);
+
+const banners = [
+  '/Uploads/images/20241119/673c9f32ace84.jpg',
+  '/Uploads/images/20241119/673c9f55de2e1.jpg',
+  '/Uploads/images/20241127/67466cc896043.jpg',
+];
+---
+
+<BaseLayout
+  title="Homesun: China Solar Panels Supplier"
+  description="Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
+  keywords="solar panels, china, supplier"
+>
+  <div class="height"></div>
+
+  <!-- 首页轮播图 -->
+  <div class="swiper-banner index_banner">
+    <div class="swiper-wrapper">
+      {banners.map((img) => (
+        <div class="swiper-slide">
+          <div class="slide-inner">
+            <a href="/">
+              <picture>
+                <img src={img} alt="banner" />
+              </picture>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+  <!-- HOT PRODUCTS -->
+  <div class="cat_content clearfix">
+    <div class="container clearfix">
+      <div class="maintitle">HOT PRODUCTS</div>
+      <div class="index_text">
+        We're setting the standard for customer service. As a leading solar system supplier,
+        Homesun Solar specializes in offering excellent products related to solar power,
+        from solar PV panels to solar systems.
+      </div>
+      <div class="swiper_box">
+        <div class="swiper pro_scrollbar">
+          <div class="swiper-wrapper">
+            {hotProducts.map((item) => (
+              <div class="swiper-slide">
+                <div class="moudle">
+                  <a href={`/product-detail-${item.data.id}.html`} class="images">
+                    <picture>
+                      <img src={item.data.image} alt={item.data.title} />
+                    </picture>
+                  </a>
+                  <a href={`/product-detail-${item.data.id}.html`} class="title">
+                    {item.data.title}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+    <div class="more_btn"><a href="/category.html">View More Products</a></div>
+  </div>
+
+  <!-- Better Than Good -->
+  <div class="about_content clearfix">
+    <div class="container-big clearfix">
+      <div class="maintitle">Better Than Good</div>
+      <div class="index_text">How We Be Special Different for Last 10 Years</div>
+      <ul class="clearfix">
+        <li>
+          <a class="images">
+            <picture>
+              <source type="image/webp" srcset="/Public/theme/default/picture/1721045333_3vVNWtUjmd.webp" />
+              <source type="image/jpeg" srcset="/Public/theme/default/picture/1721045333_3vVNWtUjmd.png" />
+              <img class="img" src="/Public/theme/default/picture/1721045333_3vVNWtUjmd.png" alt="High Performance, Affordable Pricing" />
+            </picture>
+          </a>
+          <div class="wrap">
+            <a class="title">High Performance, Affordable Pricing</a>
+            <div class="text">
+              It is crucial to install high-efficiency modules that can generate more power per square meter.
+              Homesun modules are capable of generating more than 700W peak (Wp), which guarantees excellent cost performance.
+              We provide one-stop service for customer cases, from case analysis, design to quality component supply.
+              We simply provide affordable prices for our customers to enable more people to live with solar energy.
+            </div>
+            <span class="num">01</span>
+          </div>
+        </li>
+        <li>
+          <a class="images">
+            <picture>
+              <source type="image/webp" srcset="/Public/theme/default/picture/1721095476_ZCdp1MpELP.webp" />
+              <source type="image/jpeg" srcset="/Public/theme/default/picture/1721095476_ZCdp1MpELP.png" />
+              <img class="img" src="/Public/theme/default/picture/1721095476_ZCdp1MpELP.png" alt="Rethinking Quality" />
+            </picture>
+          </a>
+          <div class="wrap">
+            <a class="title">Rethinking Quality</a>
+            <div class="text">
+              Providing the best products to our customers is key to everything we do at Homesun New Energy.
+              For us, this means high quality at every stage, from production, transportation and sales to final installation.
+              At every stage of production, our modules undergo strict quality control and are inspected and certified by reputable
+              independent organizations such as TÜV and Intertek, ensuring the highest level of quality.
+            </div>
+            <span class="num">02</span>
+          </div>
+        </li>
+        <li>
+          <a class="images">
+            <picture>
+              <source type="image/webp" srcset="/Public/theme/default/picture/1721808780_1USSy0dTM9.webp" />
+              <source type="image/jpeg" srcset="/Public/theme/default/picture/1721808780_1USSy0dTM9.png" />
+              <img class="img" src="/Public/theme/default/picture/1721808780_1USSy0dTM9.png" alt="Technical Expertise" />
+            </picture>
+          </a>
+          <div class="wrap">
+            <a class="title">Technical Expertise</a>
+            <div class="text">
+              We are proud of our workforce, which comprises highly skilled individuals. Our manufacturing expertise is second to none,
+              and we also offer expert technical and customer support from modules to inverter and complete solar solutions.
+            </div>
+            <span class="num">03</span>
+          </div>
+        </li>
+        <li>
+          <a class="images">
+            <picture>
+              <source type="image/webp" srcset="/Public/theme/default/picture/1721095611_eUbkVjMtB9.webp" />
+              <source type="image/jpeg" srcset="/Public/theme/default/picture/1721095611_eUbkVjMtB9.png" />
+              <img class="img" src="/Public/theme/default/picture/1721095611_eUbkVjMtB9.png" alt="Strong Socially Responsible Company" />
+            </picture>
+          </a>
+          <div class="wrap">
+            <a class="title">Strong Socially Responsible Company</a>
+            <div class="text">Our Mission: Illuminate the future with solar.</div>
+            <div class="text">Our Vision: Build a world-leading green energy network, bringing the power of solar to every corner.</div>
+            <div class="text">Our Values:</div>
+            <div class="text">• Customer-Centric: Listen to customer needs and deliver exceptional service.</div>
+            <div class="text">• Integrity-Based: Operate with honesty and earn the trust of our customers.</div>
+            <span class="num">04</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Explore Case Studies -->
+  <div class="case_content clearfix">
+    <div class="container-big clearfix">
+      <div class="maintitle">Explore Case Studies</div>
+      <div class="index_text">Homesun as a leading solar company, projects has been spreading more than 100 countries.</div>
+      <div class="swiper case_scrollbar">
+        <div class="swiper-wrapper">
+          {caseStudies.map((item) => (
+            <div class="swiper-slide">
+              <div class="moudle">
+                <a href={`/news-${item.data.id}.html`} class="images">
+                  <picture>
+                    <img src={item.data.image} alt={item.data.title} />
+                  </picture>
+                </a>
+                <div class="wrap">
+                  <div>
+                    <a href={`/news-${item.data.id}.html`} class="title">{item.data.title}</a>
+                    <div class="text">{item.data.summary}</div>
+                    <div class="more_btn">
+                      <a href={`/news-${item.data.id}.html`}>Read more</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Solution -->
+  <div class="solution_content clearfix">
+    <div class="container clearfix">
+      <div class="maintitle">Solution</div>
+      <div class="index_text">
+        Homesun has been serving more than 2000 customers in 110 countries, we not only focus on providing
+        high quality products for our customers, but also most professional technical service.
+      </div>
+      <ul class="clearfix">
+        {solutions.map((item) => (
+          <li>
+            <a href={`/news-${item.data.id}.html`} class="images">
+              <picture>
+                <img src={item.data.image} alt={item.data.title} />
+              </picture>
+            </a>
+            <div class="ovrly"></div>
+            <div class="wrap">
+              <div>
+                <a href={`/news-${item.data.id}.html`} class="title">{item.data.title}</a>
+                <div class="text">{item.data.summary}</div>
+                <div class="more_btn">
+                  <a href={`/news-${item.data.id}.html`}>Read more</a>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Solar Knowledge Hub -->
+  <div class="study_content clearfix">
+    <div class="container clearfix">
+      <div class="wrap">
+        <div class="maintitle">Become solar expert with <span>Homesun</span></div>
+        <div class="text">
+          With expert knowledge in mind, we’ve created the Solar Knowledge Hub. It is here we explore
+          the benefits of solar power, how solar systems work, renewable energy innovations such as electric vehicles,
+          off-grid tips, the latest solar energy news.
+        </div>
+        <div class="more_btn"><a href="/play-solar.html">Read more</a></div>
+      </div>
+      <div class="study_list">
+        <ul>
+          {knowledgeList.map((item) => (
+            <li>
+              <div class="wrap">
+                <a href={`/news-${item.data.id}.html`} class="images">
+                  <picture>
+                    <img class="img" src={item.data.image} alt={item.data.title} />
+                  </picture>
+                </a>
+                <div class="text">
+                  <a href={`/news-${item.data.id}.html`} class="title">{item.data.title}</a>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Latest News -->
+  <div class="news_content clearfix">
+    <div class="container clearfix">
+      <div class="maintitle">Latest News</div>
+      <div class="index_text"></div>
+      <div class="swiper scrollbar_news">
+        <div class="swiper-wrapper">
+          {latestNews.map((item) => (
+            <div class="swiper-slide">
+              <div class="moudle">
+                <a href={`/news-${item.data.id}.html`} class="images">
+                  <picture>
+                    <img src={item.data.image} alt={item.data.title} />
+                  </picture>
+                </a>
+                <div class="wrap">
+                  <div class="date">{item.data.date}</div>
+                  <a href={`/news-${item.data.id}.html`} class="title">{item.data.title}</a>
+                  <div class="text">{item.data.summary}</div>
+                  <div class="more">
+                    <a href={`/news-${item.data.id}.html`}>
+                      More <img src="/Public/theme/default/picture/arrow.png" alt="more" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video_content clearfix"></div>
+</BaseLayout>

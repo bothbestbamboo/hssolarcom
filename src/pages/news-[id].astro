@@ -1,0 +1,76 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerBanner from '../components/InnerBanner.astro';
+
+export async function getStaticPaths() {
+  const allEntries = await getCollection('news');
+  const sorted = [...allEntries].sort((a, b) => a.data.id - b.data.id);
+
+  return sorted.map((entry) => {
+    const sameType = sorted.filter((item) => item.data.type === entry.data.type);
+    const idx = sameType.findIndex((item) => item.data.id === entry.data.id);
+    return {
+      params: { id: String(entry.data.id) },
+      props: {
+        entry,
+        prev: idx > 0 ? sameType[idx - 1] : null,
+        next: idx < sameType.length - 1 ? sameType[idx + 1] : null,
+      },
+    };
+  });
+}
+
+const { entry, prev, next } = Astro.props;
+const { Content } = await render(entry);
+
+const parentMap: Record<string, { label: string; href: string }> = {
+  news: { label: 'News & Events', href: '/news.html' },
+  case: { label: 'Projects', href: '/project.html' },
+  solution: { label: 'Solutions', href: '/category-5.html' },
+  knowledge: { label: 'Play Solar', href: '/play-solar.html' },
+};
+
+const parentCrumb = parentMap[entry.data.type] || parentMap.news;
+---
+
+<BaseLayout
+  title={entry.data.seoTitle || `${entry.data.title} - Homesun Solar`}
+  description={entry.data.description || entry.data.summary}
+  keywords={entry.data.keywords}
+>
+  <InnerBanner
+    title={parentCrumb.label}
+    bannerImg="/Uploads/images/20241119/673c9f55de2e1.jpg"
+    breadcrumbs={[parentCrumb, { label: entry.data.title }]}
+  />
+
+  <article class="container" style="padding: 40px 15px 60px; max-width: 960px;">
+    <h1 style="font-size: 30px; font-weight: 700; margin-bottom: 12px;">
+      {entry.data.title}
+    </h1>
+    {entry.data.date && (
+      <p style="color: #888; font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+        Published: {entry.data.date}
+      </p>
+    )}
+
+    <div class="article-body phone" style="margin-top: 25px; font-size: 16px; line-height: 1.85;">
+      <Content />
+    </div>
+
+    <hr style="margin: 40px 0 25px;" />
+    <div class="row">
+      <div class="col-sm-6">
+        {prev && (
+          <a href={`/news-${prev.data.id}.html`}>&larr; Prev: {prev.data.title}</a>
+        )}
+      </div>
+      <div class="col-sm-6 text-right">
+        {next && (
+          <a href={`/news-${next.data.id}.html`}>Next: {next.data.title} &rarr;</a>
+        )}
+      </div>
+    </div>
+  </article>
+</BaseLayout>

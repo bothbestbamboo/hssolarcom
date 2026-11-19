@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerBanner from '../components/InnerBanner.astro';
+import ProductSidebar from '../components/ProductSidebar.astro';
+
+const products = (await getCollection('products')).sort((a, b) => a.data.id - b.data.id);
+---
+
+<BaseLayout
+  title="Products - Homesun Solar"
+  description="Explore Homesun Solar modules, inverters, battery storage, mounting systems and solar accessories."
+>
+  <InnerBanner
+    title="All Products"
+    bannerImg="/Uploads/images/20241119/673c9f32ace84.jpg"
+    breadcrumbs={[{ label: 'Products' }]}
+  />
+
+  <div class="container" style="padding: 40px 15px 60px;">
+    <div class="row">
+      <!-- 左侧公共分类栏 -->
+      <div class="col-md-3 col-sm-12" style="margin-bottom: 30px;">
+        <ProductSidebar />
+      </div>
+
+      <!-- 右侧产品列表 -->
+      <main class="col-md-9 col-sm-12">
+        <div id="search-notice" style="display:none; margin-bottom: 20px;" class="alert alert-info">
+          Search results for: <strong id="search-keyword"></strong>
+          <a href="/category.html" style="margin-left: 12px;">Clear</a>
+        </div>
+
+        <div class="row" id="product-grid">
+          {products.map((item) => (
+            <div
+              class="col-md-4 col-sm-6 product-card"
+              data-title={item.data.title.toLowerCase()}
+              data-tags={(item.data.tags || []).join(' ').toLowerCase()}
+              style="margin-bottom: 30px;"
+            >
+              <div class="thumbnail" style="height: 100%;">
+                <a href={`/product-detail-${item.data.id}.html`}>
+                  <img
+                    src={item.data.image}
+                    alt={item.data.title}
+                    style="width:100%; height:220px; object-fit:contain; padding:10px;"
+                  />
+                </a>
+                <div class="caption">
+                  <h4 style="font-size: 16px; line-height: 1.4; min-height: 44px;">
+                    <a href={`/product-detail-${item.data.id}.html`}>{item.data.title}</a>
+                  </h4>
+                  <p style="margin-top: 10px;">
+                    <a href={`/product-detail-${item.data.id}.html`} class="btn btn-primary btn-sm">
+                      View Details
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p id="no-result" style="display:none; text-align:center; padding:40px 0; color:#666;">
+          No matching products found.
+        </p>
+      </main>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const q = (params.get('labels') || '').trim().toLowerCase();
+      if (!q) return;
+
+      document.getElementById('search-notice').style.display = 'block';
+      document.getElementById('search-keyword').textContent = params.get('labels');
+
+      const cards = document.querySelectorAll('.product-card');
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const text = (card.dataset.title || '') + ' ' + (card.dataset.tags || '');
+        if (text.includes(q)) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      if (visibleCount === 0) {
+        document.getElementById('no-result').style.display = 'block';
+      }
+    })();
+  </script>
+</BaseLayout>

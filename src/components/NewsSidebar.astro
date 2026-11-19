@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  activeType?: 'news' | 'case' | 'solution' | 'knowledge';
+}
+
+const { activeType = 'news' } = Astro.props;
+
+const latestNews = (await getCollection('news'))
+  .filter((n) => n.data.type === 'news')
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 5);
+
+const sections = [
+  { key: 'news', label: 'News & Events', href: '/news.html' },
+  { key: 'case', label: 'Projects & Case Studies', href: '/project.html' },
+  { key: 'solution', label: 'Solar Solutions', href: '/category-5.html' },
+  { key: 'knowledge', label: 'Solar Knowledge Hub', href: '/play-solar.html' },
+];
+---
+
+<aside class="news-sidebar">
+  <!-- 栏目导航 -->
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>Categories</strong></div>
+    <ul class="list-group">
+      {sections.map((sec) => (
+        <li class={`list-group-item ${activeType === sec.key ? 'active' : ''}`}>
+          <a href={sec.href} style={activeType === sec.key ? 'color:#fff;' : ''}>
+            {sec.label}
+          </a>
+        </li>
+      ))}
+      <li class="list-group-item">
+        <a href="/faq.html">FAQ</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 最新新闻（新增 .md 时自动同步更新） -->
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>Latest News</strong></div>
+    <ul class="list-group">
+      {latestNews.map((item) => (
+        <li class="list-group-item" style="font-size: 13px; line-height: 1.5;">
+          <a href={`/news-${item.data.id}.html`} style="display:block; color:#333;">
+            {item.data.title}
+          </a>
+          <span style="color:#999; font-size:12px;">{item.data.date}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <!-- 询盘引导 -->
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>Contact Homesun</strong></div>
+    <div class="panel-body" style="font-size: 14px;">
+      <p>Looking for a reliable solar supplier in China?</p>
+      <a href="/contact-us.html" class="btn btn-primary btn-block btn-sm">Request a Quote</a>
+    </div>
+  </div>
+</aside>

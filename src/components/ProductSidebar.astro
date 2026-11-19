@@ -1,0 +1,103 @@
+---
+import { getTopCategories, getSubCategories } from '../data/categories';
+
+interface Props {
+  activeCategoryId?: number;
+}
+
+const { activeCategoryId } = Astro.props;
+const topCategories = getTopCategories();
+
+const popularTags = [
+  { id: 5, name: 'Monofacial' },
+  { id: 6, name: 'Bifacial' },
+  { id: 7, name: '730W' },
+];
+---
+
+<aside class="product-sidebar">
+  <!-- 产品分类导航 -->
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>Product Categories</strong></div>
+    <ul class="list-group">
+      <li class={`list-group-item ${!activeCategoryId ? 'active' : ''}`}>
+        <a href="/category.html" style={!activeCategoryId ? 'color:#fff;' : ''}>
+          <strong>All Products</strong>
+        </a>
+      </li>
+      {topCategories.map((top) => {
+        const subs = getSubCategories(top.id);
+        const isTopActive = activeCategoryId === top.id;
+        return (
+          <li class={`list-group-item ${isTopActive ? 'active' : ''}`}>
+            <a href={`/category-${top.id}.html`} style={isTopActive ? 'color:#fff;' : ''}>
+              <strong>{top.name}</strong>
+            </a>
+            {subs.length > 0 && (
+              <ul class="sub-cat-list">
+                {subs.map((sub) => {
+                  const isSubActive = activeCategoryId === sub.id;
+                  return (
+                    <li>
+                      <a
+                        href={`/category-${sub.id}.html`}
+                        class={isSubActive ? 'is-current' : ''}
+                        style={isTopActive && !isSubActive ? 'color:#eaeaea;' : ''}
+                      >
+                        {sub.name}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+
+  <!-- 热门标签 -->
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>Popular Tags</strong></div>
+    <div class="panel-body tag-cloud">
+      {popularTags.map((tag) => (
+        <a href={`/category-tags-${tag.id}.html`} class="btn btn-default btn-xs">
+          {tag.name}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- 快捷联系卡片 -->
+  <div class="panel panel-default">
+    <div class="panel-heading"><strong>Need a Quotation?</strong></div>
+    <div class="panel-body" style="font-size: 14px; line-height: 1.7;">
+      <p style="margin-bottom: 10px;">Factory-direct pricing for solar panels, inverters & BESS.</p>
+      <p style="margin-bottom: 6px;"><strong>Tel:</strong> <a href="tel:+8613905633017">+86 13905633017</a></p>
+      <p style="margin-bottom: 14px;"><strong>Email:</strong> <a href="mailto:info@hssolar.com">info@hssolar.com</a></p>
+      <a href="/contact-us.html" class="btn btn-primary btn-block btn-sm">Get in Touch</a>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .sub-cat-list {
+    list-style: none;
+    padding-left: 14px;
+    margin: 8px 0 2px;
+  }
+  .sub-cat-list li {
+    padding: 3px 0;
+    font-size: 13px;
+  }
+  .sub-cat-list a.is-current {
+    font-weight: 700;
+    color: #e67e22;
+  }
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+</style>

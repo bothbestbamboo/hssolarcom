@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerBanner from '../components/InnerBanner.astro';
+import NewsListView from '../components/NewsListView.astro';
+
+const projects = (await getCollection('news'))
+  .filter((n) => n.data.type === 'case')
+  .sort((a, b) => b.data.id - a.data.id);
+---
+
+<BaseLayout
+  title="Solar Projects & Case Studies - Homesun Solar"
+  description="Explore Homesun Solar utility, commercial, and residential PV & battery storage projects across 100+ countries."
+>
+  <InnerBanner
+    title="Projects & Case Studies"
+    bannerImg="/Uploads/images/20241127/67466cc896043.jpg"
+    breadcrumbs={[{ label: 'Projects' }]}
+  />
+
+  <NewsListView
+    items={projects}
+    activeType="case"
+    buttonText="View Project"
+    emptyText="No project case studies published yet."
+  />
+</BaseLayout>

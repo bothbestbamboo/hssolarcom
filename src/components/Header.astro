@@ -1,0 +1,151 @@
+---
+import { SITE, PRODUCT_CATEGORIES, POPULAR_TAGS } from '../data/site';
+---
+
+<header class="large">
+    <div class="top-search clearfix">
+        <div class="input-group container">
+            <em>what are you looking for?</em>
+            <div class="header_search clearfix">
+                <form action="/category.html" method="get">
+                    <input name="labels" type="text" class="form-control" placeholder="Search">
+                    <input type="submit" class="search_btn btn_search1" value="">
+                </form>
+            </div>
+            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            <div class="popular_searches">
+                <div class="search_title">Popular Searches</div>
+                <ul class="clearfix">
+                    {POPULAR_TAGS.map((tag) => (
+                        <li><a href={`/category-tags-${tag.id}.html`}>{tag.name}</a></li>
+                    ))}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header clearfix">
+        <div class="container-big clearfix">
+            <h1>
+                <a id="logo" href="/">
+                    <img src={SITE.logoLight} alt={SITE.name}>
+                </a>
+            </h1>
+            <h1>
+                <a href="/" id="logo1">
+                    <img src={SITE.logoDark} alt={SITE.name}>
+                </a>
+            </h1>
+            <div class="header_right">
+                <div class="header_top">
+                    <ul class="menu">
+                        <li><a href="/about-us.html">About Us</a></li>
+                        <li><a href="/project.html">Project</a></li>
+                        <li><a href="/play-solar.html">Play Solar</a></li>
+                        <li><a href="/technical-services.html">Support</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/contact-us.html">Get in touch</a></li>
+                    </ul>
+                </div>
+                <div class="header_bottom">
+                    <div class="mainmenu-area">
+                        <div class="mainmenu-left visible-lg visible-md">
+                            <div class="mainmenu">
+                                <nav>
+                                    <ul class="clearfix">
+                                        {PRODUCT_CATEGORIES.map((cat) => (
+                                            <li class="product_vmegamenu">
+                                                <a href={`/category-${cat.id}.html`}>{cat.name}</a>
+                                                <ul class="vmegamenu">
+                                                    {cat.children.map((sub) => (
+                                                        <li>
+                                                            <a href={`/category-${sub.id}.html`} class="title">{sub.name}</a>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="language">
+                        <li>
+                            <div class="menu">
+                                <em class="menu-title">
+                                    <img src="/Public/theme/default/picture/language.png" alt="language">
+                                </em>
+                                <ul class="menu-dropdown">
+                                    <li><a href="#"><p>English</p></a></li>
+                                    <li><a href="#"><p>中文</p></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="search_box">
+                        <div class="attr-nav">
+                            <a class="search"><img src="/Public/theme/default/picture/search.png" alt="search"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <nav id="main-nav">
+                <ul class="first-nav">
+                    <li><a href="/">Home</a></li>
+                </ul>
+                <ul class="second-nav">
+                    <li>
+                        <a href="/category.html">Product</a>
+                        <ul class="nav_child">
+                            {PRODUCT_CATEGORIES.map((cat) => (
+                                <li>
+                                    <a href={`/category-${cat.id}.html`}>{cat.name}</a>
+                                    <ul>
+                                        {cat.children.map((sub) => (
+                                            <li><a href={`/category-${sub.id}.html`}>{sub.name}</a></li>
+                                        ))}
+                                    </ul>
+                                </li>
+                            ))}
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/about-us.html">About Us</a>
+                        <ul class="nav_child">
+                            <li><a href="/about-us.html">Company Introduction</a></li>
+                            <li><a href="/why-we-different.html">Why We Are Different</a></li>
+                            <li><a href="/news.html">News &amp; Events</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/project.html">Project</a></li>
+                    <li>
+                        <a href="/play-solar.html">Solar energy knowledge</a>
+                        <ul class="nav_child">
+                            <li><a href="/pages-8.html">Why Photovoltaics</a></li>
+                            <li><a href="/pages-9.html">Benefits of PV System</a></li>
+                            <li><a href="/pages-13.html">Solar Basics</a></li>
+                            <li><a href="/pages-14.html">Future Clean Energy</a></li>
+                            <li><a href="/faq.html">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/technical-services.html">Support</a>
+                        <ul class="nav_child">
+                            <li><a href="/technical-services.html">Technical Services</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/contact-us.html">Get in touch</a></li>
+                </ul>
+                <ul class="select_lan clearfix">
+                    <li class="title">Select language <i class="fa fa-angle-double-down"></i></li>
+                    <li><a href="#"><p>English</p></a></li>
+                    <li><a href="#"><p>中文</p></a></li>
+                </ul>
+            </nav>
+            <a class="toggle"><span></span><span></span><span></span></a>
+        </div>
+    </div>
+</header>

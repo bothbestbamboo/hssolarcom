@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerBanner from '../components/InnerBanner.astro';
+---
+
+<BaseLayout
+  title="Contact Us - Homesun Solar"
+  description="Contact Homesun Solar factory in Xuancheng, China for solar panels, inverters, and BESS quotations."
+>
+  <InnerBanner
+    title="Get in Touch"
+    bannerImg="/Uploads/images/20241127/67466cc896043.jpg"
+    breadcrumbs={[{ label: 'Contact Us' }]}
+  />
+
+  <div class="container" style="padding: 45px 15px 65px;">
+    <div class="row">
+      <div class="col-md-5 col-sm-12" style="margin-bottom: 30px;">
+        <h3>Homesun Solar Technology Co., Ltd.</h3>
+        <p style="margin-top: 18px; line-height: 1.9;">
+          <strong>Phone / WhatsApp:</strong> <a href="tel:+8613905633017">+86 13905633017</a><br />
+          <strong>Email:</strong> <a href="mailto:info@hssolar.com">info@hssolar.com</a><br />
+          <strong>Address:</strong> Industrial Zone, Ningguo, Xuancheng, China
+        </p>
+        <div style="margin-top: 20px;">
+          <p><strong>Scan to WeChat:</strong></p>
+          <img
+            src="/Uploads/images/20241116/673877212cc64.jpg"
+            alt="Homesun WeChat QR Code"
+            style="width: 160px; border: 1px solid #eee; padding: 6px;"
+          />
+        </div>
+      </div>
+
+      <div class="col-md-7 col-sm-12">
+        <h3>Send Us an Inquiry</h3>
+        <!-- 替换 action 为你的 Cloudflare Worker 接口或 Formspree / Web3Forms 地址 -->
+        <form id="contactPageForm" action="https://api.web3forms.com/submit" method="POST" style="margin-top: 20px;">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+          <input type="hidden" name="subject" value="New Inquiry from hssolar.com" />
+
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" name="name" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label>Your Email *</label>
+            <input type="email" name="email" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label>Phone / WhatsApp</label>
+            <input type="text" name="phone" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Inquiry Details *</label>
+            <textarea
+              name="message"
+              rows="5"
+              class="form-control"
+              placeholder="Country, product model, wattage, quantity, etc."
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg">Submit Inquiry</button>
+          <div id="contact-status" style="margin-top: 15px;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    const form = document.getElementById('contactPageForm');
+    const statusBox = document.getElementById('contact-status');
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusBox.innerHTML = '<span class="text-info">Sending...</span>';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (res.ok) {
+          statusBox.innerHTML = '<div class="alert alert-success">Your message has been submitted successfully! We will reply within 12 hours.</div>';
+          form.reset();
+        } else {
+          statusBox.innerHTML = '<div class="alert alert-danger">Submission failed. Please email us directly at info@hssolar.com.</div>';
+        }
+      } catch {
+        statusBox.innerHTML = '<div class="alert alert-danger">Network error. Please try again later.</div>';
+      }
+    });
+  </script>
+</BaseLayout>

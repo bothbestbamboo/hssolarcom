@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerBanner from '../components/InnerBanner.astro';
+
+export async function getStaticPaths() {
+  const tags = [
+    { id: 5, name: 'Monofacial' },
+    { id: 6, name: 'Bifacial' },
+    { id: 7, name: '730W' },
+  ];
+
+  const allProducts = await getCollection('products');
+
+  return tags.map((tag) => {
+    const matched = allProducts.filter((p) => {
+      const inTags = (p.data.tags || []).some(
+        (t: string) => t.toLowerCase() === tag.name.toLowerCase()
+      );
+      const inTitle = p.data.title.toLowerCase().includes(tag.name.toLowerCase());
+      return inTags || inTitle;
+    });
+
+    return {
+      params: { id: String(tag.id) },
+      props: { tag, products: matched },
+    };
+  });
+}
+
+const { tag, products } = Astro.props;
+---
+
+<BaseLayout
+  title={`${tag.name} Solar Products - Homesun Solar`}
+  description={`Browse Homesun ${tag.name} solar modules and solutions.`}
+>
+  <InnerBanner
+    title={`Tag: ${tag.name}`}
+    bannerImg="/Uploads/images/20241119/673c9f32ace84.jpg"
+    breadcrumbs={[
+      { label: 'Products', href: '/category.html' },
+      { label: tag.name },
+    ]}
+  />
+
+  <div class="container" style="padding: 40px 15px 60px;">
+    <div class="row">
+      {products.map((item) => (
+        <div class="col-md-3 col-sm-6" style="margin-bottom: 30px;">
+          <div class="thumbnail">
+            <a href={`/product-detail-${item.data.id}.html`}>
+              <img
+                src={item.data.image}
+                alt={item.data.title}
+                style="width:100%; height:220px; object-fit:contain; padding:10px;"
+              />
+            </a>
+            <div class="caption">
+              <h4 style="font-size: 15px; min-height: 44px;">
+                <a href={`/product-detail-${item.data.id}.html`}>{item.data.title}</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

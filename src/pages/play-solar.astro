@@ -1,0 +1,115 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const defaultIntroMap: Record<number, { title: string; image: string; summary: string }> = {
+  8: {
+    title: 'Why Photovoltaics',
+    image: '/Uploads/images/20241116/67386ab8880da.jpg',
+    summary:
+      "A solar power system from Homesun solar on your roof, the sun's rays into electricity, which you can use for self-consumption. A solar power system in combination with an electricity storage unit from Homesun solar is particularly clever! It ensures that you can use your solar power even when the sun is not shining - exactly when you need it. As a result you have to buy less electricity from an energy supplier - and can save up to 80% on your electricity costs!",
+  },
+  9: {
+    title: 'Benefits of PV System',
+    image: '/Uploads/images/20241116/67386b51b8d3e.jpg',
+    summary:
+      'Having an Homesun solar power system on your roof lets you turn solar radiation into energy you can use – in many ways. On-grid, off-grid or hybrid solutions: Perfectly customized to your requirements. Direct self-consumption of solar power: Gaining independence from energy suppliers and reducing your electricity bills. Storage to increase self-consumption share: Ensuring that you can use solar power even when the sun is not shining.',
+  },
+  13: {
+    title: 'Solar Basics',
+    image: '/Uploads/images/20241123/67417df4c6112.jpg',
+    summary:
+      'In order to have a deeper understanding of photovoltaic products and technologies, we need to start with the basic knowledge of electricity and solar panels. Here you can obtain comprehensive and professional photovoltaic basic knowledge.',
+  },
+  14: {
+    title: 'Future Clean Energy',
+    image: '/Uploads/images/20241125/67446bdacd824.jpg',
+    summary:
+      'As the world moves towards clean, sustainable energy, solar energy is set to play a significant role. Solar panels are leading the renewable energy revolution due to technological improvements, falling costs, and increased environmental consciousness.',
+  },
+};
+
+const knowledgeEntries = (await getCollection('news'))
+  .filter((n) => n.data.type === 'knowledge')
+  .sort((a, b) => a.data.id - b.data.id);
+
+const sections =
+  knowledgeEntries.length > 0
+    ? knowledgeEntries.map((item) => {
+        const fallback = defaultIntroMap[item.data.id];
+        return {
+          id: item.data.id,
+          title: item.data.title || fallback?.title || '',
+          image: item.data.image || fallback?.image || '',
+          summary: fallback?.summary || item.data.summary || '',
+        };
+      })
+    : Object.entries(defaultIntroMap).map(([id, val]) => ({
+        id: Number(id),
+        ...val,
+      }));
+---
+
+<BaseLayout
+  title="Play Solar - Homesun: China Solar Panels Supplier"
+  description="Solar is a clean and free energy. Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
+  keywords="solar panels, china, supplier"
+>
+  <div class="height"></div>
+  <div class="inner_banner">
+    <a>
+      <picture>
+        <img src="/Public/theme/default/image/play-solar.jpg" alt="play-solar" />
+      </picture>
+    </a>
+    <div class="ovrly"></div>
+    <div class="bgs"></div>
+  </div>
+
+  <div class="mbx_section">
+    <div class="container">
+      <div class="maintitle">Solar energy knowledge</div>
+      <div class="mbx">
+        <a href="/"><i class="fa fa-home"></i>Home</a>
+        <span>/</span>
+        <h2>Solar energy knowledge</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="n_main">
+    <div class="page-nav-box js-page-nav-box">
+      <div class="page-nav js-page-nav">
+        <ul class="list">
+          {sections.map((sec) => (
+            <li class="pnav-item">
+              <a href="javascript:;" data-href={`#overview_${sec.id}`} class="pnav-link"></a>
+              <p>{sec.title}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    {sections.map((sec) => (
+      <div class="nav-page" id={`overview_${sec.id}`}>
+        <div class="solar_text clearfix">
+          <div class="container clearfix">
+            <div class="img_left">
+              <picture>
+                <img src={sec.image} alt={sec.title} />
+              </picture>
+            </div>
+            <div class="wrap">
+              <div class="maintitle">{sec.title}</div>
+              <p>{sec.summary}</p>
+              <div class="more_btn">
+                <a href={`/news-${sec.id}.html`}>Read more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</BaseLayout>
