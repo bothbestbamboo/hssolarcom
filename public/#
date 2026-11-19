@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Homesun: China Solar Panels Supplier</title>
+    <meta name="description" content="Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping.">
+    <meta name="keywords" content="solar panels, china, supplier">
+    <link rel="shortcut icon" href="favicon.ico" type="image/png">
+    <link type="text/css" rel="stylesheet" href="/Public/layui/css/layui.css">
+    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/moban.css">
+    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/swiper.css">
+    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/style.css">
+    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/magnific-popup.css">
+    <script type="text/javascript" src="/Public/Script/jquery.min.js"></script>
+    <script>
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                $(function () {
+                    $('.phone img').attr("style","");
+                    $(".phone img").attr("width","");
+                    $(".phone img").attr("height","");
+
+                })
+            }
+        </script>
+</head>
+<body>
+	<header class="large">
+    <div class="top-search clearfix">
+        <div class="input-group container">
+            <em>what are you looking for?</em>
+            <div class="header_search clearfix">
+                <form action="/category" method="get">
+                    <input name="labels" type="text" class="form-control" placeholder="Search">
+                    <input type="submit" class="search_btn btn_search1" value="">
+                </form>
+            </div>
+            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            <div class="popular_searches">
+                <div class="search_title">Popular Searches
+                </div>
+                <ul class="clearfix">
+                    <li><a href="/category-tags-5.html">Monofacial</a></li><li><a href="/category-tags-6.html">Bifacial</a></li><li><a href="/category-tags-7.html">730W</a></li>                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="header clearfix">
+        <div class="container-big clearfix">
+            <h1> <a id="logo" href="/"><img src="/Uploads/images/20241119/673c39df93256.png" alt="Homesun: China Solar Panels Supplier"></a>
+            </h1>
+            <h1><a href="/" id="logo1"><img src="/Uploads/images/20241119/673c39d87f714.png" alt="Homesun: China Solar Panels Supplier"></a></h1>
+            <div class="header_right">
+                <div class="header_top">
+                    <ul class="menu">
+                        <li><a href="/about-us.html">About Us</a></li>
+                        <li><a href="/project.html">Project</a></li>
+                        <li><a href="/play-solar.html">Play Solar</a></li>
+                        <li><a href="/technical-services.html">Support</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/contact-us.html">Get in touch</a></li>
+                    </ul>
+                </div>
+                <div class="header_bottom">
+                    <div class="mainmenu-area">
+                        <div class="mainmenu-left visible-lg visible-md">
+                            <div class="mainmenu">
+                                <nav>
+                                    <ul class="clearfix">
+                                        <li class="product_vmegamenu"><a href="/category-1.html">Solar Module</a>
+                                                <ul class="vmegamenu">
+                                                    <li><a href="/category-2.html" class="title">N-Type PV Module</a></li><li><a href="/category-8.html" class="title">P-Type PV Module</a></li><li><a href="/category-9.html" class="title">Shingled PV Module</a></li><li><a href="/category-10.html" class="title">Off Grid Solar Panel</a></li><li><a href="/category-11.html" class="title">HJT PV Module</a></li>                                                </ul>
+                                            </li><li class="product_vmegamenu"><a href="/category-3.html">Inverter</a>
+                                                <ul class="vmegamenu">
+                                                    <li><a href="/category-12.html" class="title">Grid Tie Inverter</a></li><li><a href="/category-13.html" class="title">Hybrid Inverter</a></li><li><a href="/category-14.html" class="title">Off Grid inverter</a></li>                                                </ul>
+                                            </li><li class="product_vmegamenu"><a href="/category-4.html">Battery Storage</a>
+                                                <ul class="vmegamenu">
+                                                    <li><a href="/category-15.html" class="title">Residential BESS</a></li><li><a href="/category-16.html" class="title">Commercial BESS</a></li><li><a href="/category-17.html" class="title">Container BESS</a></li><li><a href="/category-18.html" class="title">Lead Acid Battery</a></li>                                                </ul>
+                                            </li><li class="product_vmegamenu"><a href="/category-5.html">Solar Solution</a>
+                                                <ul class="vmegamenu">
+                                                    <li><a href="/category-19.html" class="title">On Grid System</a></li><li><a href="/category-20.html" class="title">Hybrid System</a></li><li><a href="/category-21.html" class="title">Off Grid System</a></li>                                                </ul>
+                                            </li><li class="product_vmegamenu"><a href="/category-6.html">Mounting System</a>
+                                                <ul class="vmegamenu">
+                                                    <li><a href="/category-22.html" class="title">Roof</a></li><li><a href="/category-23.html" class="title">Ground</a></li>                                                </ul>
+                                            </li><li class="product_vmegamenu"><a href="/category-7.html">Accessories</a>
+                                                <ul class="vmegamenu">
+                                                    <li><a href="/category-24.html" class="title">PV Connector</a></li><li><a href="/category-25.html" class="title">PV Cable</a></li><li><a href="/category-26.html" class="title">DC Protection Device</a></li><li><a href="/category-27.html" class="title">Solar Pump</a></li><li><a href="/category-28.html" class="title">MPPT Controller</a></li><li><a href="/category-29.html" class="title">Optimizer</a></li><li><a href="/category-30.html" class="title">Solar Street Light</a></li>                                                </ul>
+                                            </li>                                        
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="language">
+                        <li>
+                            <div class="menu"> <em class="menu-title">
+                                    <img src="/Public/theme/default/picture/language.png"></em>
+                           <ul class="menu-dropdown">
+                                    <li><a href="#"><p>English</p></a></li>
+                                    <li><a href="#"><p>中文</p></a></li>
+                                </ul>
+                                </div>
+                        </li>
+                    </ul>
+                    <div class="search_box">
+                        <div class="attr-nav">
+                            <a class="search"><img src="/Public/theme/default/picture/search.png"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <nav id="main-nav">
+                <ul class="first-nav">
+                    <li><a href="/">Home</a></li>
+                </ul>
+                <ul class="second-nav">
+                    <li><a href="/category">Product
+                        </a>
+                        <ul class="nav_child">
+                            <li><a href="/category-1.html">Solar Module</a>
+                                <ul>
+                                    <li><a href="/category-2.html">N-Type PV Module</a></li><li><a href="/category-8.html">P-Type PV Module</a></li><li><a href="/category-9.html">Shingled PV Module</a></li><li><a href="/category-10.html">Off Grid Solar Panel</a></li><li><a href="/category-11.html">HJT PV Module</a></li>                                </ul>
+                            </li><li><a href="/category-3.html">Inverter</a>
+                                <ul>
+                                    <li><a href="/category-12.html">Grid Tie Inverter</a></li><li><a href="/category-13.html">Hybrid Inverter</a></li><li><a href="/category-14.html">Off Grid inverter</a></li>                                </ul>
+                            </li><li><a href="/category-4.html">Battery Storage</a>
+                                <ul>
+                                    <li><a href="/category-15.html">Residential BESS</a></li><li><a href="/category-16.html">Commercial BESS</a></li><li><a href="/category-17.html">Container BESS</a></li><li><a href="/category-18.html">Lead Acid Battery</a></li>                                </ul>
+                            </li><li><a href="/category-5.html">Solar Solution</a>
+                                <ul>
+                                    <li><a href="/category-19.html">On Grid System</a></li><li><a href="/category-20.html">Hybrid System</a></li><li><a href="/category-21.html">Off Grid System</a></li>                                </ul>
+                            </li><li><a href="/category-6.html">Mounting System</a>
+                                <ul>
+                                    <li><a href="/category-22.html">Roof</a></li><li><a href="/category-23.html">Ground</a></li>                                </ul>
+                            </li><li><a href="/category-7.html">Accessories</a>
+                                <ul>
+                                    <li><a href="/category-24.html">PV Connector</a></li><li><a href="/category-25.html">PV Cable</a></li><li><a href="/category-26.html">DC Protection Device</a></li><li><a href="/category-27.html">Solar Pump</a></li><li><a href="/category-28.html">MPPT Controller</a></li><li><a href="/category-29.html">Optimizer</a></li><li><a href="/category-30.html">Solar Street Light</a></li>                                </ul>
+                            </li>                        </ul>
+                    </li>
+                    <li><a href="/about-us.html">About Us</a>
+                        <ul class="nav_child">
+                            <li><a href="/about-us.html">Company Introduction</a></li>
+                            <li><a href="/why-we-different.html">Why We Are Different</a></li>
+                            
+                            <li><a href="/news.html">News & Events</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/project.html">Project</a>
+                    </li>
+                    <li><a href="/play-solar.html">Solar energy knowledge</a>
+                        <ul class="nav_child">
+                            <li><a href="/pages-8.html">Why Photovoltaics</a></li><li><a href="/pages-9.html">Benefits of PV System</a></li><li><a href="/pages-13.html">Solar Basics</a></li><li><a href="/pages-14.html">Future Clean Energy</a></li>                            <li><a href="/faq.html">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/technical-services.html">Support</a>
+                        <ul class="nav_child">
+                            <li><a href="/technical-services.html">Technical Services</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li><a href="contact-us">Get in touch</a>
+                    </li>
+                </ul>
+                <ul class="select_lan clearfix">
+                    <li class="title">Select language
+                        <i class="fa fa-angle-double-down"></i></li>
+                    <li><a href="#">
+                            <p>English</p>
+                        </a></li>
+                    <li><a href="#">
+                            <p>中文</p>
+                        </a></li>
+                </ul>
+                </nav>
+            <a class="toggle"> <span></span> <span></span> <span></span> </a>
+        </div>
+    </div>
+</header>
+	
+	<div class="height"></div>
+    <div class="swiper-banner index_banner">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="slide-inner">
+                    <a href="/">
+                        <picture>
+                            <img src="/Uploads/images/20241119/673c9f32ace84.jpg" alt="banner">
+                        </picture>
+                    </a>
+                </div>
+            </div><div class="swiper-slide">
+                <div class="slide-inner">
+                    <a href="/">
+                        <picture>
+                            <img src="/Uploads/images/20241119/673c9f55de2e1.jpg" alt="banner">
+                        </picture>
+                    </a>
+                </div>
+            </div><div class="swiper-slide">
+                <div class="slide-inner">
+                    <a href="/">
+                        <picture>
+                            <img src="/Uploads/images/20241127/67466cc896043.jpg" alt="banner">
+                        </picture>
+                    </a>
+                </div>
+            </div>            
+        </div>
+        <!-- Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <div class="cat_content clearfix">
+        <div class="container clearfix">
+            <div class="maintitle">HOT PRODUCTS</div>
+            <div class="index_text">We're setting the standard for customer service. As a leading solar system supplier, Homesun Solar specializes in offering excellent products related to solar power, from solar PV panels to solar systems.</div>
+            <div class="swiper_box">
+                <div class="swiper pro_scrollbar">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                                <div class="moudle">
+                                    <a href="/product-detail-1.html" class="images">
+                                        <picture>
+                                            <img src="/Uploads/images/20241202/674d6c7f6de7e.jpg" alt="Monofacial N-Type 580W 590W 600W144 Cell Half Cut">
+                                        </picture>
+                                    </a>
+                                    <a href="/product-detail-1.html" class="title">Monofacial N-Type 580W 590W 600W144 Cell Half Cut</a>
+                                </div>
+                            </div><div class="swiper-slide">
+                                <div class="moudle">
+                                    <a href="/product-detail-2.html" class="images">
+                                        <picture>
+                                            <img src="/Uploads/images/20241126/67452d70985a7.png" alt="144 Cells 550W 560W 565W Half Cell PERC Commercial">
+                                        </picture>
+                                    </a>
+                                    <a href="/product-detail-2.html" class="title">144 Cells 550W 560W 565W Half Cell PERC Commercial</a>
+                                </div>
+                            </div><div class="swiper-slide">
+                                <div class="moudle">
+                                    <a href="/product-detail-4.html" class="images">
+                                        <picture>
+                                            <img src="/Uploads/images/20241122/67407ddcec4b8.jpg" alt="HJT 730W 740W 750W Bifacial Double Glass Half Cell">
+                                        </picture>
+                                    </a>
+                                    <a href="/product-detail-4.html" class="title">HJT 730W 740W 750W Bifacial Double Glass Half Cell</a>
+                                </div>
+                            </div><div class="swiper-slide">
+                                <div class="moudle">
+                                    <a href="/product-detail-5.html" class="images">
+                                        <picture>
+                                            <img src="/Uploads/images/20241124/674293883683d.png" alt="TOPCon 430W 440W 450W Full Black Half Cell">
+                                        </picture>
+                                    </a>
+                                    <a href="/product-detail-5.html" class="title">TOPCon 430W 440W 450W Full Black Half Cell</a>
+                                </div>
+                            </div><div class="swiper-slide">
+                                <div class="moudle">
+                                    <a href="/product-detail-6.html" class="images">
+                                        <picture>
+                                            <img src="/Uploads/images/20241124/67429b3d5c344.png" alt="Topcon N Type 430W 440W 450W Full Black Bifacial Half Cell">
+                                        </picture>
+                                    </a>
+                                    <a href="/product-detail-6.html" class="title">Topcon N Type 430W 440W 450W Full Black Bifacial Half Cell</a>
+                                </div>
+                            </div>                    </div>
+                </div>
+                <!-- Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+        <div class="more_btn"><a href="/category.html">View More Products</a></div>
+    </div>
+    <div class="about_content clearfix">
+        <div class="container-big clearfix">
+            <div class="maintitle">Better Than Good</div>
+            <div class="index_text">How We Be Special Different for Last 10 Years</div>
+            <ul class="clearfix">
+                <li>
+                    <a class="images">
+                        <picture>
+                            <source type="image/webp" srcset="/Public/theme/default/picture/1721045333_3vVNWtUjmd.webp">
+                            <source type="image/jpeg" srcset="/Public/theme/default/picture/1721045333_3vVNWtUjmd.png">
+                            <img class="img" src="/Public/theme/default/picture/1721045333_3vVNWtUjmd.png" alt="高性能、实惠的价格">
+                        </picture>
+                    </a>
+                    <div class="wrap">
+                        <a class="title">High Performance, Affordable Pricing</a>
+                        <div class="text">It is crucial to install high-efficiency modules that can generate more power per square meter. Homesun modules are capable of generating more than 700W peak (Wp), which guarantees excellent cost performance. We provide one-stop service for customer cases, from case analysis, design to quality component supply. We simply provide affordable prices for our customers to enable more people to live with solar energy.</div>
+                        <span class="num">01</span>
+                    </div>
+                </li>
+                <li>
+                    <a class="images">
+                        <picture>
+                            <source type="image/webp" srcset="/Public/theme/default/picture/1721095476_ZCdp1MpELP.webp">
+                            <source type="image/jpeg" srcset="/Public/theme/default/picture/1721095476_ZCdp1MpELP.png">
+                            <img class="img" src="/Public/theme/default/picture/1721095476_ZCdp1MpELP.png" alt="重新思考质量">
+                        </picture>
+                    </a>
+                    <div class="wrap">
+                        <a class="title">Rethinking Quality</a>
+                        <div class="text">Providing the best products to our customers is key to everything we do at Homesun New Energy. For us, this means high quality at every stage, from production, transportation and sales to final installation. At every stage of production, our modules undergo strict quality control and are inspected and certified by reputable independent organizations such as T&Uuml;V and Intertek, ensuring the highest level of quality.</div>
+                        <span class="num">02</span>
+                    </div>
+                </li>
+                <li>
+                    <a class="images">
+                        <picture>
+                            <source type="image/webp" srcset="/Public/theme/default/picture/1721808780_1USSy0dTM9.webp">
+                            <source type="image/jpeg" srcset="/Public/theme/default/picture/1721808780_1USSy0dTM9.png">
+                            <img class="img" src="/Public/theme/default/picture/1721808780_1USSy0dTM9.png" alt="技术专长">
+                        </picture>
+                    </a>
+                    <div class="wrap">
+                        <a class="title">Technical Expertise</a>
+                        <div class="text">We are proud of our workforce, which comprises highly skilled individuals. Our manufacturing expertise is second to none, and we also offer expert technical and customer support from modules to inverter and complete solar solutions.</div>
+                        <span class="num">03</span>
+                    </div>
+                </li>
+                <li>
+                    <a class="images">
+                        <picture>
+                            <source type="image/webp" srcset="/Public/theme/default/picture/1721095611_eUbkVjMtB9.webp">
+                            <source type="image/jpeg" srcset="/Public/theme/default/picture/1721095611_eUbkVjMtB9.png">
+                            <img class="img" src="/Public/theme/default/picture/1721095611_eUbkVjMtB9.png" alt="强大的社会责任公司">
+                        </picture>
+                    </a>
+                    <div class="wrap">
+                        <a class="title">Strong Socially Responsible Company</a>
+                        <div class="text">Our Mission: Illuminate the future with solar.</div>
+                        <div class="text">Our Vision: Build a world-leading green energy network, bringing the power of solar to every corner.   </div>
+                        <div class="text">Our Values:</div>
+                        <div class="text">• Customer-Centric: Listen to customer needs and deliver exceptional service.</div>
+                        <div class="text">• Integrity-Based: Operate with honesty and earn the trust of our.</div>
+                        <span class="num">04</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="case_content clearfix">
+        <div class="container-big clearfix">
+            <div class="maintitle">Explore Case Studies</div>
+            <div class="index_text">Homesun as a leading solar company, projects has been spreading more than 100 countries.</div>
+            <div class="swiper case_scrollbar">
+                <div class="swiper-wrapper">
+                   <div class="swiper-slide">
+                        <div class="moudle">
+                            <a href="/news-1.html" class="images">
+                                <picture>
+                                    <img src="/Uploads/images/20241125/67446d44e3b4f.jpg" alt="50kW Storage System in Djibouti">
+                                </picture>
+                            </a>
+                            <div class="wrap">
+                                <div>
+                                    <a href="/news-1.html" class="title">50kW Storage System in Djibouti</a>
+                                    <div class="text">50kW White Module and Inventer Hybrid Storage System in Djibouti</div>
+                                    <div class="more_btn">
+                                        <a href="/news-1.html">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="swiper-slide">
+                        <div class="moudle">
+                            <a href="/news-2.html" class="images">
+                                <picture>
+                                    <img src="/Uploads/images/20241125/67446e4f71603.jpg" alt="10kW+20kWH Battery Storage In Uzbekistan">
+                                </picture>
+                            </a>
+                            <div class="wrap">
+                                <div>
+                                    <a href="/news-2.html" class="title">10kW+20kWH Battery Storage In Uzbekistan</a>
+                                    <div class="text">10kW+20kWH Hybrid Lithium Battery Storage System In Uzbekistan</div>
+                                    <div class="more_btn">
+                                        <a href="/news-2.html">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="swiper-slide">
+                        <div class="moudle">
+                            <a href="/news-3.html" class="images">
+                                <picture>
+                                    <img src="/Uploads/images/20241125/67446f71b0ccc.jpg" alt="300kW On Grid Solar System in Thailand">
+                                </picture>
+                            </a>
+                            <div class="wrap">
+                                <div>
+                                    <a href="/news-3.html" class="title">300kW On Grid Solar System in Thailand</a>
+                                    <div class="text">300kW 460WHalf Cell Solar Module On Grid Solar System in Thailand</div>
+                                    <div class="more_btn">
+                                        <a href="/news-3.html">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="swiper-slide">
+                        <div class="moudle">
+                            <a href="/news-11.html" class="images">
+                                <picture>
+                                    <img src="/Uploads/images/20241125/67446ff699a19.jpg" alt="2MW Ground Plant in USA">
+                                </picture>
+                            </a>
+                            <div class="wrap">
+                                <div>
+                                    <a href="/news-11.html" class="title">2MW Ground Plant in USA</a>
+                                    <div class="text">2MW White 550W PV Module Grid Tie System Ground Plant in USA</div>
+                                    <div class="more_btn">
+                                        <a href="/news-11.html">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="swiper-slide">
+                        <div class="moudle">
+                            <a href="/news-15.html" class="images">
+                                <picture>
+                                    <img src="/Uploads/images/20241203/674e6240bfae3.jpg" alt="60kW+420kWh Hybrid Storage System In United Arab Emirates">
+                                </picture>
+                            </a>
+                            <div class="wrap">
+                                <div>
+                                    <a href="/news-15.html" class="title">60kW+420kWh Hybrid Storage System In United Arab Emirates</a>
+                                    <div class="text">60kW+420kWh Hybrid Storage System In United Arab Emirates</div>
+                                    <div class="more_btn">
+                                        <a href="/news-15.html">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="swiper-slide">
+                        <div class="moudle">
+                            <a href="/news-18.html" class="images">
+                                <picture>
+                                    <img src="/Uploads/images/20241203/674e636c7eede.jpg" alt="250kW+1MWH Lithium Battery Storage System In South Africa">
+                                </picture>
+                            </a>
+                            <div class="wrap">
+                                <div>
+                                    <a href="/news-18.html" class="title">250kW+1MWH Lithium Battery Storage System In South Africa</a>
+                                    <div class="text">250kW+1MWH Lithium Battery Storage System In South Africa</div>
+                                    <div class="more_btn">
+                                        <a href="/news-18.html">Read more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+    <div class="solution_content clearfix">
+        <div class="container clearfix">
+            <div class="maintitle">Solution</div>
+            <div class="index_text">Homesun has been serving more than 2000 customers in 110 countries, we not only focus on providing high quality products for our customers, but also most professional technical service.  </div>
+            <ul class="clearfix">
+                <li>
+                        <a href="/news-4.html" class="images">
+                            <picture>
+                                
+                                <img src="/Uploads/images/20241115/6736be956cfad.png" alt="Storage Solution">
+                            </picture>
+                        </a>
+                        <div class="ovrly"></div>
+                        <div class="wrap">
+                            <div>
+                                <a href="/news-4.html" class="title">Storage Solution</a>
+                                <div class="text">Energy storage solutions from Homesun Solar can meet 4 different application modes, At present, it has been used in more than 10000 homes around the world, helping them reduce their dependence on the grid and make electricity more economical and free.</div>
+                                <div class="more_btn"><a href="/news-4.html">Read more
+                                    </a></div>
+                            </div>
+                        </div>
+                    </li><li>
+                        <a href="/news-5.html" class="images">
+                            <picture>
+                                
+                                <img src="/Uploads/images/20241125/6744731f67c5d.jpg" alt="Grid Tie Solution">
+                            </picture>
+                        </a>
+                        <div class="ovrly"></div>
+                        <div class="wrap">
+                            <div>
+                                <a href="/news-5.html" class="title">Grid Tie Solution</a>
+                                <div class="text">With the rapid advancements of technology in the field of solar energy, more and more people have started installing solar power system. Of the several types of different systems installed across the globe, the on grid solar power system is the most widely chosen one. </div>
+                                <div class="more_btn"><a href="/news-5.html">Read more
+                                    </a></div>
+                            </div>
+                        </div>
+                    </li>            </ul>
+        </div>
+    </div>
+    <div class="study_content clearfix">
+        <div class="container clearfix">
+            <div class="wrap">
+                <div class="maintitle">Become solar expert with <span>Homesun</span></div>
+                <div class="text">With expert knowledge in mind, we’ve created the Solar Knowledge Hub. It is here we explore the benefits of solar power, how solar systems work, renewable energy innovations such as electric vehicles, off-grid tips, the latest solar energy news.</div>
+                <div class="more_btn"><a href="javascript:;">Read more
+                    </a></div>
+            </div>
+            <div class="study_list">
+                <ul>
+                    <li>
+                            <div class="wrap">
+                                <a href="javascript:;" class="images">
+                                    <picture>
+                                       
+                                        <img class="img" src="/Uploads/images/20241116/67386ab8880da.jpg" alt="Why Photovoltaics">
+                                    </picture>
+                                </a>
+                                <div class="text">
+                                    <a href="/news-8.html" class="title">Why Photovoltaics</a>
+                                </div>
+                            </div>
+                        </li><li>
+                            <div class="wrap">
+                                <a href="javascript:;" class="images">
+                                    <picture>
+                                       
+                                        <img class="img" src="/Uploads/images/20241116/67386b51b8d3e.jpg" alt="Benefits of PV System">
+                                    </picture>
+                                </a>
+                                <div class="text">
+                                    <a href="/news-9.html" class="title">Benefits of PV System</a>
+                                </div>
+                            </div>
+                        </li><li>
+                            <div class="wrap">
+                                <a href="javascript:;" class="images">
+                                    <picture>
+                                       
+                                        <img class="img" src="/Uploads/images/20241123/67417df4c6112.jpg" alt="Solar Basics">
+                                    </picture>
+                                </a>
+                                <div class="text">
+                                    <a href="/news-13.html" class="title">Solar Basics</a>
+                                </div>
+                            </div>
+                        </li><li>
+                            <div class="wrap">
+                                <a href="javascript:;" class="images">
+                                    <picture>
+                                       
+                                        <img class="img" src="/Uploads/images/20241125/67446bdacd824.jpg" alt="Future Clean Energy">
+                                    </picture>
+                                </a>
+                                <div class="text">
+                                    <a href="/news-14.html" class="title">Future Clean Energy</a>
+                                </div>
+                            </div>
+                        </li>                  
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="news_content clearfix">
+        <div class="container clearfix">
+            <div class="maintitle">Latest News</div>
+            <div class="index_text"></div>
+            <div class="swiper scrollbar_news">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                            <div class="moudle">
+                                <a href="/news-78.html" class="images">
+                                    <picture>
+                                       <img src="/Uploads/images/20261109/6af11bf865182.jpg" alt="HV Battery Packs in New Builds: Why High-Voltage Storage Became the Default">
+                                    </picture>
+                                </a>
+                                <div class="wrap">
+                                    <div class="date">2026-11-09 09:03:54</div>
+                                    <a href="/news-78.html" class="title">HV Battery Packs in New Builds: Why High-Voltage Storage Became the Default</a>
+                                    <div class="text">Why HV battery packs are becoming standard in new builds: higher-voltage storage, easier installation, lower running losses, and better pairing with solar and EV charging in homes.</div>
+                                    <div class="more"><a href="/news-78.html">More
+                                            <img src="/Public/theme/default/picture/arrow.png"></a></div>
+                                </div>
+                            </div>
+                        </div><div class="swiper-slide">
+                            <div class="moudle">
+                                <a href="/news-77.html" class="images">
+                                    <picture>
+                                       <img src="/Uploads/images/20261031/6ae5ce1502c44.png" alt="700W+ High-Power Modules Are Dominating Utility Solar Projects">
+                                    </picture>
+                                </a>
+                                <div class="wrap">
+                                    <div class="date">2026-10-31 19:17:06</div>
+                                    <a href="/news-77.html" class="title">700W+ High-Power Modules Are Dominating Utility Solar Projects</a>
+                                    <div class="text">700W+ high-power modules are dominating utility solar projects through lower BOS cost, higher yield, and easier plant design. Learn why large-format PV modules lead large-scale solar.</div>
+                                    <div class="more"><a href="/news-77.html">More
+                                            <img src="/Public/theme/default/picture/arrow.png"></a></div>
+                                </div>
+                            </div>
+                        </div><div class="swiper-slide">
+                            <div class="moudle">
+                                <a href="/news-76.html" class="images">
+                                    <picture>
+                                       <img src="/Uploads/images/20261021/6ad80ab8826ff.jpg" alt="Top Reasons Your Solar Battery May Not Be Charging Fully">
+                                    </picture>
+                                </a>
+                                <div class="wrap">
+                                    <div class="date">2026-10-21 08:43:49</div>
+                                    <a href="/news-76.html" class="title">Top Reasons Your Solar Battery May Not Be Charging Fully</a>
+                                    <div class="text">A solar battery that stops short of a full charge is one of the more frustrating problems a system owner can face. The panels are producing power, the inverter is running, and the monitoring app shows activity</div>
+                                    <div class="more"><a href="/news-76.html">More
+                                            <img src="/Public/theme/default/picture/arrow.png"></a></div>
+                                </div>
+                            </div>
+                        </div>                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="video_content clearfix">
+    </div>
+	
+	<div id="footer">
+        <div class="foot_top clearfix">
+            <div class="container clearfix">
+                <div class="foot_left">
+                    <div class="bottom_logo">
+                        <picture>
+                           
+                            <img class="img" width="150" src="/Uploads/images/20241119/673c39df93256.png" alt="页脚徽标">
+                        </picture>
+                    </div>
+                    <div class="text">
+                        When you want to 'taste the sun', you will find Homesun New Energy
+                        <a href="/contact-us.html">More</a>
+                    </div>
+                </div>
+                <div class="foot_right">
+                    <ul>
+                        <li><img src="/Public/theme/default/picture/tel.png"><a rel="nofollow" href="Tel:+86 13905633017">Call us : +86 13905633017</a></li>
+                        <li><img src="/Public/theme/default/picture/mail.png"><a rel="nofollow" target="_blank" href="/cdn-cgi/l/email-protection#7e171018113e160d0d11121f0c501d1113">Mail us : <span class="__cf_email__" data-cfemail="98f1f6fef7d8f0ebebf7f4f9eab6fbf7f5">[email&#160;protected]</span></a></li>
+                        <li><img src="/Public/theme/default/picture/add.png"><span>Add : Industrial Zone, Ningguo, Xuancheng, China</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer_list clearfix">
+            <div class="container clearfix">
+                <div class="newsletter">
+                    <div class="title_h4">Communication
+                    </div>
+                    <div class="text">Please continue to read, follow, subscribe, and we welcome you to tell us what you think.
+                    </div>
+                    <div class="letter_box">
+                        <form class="layui-form" id="emailForm">
+                            <input name="email" id="user_email" type="text" placeholder="Your Email..">
+                            <input name="content" type="hidden" value="网页底部左下角留资">
+                            <button type="button" lay-submit lay-filter="send"><img src="/Public/theme/default/picture/send.png"></button>
+                        </form>
+                    </div>
+                  
+                </div>
+                <section class="footer_link">
+                    <div class="title_h4">Support</div>
+                    <ul>
+                        <li><a href="/technical-services.html">Technical Services</a></li>
+                       
+                    </ul>
+                </section>
+                <section class="footer_pro">
+                    <div class="title_h4">Product
+                    </div>
+                    <ul>
+                        <li><a href="/category-1.html">Solar Module</a></li><li><a href="/category-3.html">Inverter</a></li><li><a href="/category-4.html">Battery Storage</a></li><li><a href="/category-5.html">Solar Solution</a></li><li><a href="/category-6.html">Mounting System</a></li><li><a href="/category-7.html">Accessories</a></li>                    </ul>
+                </section>
+                <section class="footer_so">
+                    <div class="title_h4">News</div>
+                    <ul>
+                        <li><a href="/news-78.html">HV Battery Packs in New Builds: Why High-Voltage Storage Became the Default</a></li><li><a href="/news-77.html">700W+ High-Power Modules Are Dominating Utility Solar Projects</a></li><li><a href="/news-76.html">Top Reasons Your Solar Battery May Not Be Charging Fully</a></li>                    </ul>
+                </section>
+                <section class="footer_tags">
+                    <div class="title_h4">Popular tags
+                    </div>
+                    <ul>
+                        <li><a href="/category-tags-5.html">Monofacial</a></li><li><a href="/category-tags-6.html">Bifacial</a></li><li><a href="/category-tags-7.html">730W</a></li>                    </ul>
+                </section>
+            </div>
+        </div>
+        <div class="footer_bottom clearfix">
+            <div class="container clearfix">
+                <div class="footer_nav">
+                    Copyright © 2026 Homesun Solar Technology Co., Ltd. All Rights Reserved.                    <img src="/Public/theme/default/picture/ipv6.png"> Support for IPv6 networks
+                </div>
+                <div class="links">
+                    <a href="/privacy-policy.html">Privacy Policy</a>
+                </div>
+            </div>
+           <div class="container clearfix">
+                <div class="footer-links" style="margin:20px 0 0 0">
+                    <p>friendly links:</p>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <a href="javascript:;" class="back_top">Top
+    </a>
+    <div id="online_qq_layer">
+        <div id="online_qq_tab"> <a id="floatShow" rel="nofollow" href="javascript:void(0);">
+                <div class="livechat-girl animated"><img class="girl" src="/Public/theme/default/picture/en_3.png" alt="">
+                    <div class="animated-circles">
+                        <div class="circle c-1"></div>
+                        <div class="circle c-2"></div>
+                        <div class="circle c-3"></div>
+                    </div>
+                </div>
+            </a>
+            <a id="floatHide" rel="nofollow" href="javascript:void(0);"><i></i></a> </div>
+        <div id="onlineService">
+            <div class="online_form">
+                <div class="i_message_inquiry"> <em class="title">Message</em>
+                    <div class="text">If you are interested in our solar products, want to know more details and get our quotation, please leave a message here and we will reply you within 12 hours.</div>
+                    <div class="inquiry">
+                        <form method="post" id="layuiForm" class="layui-form" action="">
+                            <div class="input-group">
+                                <span class="ms_e">
+                                    <input lay-verType="tips" lay-verify="required" lay-reqText="Please enter your email" class="form-control" name="email" tabindex="10" type="text" placeholder="Your Email *">
+                                </span>
+                            </div>
+                            <div class="input-group">
+                                <span class="ms_p">
+                                    <input class="form-control" name="phone" tabindex="10" type="text" placeholder="Phone">
+                                </span>
+                            </div>
+                            <div class="input-group">
+                                <span class="ms_m">
+                                    <textarea lay-verType="tips" lay-verify="required" lay-reqText="Please enter your query details" name="content" class="form-control" tabindex="13" placeholder="Enter your inquiry details (such as your country, product model and quantity, etc.) and other specific requirements to get an accurate quote *"></textarea>
+                                </span>
+                            </div>
+                            <button type="button" lay-submit lay-filter="contact" class="main_more">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--service-->
+    <div class="fixed-contact">
+        <ul class="item-list clearfix">
+            <li class="online_p">
+                <div class="column">
+                    <i class="icon"></i>
+                    <a rel="nofollow" href="Tel:+86 13905633017">+86 13905633017</a>
+                </div>
+            </li>
+            <li class="online_e">
+                <div class="column">
+                    <i class="icon"></i>
+                    <a rel="nofollow" target="_blank" href="/cdn-cgi/l/email-protection#b5dcdbd3daf5ddc6c6dad9d4c79bd6dad8"><span class="__cf_email__" data-cfemail="147d7a727b547c67677b7875663a777b79">[email&#160;protected]</span></a>
+                </div>
+            </li>
+            <li class="online_code">
+                <div class="column">
+                    <i class="icon"></i>
+                    <a>
+                        <p>Scan to WeChat:</p><img src="/Uploads/images/20241116/673877212cc64.jpg">
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="mobile_nav clearfix">
+        <a href="/"><i style="background-position: -323px -160px"></i>
+            <p>Home
+            </p>
+        </a>
+        <a href="/category"><i style="background-position: -366px -160px"></i>
+            <p>Product
+            </p>
+        </a>
+    </div>
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="/Public/layui/layui.js"></script>
+    <script type="text/javascript" src="/Public/theme/default/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Public/theme/default/js/swiper.min.js"></script>
+    <script type="text/javascript" src="/Public/theme/default/js/main.js"></script>
+    <script type="text/javascript" src="/Public/theme/default/js/demo.js"></script>
+    <script type="text/javascript" src="/Public/theme/default/js/slick_a.min.js"></script>
+    <script type="text/javascript" src="/Public/theme/default/js/app.js"></script>
+   
+    <script language="javascript">
+        var gallerySwiper = new Swiper('#pro_img_gallery', {
+            autoHeight: true,
+            effect: 'fade',
+            thumbs: {
+                swiper: {
+                    el: '#pro_img_thumbs',
+                    spaceBetween: 5,
+                    slidesPerView: 6,
+                    watchSlidesVisibility: true,
+                },
+                autoScrollOffset: 1,
+            }
+        })
+
+        layui.use(function(){
+          var $ = layui.jquery,form = layui.form,layer = layui.layer;
+          form.on('submit(contact)', function(data){
+              $.ajax({
+                  url:"/Index/saveContact.html",
+                  type:"post",
+                  data:$('#layuiForm').serialize(),
+                  beforeSend:function(){
+                    layer.load(1,{shade:0.3});
+                  },
+                  success:function(res){
+                      setTimeout(function(){
+                        layer.closeAll('loading');
+                        if(res.status){
+                            layer.alert('Your message has been submitted successfully<br>we will arrange for a sales specialist to contact you as soon as possible!',{'title':'Success Message',btn:['OK'],shade:0.5,icon:1});
+                          }else{
+                            layer.alert(res.msg ? res.msg : "Submission failed!",{'title':'Error Message',btn:['OK'],shade:0.5,icon:2});
+                             
+                            return false;
+                          }
+                      },600)
+                      
+                  }
+              });
+              return false;
+          });
+
+          form.on('submit(send)', function(data){
+              $.ajax({
+                  url:"/Index/saveContact.html",
+                  type:"post",
+                  data:$('#emailForm').serialize(),
+                  beforeSend:function(){
+                    layer.load(1,{shade:0.3});
+                  },
+                  success:function(res){
+                      setTimeout(function(){
+                        layer.closeAll('loading');
+                        if(res.status){
+                            layer.alert('Thank you for your attention!',{'title':'Success Message',btn:['OK'],shade:0.5,icon:1});
+                          }else{
+                            layer.alert(res.msg ? res.msg : "Submission failed!",{'title':'Error Message',btn:['OK'],shade:0.5,icon:2});
+                             
+                            return false;
+                          }
+                      },600)
+                      
+                  }
+              });
+              return false;
+          });
+
+        });
+    </script>
+
+    
+    <script type="text/javascript">
+        $('.ewt-fade-in').each(function() {
+          if (this.complete) {
+              $(this).addClass('loaded');
+          } else {
+            $(this).on('load', function() {
+              $(this).addClass('loaded');
+            });
+          }
+        });
+    </script>
+</body>
+</html>

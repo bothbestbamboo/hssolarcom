@@ -3,7 +3,7 @@ id: 63
 type: "news"
 title: "Building a Solar Power Plant: Key Components and Costs"
 date: "2026-05-21 09:09:43"
-image: "/Public/theme/default/image/news.jpg"
+image: "/#"
 summary: "Renewable energy infrastructure has shifted from a niche environmental alternative to a core driver of utility-scale power generation."
 seoTitle: "Building a Solar Power Plant: Key Components and Costs - Homesun: China Solar Panels Supplier"
 description: "Renewable energy infrastructure has shifted from a niche environmental alternative to a core driver of utility-scale power generation."

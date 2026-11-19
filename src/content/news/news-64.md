@@ -3,7 +3,7 @@ id: 64
 type: "news"
 title: "How Battery Storage Changes Your Solar Payback Time"
 date: "2026-05-24 08:45:54"
-image: "/Public/theme/default/image/news.jpg"
+image: "/#"
 summary: "You put panels on your roof, they generated electricity when the sun was shining, and your utility company bought the excess power from you at a favorable rate. The math was simple, and the payback period—the amount of time it takes for the system to pay for itself through energy savings—was easy to calculate."
 seoTitle: "How Battery Storage Changes Your Solar Payback Time - Homesun: China Solar Panels Supplier"
 description: "You put panels on your roof, they generated electricity when the sun was shining, and your utility company bought the excess power from you at a favorable rate. The math was simple, and the payback period—the amount of time it takes for the system to pay for itself through energy savings—was easy to calculate."

@@ -3,7 +3,7 @@ id: 69
 type: "news"
 title: "Why Your Solar System May Produce Less Than Expected"
 date: "2026-09-03 22:26:37"
-image: "/Public/theme/default/image/news.jpg"
+image: "/#"
 summary: "Solar energy systems remain one of the most durable, low-maintenance clean power solutions available, operating silently on rooftops for decades with minimal moving parts."
 seoTitle: "Why Your Solar System May Produce Less Than Expected - Homesun: China Solar Panels Supplier"
 description: "Solar energy systems remain one of the most durable, low-maintenance clean power solutions available, operating silently on rooftops for decades with minimal moving parts."

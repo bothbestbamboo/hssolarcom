@@ -3,7 +3,7 @@ id: 71
 type: "news"
 title: "Solar Water Pumps: How They Work and When They Make Sense"
 date: "2026-09-11 21:45:04"
-image: "/Public/theme/default/image/news.jpg"
+image: "/#"
 summary: "Water management remains one of the most resource-intensive aspects of agricultural operations, livestock management, and rural property ownership."
 seoTitle: "Solar Water Pumps: How They Work and When They Make Sense - Homesun: China Solar Panels Supplier"
 description: "Water management remains one of the most resource-intensive aspects of agricultural operations, livestock management, and rural property ownership."

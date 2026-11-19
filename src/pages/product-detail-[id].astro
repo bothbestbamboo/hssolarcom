@@ -2,134 +2,90 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import InnerBanner from '../components/InnerBanner.astro';
-import { CATEGORIES } from '../data/categories';
+import NewsSidebar from '../components/NewsSidebar.astro';
 
 export async function getStaticPaths() {
-  const products = await getCollection('products');
-  return products.map((product) => ({
-    params: { id: String(product.data.id) },
-    props: { product, allProducts: products },
-  }));
+  const allEntries = await getCollection('news');
+  const sorted = [...allEntries].sort((a, b) => a.data.id - b.data.id);
+
+  return sorted.map((entry) => {
+    const sameType = sorted.filter((item) => item.data.type === entry.data.type);
+    const idx = sameType.findIndex((item) => item.data.id === entry.data.id);
+    return {
+      params: { id: String(entry.data.id) },
+      props: {
+        entry,
+        prev: idx > 0 ? sameType[idx - 1] : null,
+        next: idx < sameType.length - 1 ? sameType[idx + 1] : null,
+      },
+    };
+  });
 }
 
-const { product, allProducts } = Astro.props;
-const { Content } = await render(product);
-const gallery = product.data.gallery?.length ? product.data.gallery : [product.data.image];
+const { entry, prev, next } = Astro.props;
+const { Content } = await render(entry);
 
-const primaryCatId = product.data.categoryIds?.[0];
-const primaryCat = CATEGORIES.find((c) => c.id === primaryCatId);
+const parentMap: Record<string, { label: string; href: string; banner: string }> = {
+  news: { label: 'News', href: '/news.html', banner: '/Public/theme/default/image/news.jpg' },
+  case: { label: 'Project', href: '/project.html', banner: '/Public/theme/default/image/project.jpg' },
+  solution: { label: 'Solution', href: '/category-5.html', banner: '/Public/theme/default/image/news.jpg' },
+  knowledge: { label: 'Play Solar', href: '/play-solar.html', banner: '/Public/theme/default/image/play-solar.jpg' },
+};
 
-const relatedProducts = allProducts
-  .filter((p) => p.data.id !== product.data.id)
-  .slice(0, 4);
+const parentCrumb = parentMap[entry.data.type] || parentMap.news;
 ---
 
 <BaseLayout
-  title={product.data.seoTitle || `${product.data.title} - Homesun Solar`}
-  description={product.data.description || product.data.summary || product.data.title}
-  keywords={product.data.keywords || product.data.tags?.join(', ')}
+  title={entry.data.seoTitle || `${entry.data.title} - Homesun Solar`}
+  description={entry.data.description || entry.data.summary}
+  keywords={entry.data.keywords}
 >
   <InnerBanner
-    title={primaryCat ? primaryCat.name : 'Product Details'}
-    bannerImg="/Uploads/images/20241119/673c9f32ace84.jpg"
-    breadcrumbs={[
-      { label: 'Products', href: '/category.html' },
-      ...(primaryCat ? [{ label: primaryCat.name, href: `/category-${primaryCat.id}.html` }] : []),
-      { label: product.data.title },
-    ]}
+    title={parentCrumb.label}
+    bannerImg={parentCrumb.banner}
+    breadcrumbs={[parentCrumb, { label: entry.data.title }]}
   />
 
-  <div class="container" style="padding: 40px 15px 60px;">
-    <!-- 上半部分：相册 + 核心参数与询盘按钮 -->
-    <div class="row" style="margin-bottom: 40px;">
-      <div class="col-md-5 col-sm-12">
-        <div class="swiper" id="pro_img_gallery" style="border: 1px solid #eee; margin-bottom: 10px;">
-          <div class="swiper-wrapper">
-            {gallery.map((img: string) => (
-              <div class="swiper-slide">
-                <img src={img} alt={product.data.title} style="width:100%; height:360px; object-fit:contain;" />
+  <div class="n_main">
+    <div class="container clearfix">
+      <!-- 右侧正文区 -->
+      <div id="sidebar" class="penci-sticky-sidebar n_right">
+        <div class="theiaStickySidebar">
+          <div class="blog_main">
+            <h1>{entry.data.title}</h1>
+            {entry.data.date && (
+              <div class="blog-info">
+                <i class="fa fa-calendar"></i>{entry.data.date}
               </div>
-            ))}
-          </div>
-        </div>
-        {gallery.length > 1 && (
-          <div class="swiper" id="pro_img_thumbs">
-            <div class="swiper-wrapper">
-              {gallery.map((img: string) => (
-                <div class="swiper-slide" style="cursor:pointer; border:1px solid #eee;">
-                  <img src={img} alt={product.data.title} style="width:100%; height:64px; object-fit:contain;" />
-                </div>
-              ))}
+            )}
+            <div class="blog_p page phone markdown-body">
+              <Content />
             </div>
-          </div>
-        )}
-      </div>
 
-      <div class="col-md-7 col-sm-12">
-        <h2 style="margin-top: 0; font-weight: 700;">{product.data.title}</h2>
-        {product.data.summary && (
-          <p style="font-size: 15px; line-height: 1.7; color: #555; margin: 18px 0;">
-            {product.data.summary}
-          </p>
-        )}
-
-        {product.data.specs && product.data.specs.length > 0 && (
-          <table class="table table-bordered table-striped" style="margin-top: 20px;">
-            <tbody>
-              {product.data.specs.map((spec: { label: string; value: string }) => (
-                <tr>
-                  <th style="width: 35%;">{spec.label}</th>
-                  <td>{spec.value}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-
-        <div style="margin-top: 25px; display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="/contact-us.html" class="btn btn-primary btn-lg">Get A Quote</a>
-          {product.data.datasheet && (
-            <a href={product.data.datasheet} target="_blank" class="btn btn-default btn-lg">
-              Download Datasheet (PDF)
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-
-    <!-- 下半部分：Markdown 正文详情（支持参数表格、证书图等） -->
-    <div class="panel panel-default">
-      <div class="panel-heading"><strong>Product Description & Technical Data</strong></div>
-      <div class="panel-body phone" style="padding: 25px; line-height: 1.8;">
-        <Content />
-      </div>
-    </div>
-
-    <!-- 相关产品 -->
-    {relatedProducts.length > 0 && (
-      <div style="margin-top: 50px;">
-        <h3 style="margin-bottom: 20px;">Related Products</h3>
-        <div class="row">
-          {relatedProducts.map((item) => (
-            <div class="col-md-3 col-sm-6" style="margin-bottom: 20px;">
-              <div class="thumbnail">
-                <a href={`/product-detail-${item.data.id}.html`}>
-                  <img
-                    src={item.data.image}
-                    alt={item.data.title}
-                    style="width:100%; height:180px; object-fit:contain; padding:8px;"
-                  />
-                </a>
-                <div class="caption">
-                  <a href={`/product-detail-${item.data.id}.html`} style="font-size: 14px;">
-                    {item.data.title}
+            <ul class="navigation clearfix">
+              {prev && (
+                <li class="prev_post">
+                  <a href={`/news-${prev.data.id}.html`}>
+                    <span class="meta_nav">Previous</span>
+                    <div class="post_title">{prev.data.title}</div>
                   </a>
-                </div>
-              </div>
-            </div>
-          ))}
+                </li>
+              )}
+              {next && (
+                <li class="next_post">
+                  <a href={`/news-${next.data.id}.html`}>
+                    <span class="meta_nav">Next</span>
+                    <div class="post_title">{next.data.title}</div>
+                  </a>
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
       </div>
-    )}
+
+      <!-- 左侧栏 -->
+      <NewsSidebar activeType={entry.data.type === 'project' ? 'case' : entry.data.type} />
+    </div>
   </div>
 </BaseLayout>

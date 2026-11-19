@@ -3,7 +3,7 @@ id: 68
 type: "news"
 title: "Why Your Solar Inverter Is the Most Important Part of the System"
 date: "2026-08-23 20:43:23"
-image: "/Public/theme/default/image/news.jpg"
+image: "/#"
 summary: "When property owners evaluate a potential renewable energy installation, the conversation almost always starts with solar panels."
 seoTitle: "Why Your Solar Inverter Is the Most Important Part of the System - Homesun: China Solar Panels Supplier"
 description: "When property owners evaluate a potential renewable energy installation, the conversation almost always starts with solar panels."

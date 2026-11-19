@@ -52,25 +52,15 @@ const breadcrumbs =
     breadcrumbs={breadcrumbs}
   />
 
-  <div class="container" style="padding: 40px 15px 60px;">
-    <div class="row">
-      <!-- 左侧公共分类栏（id=31 时高亮 All Products） -->
-      <div class="col-md-3 col-sm-12" style="margin-bottom: 30px;">
-        <ProductSidebar activeCategoryId={cat.id === 31 ? undefined : cat.id} />
-      </div>
-
-      <main class="col-md-9 col-sm-12">
-        {cat.description && (
-          <div class="well" style="margin-bottom: 25px;">
-            <p style="margin:0;">{cat.description}</p>
-          </div>
-        )}
-
+  <div class="n_main">
+    <div class="container clearfix">
+      <!-- 右侧产品列表 -->
+      <div class="n_right">
         {products.length > 0 ? (
           <div class="row">
             {products.map((item) => (
               <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
-                <div class="thumbnail" style="height: 100%;">
+                <div class="thumbnail" style="height: 100%; border-color: #eee;">
                   <a href={`/product-detail-${item.data.id}.html`}>
                     <img
                       src={item.data.image}
@@ -79,8 +69,10 @@ const breadcrumbs =
                     />
                   </a>
                   <div class="caption">
-                    <h4 style="font-size: 16px; line-height: 1.4; min-height: 44px;">
-                      <a href={`/product-detail-${item.data.id}.html`}>{item.data.title}</a>
+                    <h4 style="font-size: 15px; line-height: 1.45; min-height: 44px;">
+                      <a href={`/product-detail-${item.data.id}.html`} style="color:#333;">
+                        {item.data.title}
+                      </a>
                     </h4>
                     <a href={`/product-detail-${item.data.id}.html`} class="btn btn-primary btn-sm">
                       View Details
@@ -91,11 +83,14 @@ const breadcrumbs =
             ))}
           </div>
         ) : (
-          <div class="alert alert-warning">
-            No products listed in <strong>{cat.name}</strong> yet. Please <a href="/contact-us.html">contact us</a> for specifications and quotation.
+          <div style="text-align: center; padding: 80px 0; color: #666; font-size: 15px;">
+            No product data...
           </div>
         )}
-      </main>
+      </div>
+
+      <!-- 左侧折叠分类 + New Product -->
+      <ProductSidebar activeCategoryId={cat.id === 31 ? undefined : cat.id} />
     </div>
   </div>
 </BaseLayout>

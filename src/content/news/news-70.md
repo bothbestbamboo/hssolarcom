@@ -3,7 +3,7 @@ id: 70
 type: "news"
 title: "What Makes a Good PV Connector and Why It Matters"
 date: "2026-09-05 15:11:44"
-image: "/Public/theme/default/image/news.jpg"
+image: "/#"
 summary: "The reliability of a photovoltaic array hinges on a component that costs less than a fraction of a percent of the total project budget: the PV connector."
 seoTitle: "What Makes a Good PV Connector and Why It Matters - Homesun: China Solar Panels Supplier"
 description: "The reliability of a photovoltaic array hinges on a component that costs less than a fraction of a percent of the total project budget: the PV connector."

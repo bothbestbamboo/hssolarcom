@@ -17,15 +17,10 @@ const products = (await getCollection('products')).sort((a, b) => a.data.id - b.
     breadcrumbs={[{ label: 'Products' }]}
   />
 
-  <div class="container" style="padding: 40px 15px 60px;">
-    <div class="row">
-      <!-- 左侧公共分类栏 -->
-      <div class="col-md-3 col-sm-12" style="margin-bottom: 30px;">
-        <ProductSidebar />
-      </div>
-
+  <div class="n_main">
+    <div class="container clearfix">
       <!-- 右侧产品列表 -->
-      <main class="col-md-9 col-sm-12">
+      <div class="n_right">
         <div id="search-notice" style="display:none; margin-bottom: 20px;" class="alert alert-info">
           Search results for: <strong id="search-keyword"></strong>
           <a href="/category.html" style="margin-left: 12px;">Clear</a>
@@ -39,7 +34,7 @@ const products = (await getCollection('products')).sort((a, b) => a.data.id - b.
               data-tags={(item.data.tags || []).join(' ').toLowerCase()}
               style="margin-bottom: 30px;"
             >
-              <div class="thumbnail" style="height: 100%;">
+              <div class="thumbnail" style="height: 100%; border-color: #eee;">
                 <a href={`/product-detail-${item.data.id}.html`}>
                   <img
                     src={item.data.image}
@@ -48,23 +43,27 @@ const products = (await getCollection('products')).sort((a, b) => a.data.id - b.
                   />
                 </a>
                 <div class="caption">
-                  <h4 style="font-size: 16px; line-height: 1.4; min-height: 44px;">
-                    <a href={`/product-detail-${item.data.id}.html`}>{item.data.title}</a>
-                  </h4>
-                  <p style="margin-top: 10px;">
-                    <a href={`/product-detail-${item.data.id}.html`} class="btn btn-primary btn-sm">
-                      View Details
+                  <h4 style="font-size: 15px; line-height: 1.45; min-height: 44px;">
+                    <a href={`/product-detail-${item.data.id}.html`} style="color:#333;">
+                      {item.data.title}
                     </a>
-                  </p>
+                  </h4>
+                  <a href={`/product-detail-${item.data.id}.html`} class="btn btn-primary btn-sm">
+                    View Details
+                  </a>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <p id="no-result" style="display:none; text-align:center; padding:40px 0; color:#666;">
-          No matching products found.
+
+        <p id="no-result" style="display:none; text-align:center; padding:60px 0; color:#666;">
+          No product data...
         </p>
-      </main>
+      </div>
+
+      <!-- 左侧折叠分类 + New Product -->
+      <ProductSidebar />
     </div>
   </div>
 

@@ -9,56 +9,60 @@ const { activeType = 'news' } = Astro.props;
 
 const latestNews = (await getCollection('news'))
   .filter((n) => n.data.type === 'news')
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-  .slice(0, 5);
-
-const sections = [
-  { key: 'news', label: 'News & Events', href: '/news.html' },
-  { key: 'case', label: 'Projects & Case Studies', href: '/project.html' },
-  { key: 'solution', label: 'Solar Solutions', href: '/category-5.html' },
-  { key: 'knowledge', label: 'Solar Knowledge Hub', href: '/play-solar.html' },
-];
+  .sort((a, b) => {
+    const timeDiff = new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
+    return timeDiff !== 0 ? timeDiff : b.data.id - a.data.id;
+  })
+  .slice(0, 8);
 ---
 
-<aside class="news-sidebar">
-  <!-- 栏目导航 -->
-  <div class="panel panel-default">
-    <div class="panel-heading"><strong>Categories</strong></div>
-    <ul class="list-group">
-      {sections.map((sec) => (
-        <li class={`list-group-item ${activeType === sec.key ? 'active' : ''}`}>
-          <a href={sec.href} style={activeType === sec.key ? 'color:#fff;' : ''}>
-            {sec.label}
-          </a>
-        </li>
-      ))}
-      <li class="list-group-item">
-        <a href="/faq.html">FAQ</a>
-      </li>
-    </ul>
-  </div>
+<div id="main" class="n_left penci-main-sticky-sidebar">
+  <div class="theiaStickySidebar">
+    <div class="modules">
+      <!-- 蓝色 Category 栏目框 -->
+      <section class="block left_nav">
+        <div class="unfold nav_h4">Category</div>
+        <div class="toggle_content clearfix">
+          <ul class="mtree">
+            <li class={`clearfix ${activeType === 'news' ? 'active' : ''}`}>
+              <span></span>
+              <a href="/news.html">News<i></i></a>
+            </li>
+            <li class={`clearfix ${activeType === 'case' ? 'active' : ''}`}>
+              <span></span>
+              <a href="/project.html">Project<i></i></a>
+            </li>
+          </ul>
+        </div>
+        <script is:inline src="/Public/theme/default/js/mtree.js"></script>
+      </section>
 
-  <!-- 最新新闻（新增 .md 时自动同步更新） -->
-  <div class="panel panel-default">
-    <div class="panel-heading"><strong>Latest News</strong></div>
-    <ul class="list-group">
-      {latestNews.map((item) => (
-        <li class="list-group-item" style="font-size: 13px; line-height: 1.5;">
-          <a href={`/news-${item.data.id}.html`} style="display:block; color:#333;">
-            {item.data.title}
-          </a>
-          <span style="color:#999; font-size:12px;">{item.data.date}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
+      <!-- Recently Updated（自动取最新 8 篇新闻） -->
+      <section class="block blog_nav blog_nav2">
+        <div class="unfold left_h4">Recently Updated</div>
+        <div class="toggle_content clearfix">
+          <ul>
+            {latestNews.map((item) => (
+              <li>
+                <a href={`/news-${item.data.id}.html`}>
+                  <i class="fa fa-caret-right"></i>{item.data.title}
+                </a>
+                <i></i>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-  <!-- 询盘引导 -->
-  <div class="panel panel-default">
-    <div class="panel-heading"><strong>Contact Homesun</strong></div>
-    <div class="panel-body" style="font-size: 14px;">
-      <p>Looking for a reliable solar supplier in China?</p>
-      <a href="/contact-us.html" class="btn btn-primary btn-block btn-sm">Request a Quote</a>
+      <!-- Tags -->
+      <section class="block hot_tags">
+        <div class="unfold left_h4">Tags</div>
+        <div class="toggle_content clearfix">
+          <a href="/category-tags-5.html">Monofacial</a>
+          <a href="/category-tags-6.html">Bifacial</a>
+          <a href="/category-tags-7.html">730W</a>
+        </div>
+      </section>
     </div>
   </div>
-</aside>
+</div>

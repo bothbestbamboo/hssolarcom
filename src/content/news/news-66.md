@@ -3,7 +3,7 @@ id: 66
 type: "news"
 title: "How to Protect Your Solar System from Lightning and Surges"
 date: "2026-06-08 08:39:11"
-image: "/Public/theme/default/image/news.jpg"
+image: "/#"
 summary: "While modern solar panels and inverters are engineered to withstand heavy rain, high winds, and snow loads, many property owners overlook one of the most destructive natural threats: lightning strikes and electrical surges."
 seoTitle: "How to Protect Your Solar System from Lightning and Surges - Homesun: China Solar Panels Supplier"
 description: "While modern solar panels and inverters are engineered to withstand heavy rain, high winds, and snow loads, many property owners overlook one of the most destructive natural threats: lightning strikes and electrical surges."

@@ -2,6 +2,8 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE } from '../data/site';
+import '../styles/markdown.css';
+import '../styles/b2b-typography.css';
 
 interface Props {
   title?: string;
@@ -34,6 +36,12 @@ const {
     <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/swiper.css">
     <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
     <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/magnific-popup.css">
     <slot name="head" />
     <script is:inline type="text/javascript" src="/Public/Script/jquery.min.js"></script>

@@ -7,88 +7,140 @@ interface Props {
   activeType?: 'news' | 'case' | 'solution' | 'knowledge';
   buttonText?: string;
   emptyText?: string;
+  pageSize?: number;
 }
 
 const {
   items,
   activeType = 'news',
-  buttonText = 'Read More',
+  buttonText = 'See more',
   emptyText = 'No articles published in this section yet.',
+  pageSize = 10,
 } = Astro.props;
 ---
 
-<div class="container" style="padding: 40px 15px 60px;">
-  <div class="row">
-    <!-- 左侧主内容列表 -->
-    <main class="col-md-9 col-sm-12">
-      {items.length > 0 ? (
-        <div class="row">
-          {items.map((item) => (
-            <div class="col-md-6 col-sm-6" style="margin-bottom: 30px;">
-              <article class="thumbnail news-card">
-                <a href={`/news-${item.data.id}.html`} class="news-thumb-link">
-                  <img
-                    src={item.data.image}
-                    alt={item.data.title}
-                    loading="lazy"
-                    style="width:100%; height:220px; object-fit:cover;"
-                  />
-                </a>
-                <div class="caption">
-                  {item.data.date && (
-                    <div class="news-date">{item.data.date}</div>
-                  )}
-                  <h3 class="news-title">
-                    <a href={`/news-${item.data.id}.html`}>{item.data.title}</a>
-                  </h3>
-                  <p class="news-summary">{item.data.summary}</p>
-                  <a href={`/news-${item.data.id}.html`} class="btn btn-default btn-sm">
-                    {buttonText}
-                  </a>
-                </div>
-              </article>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div class="alert alert-info">{emptyText}</div>
-      )}
-    </main>
+<div class="n_main">
+  <div class="container clearfix">
+    <!-- 右侧主列表区（原站 style.css 通过 n_right 浮动在右，n_left 浮动在左） -->
+    <div id="sidebar" class="penci-sticky-sidebar n_right">
+      <div class="theiaStickySidebar">
+        <div class="news">
+          {items.length > 0 ? (
+            <>
+              <ul class="clearfix" id="news-list-container" data-page-size={pageSize}>
+                {items.map((item, index) => (
+                  <li style={index >= pageSize ? 'display:none;' : ''}>
+                    <div class="li">
+                      <div class="img">
+                        <a href={`/news-${item.data.id}.html`}>
+                          <picture>
+                            <img
+                              src={item.data.image}
+                              alt={item.data.title}
+                              loading={index < 3 ? 'eager' : 'lazy'}
+                            />
+                          </picture>
+                        </a>
+                        <div class="post-image-mask"><span></span></div>
+                      </div>
+                      <div class="text">
+                        <a href={`/news-${item.data.id}.html`} class="h4">
+                          {item.data.title}
+                        </a>
+                        {item.data.date && (
+                          <div class="day">
+                            <i class="fa fa-calendar"></i>{item.data.date}
+                          </div>
+                        )}
+                        <p>{item.data.summary}</p>
+                        <a href={`/news-${item.data.id}.html`}>
+                          <span>{buttonText}</span>
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
 
-    <!-- 右侧边栏 -->
-    <div class="col-md-3 col-sm-12">
-      <NewsSidebar activeType={activeType} />
+              <div class="page_p clearfix" id="news-pagination">
+                <div class="total">Total records<span>{items.length}</span></div>
+              </div>
+            </>
+          ) : (
+            <div style="padding: 60px 0; text-align: center; color: #666;">
+              {emptyText}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
+
+    <!-- 左侧栏 -->
+    <NewsSidebar activeType={activeType} />
   </div>
 </div>
 
-<style>
-  .news-card {
-    height: 100%;
-    margin-bottom: 0;
-  }
-  .news-date {
-    color: #888;
-    font-size: 13px;
-    margin-bottom: 6px;
-  }
-  .news-title {
-    font-size: 17px;
-    line-height: 1.4;
-    margin: 0 0 10px;
-    min-height: 48px;
-  }
-  .news-title a {
-    color: #222;
-  }
-  .news-summary {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.6;
-    min-height: 66px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-</style>
+<script is:inline>
+  (function () {
+    const list = document.getElementById('news-list-container');
+    const pagBox = document.getElementById('news-pagination');
+    if (!list || !pagBox) return;
+
+    const pageSize = parseInt(list.dataset.pageSize || '10', 10);
+    const items = Array.from(list.children);
+    const total = items.length;
+    const totalPages = Math.ceil(total / pageSize);
+
+    if (totalPages <= 1) return;
+
+    const params = new URLSearchParams(window.location.search);
+    let currentPage = Math.max(1, Math.min(totalPages, parseInt(params.get('page') || '1', 10) || 1));
+
+    function render(page, shouldScroll) {
+      currentPage = page;
+      const start = (page - 1) * pageSize;
+      const end = start + pageSize;
+
+      items.forEach((li, idx) => {
+        li.style.display = idx >= start && idx < end ? '' : 'none';
+      });
+
+      let html = '';
+      if (currentPage > 1) {
+        html += `<a href="javascript:void(0);" data-page="${currentPage - 1}">Prev</a>`;
+      }
+      for (let i = 1; i <= totalPages; i++) {
+        if (i === currentPage) {
+          html += `<span class="active" style="background-color:#2596d1; color:#fff; border-color:#2596d1;">${i}</span>`;
+        } else {
+          html += `<a href="javascript:void(0);" data-page="${i}">${i}</a>`;
+        }
+      }
+      if (currentPage < totalPages) {
+        html += `<a href="javascript:void(0);" data-page="${currentPage + 1}">Next</a>`;
+      }
+      html += `<div class="total">Total records<span>${total}</span></div>`;
+      pagBox.innerHTML = html;
+
+      if (shouldScroll) {
+        const mainEl = document.querySelector('.n_main');
+        if (mainEl) {
+          mainEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+    }
+
+    pagBox.addEventListener('click', function (e) {
+      const target = e.target.closest('a[data-page]');
+      if (!target) return;
+      const nextPage = parseInt(target.dataset.page, 10);
+      if (nextPage && nextPage !== currentPage) {
+        render(nextPage, true);
+      }
+    });
+
+    render(currentPage, false);
+  })();
+</script>
