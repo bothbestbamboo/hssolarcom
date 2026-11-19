@@ -1,94 +1,241 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import InnerBanner from '../components/InnerBanner.astro';
+import { SITE } from '../data/site';
+
+const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
 ---
 
 <BaseLayout
-  title="Contact Us - Homesun Solar"
-  description="Contact Homesun Solar factory in Xuancheng, China for solar panels, inverters, and BESS quotations."
+  title="Contact - Homesun: China Solar Panels Supplier"
+  description="Buy solar panels directly from China supplier. Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
+  keywords="solar panels, china, supplier"
 >
   <InnerBanner
-    title="Get in Touch"
+    title="Get in touch"
     bannerImg="/Public/theme/default/image/contact-us.jpg"
-    breadcrumbs={[{ label: 'Contact Us' }]}
+    bannerAlt="Contact"
+    breadcrumbs={[{ label: 'Get in touch' }]}
   />
 
-  <div class="container" style="padding: 45px 15px 65px;">
-    <div class="row">
-      <div class="col-md-5 col-sm-12" style="margin-bottom: 30px;">
-        <h3>Homesun Solar Technology Co., Ltd.</h3>
-        <p style="margin-top: 18px; line-height: 1.9;">
-          <strong>Phone / WhatsApp:</strong> <a href="tel:+8613905633017">+86 13905633017</a><br />
-          <strong>Email:</strong> <a href="mailto:info@hssolar.com">info@hssolar.com</a><br />
-          <strong>Address:</strong> Industrial Zone, Ningguo, Xuancheng, China
-        </p>
-        <div style="margin-top: 20px;">
-          <p><strong>Scan to WeChat:</strong></p>
-          <img
-            src="/Uploads/images/20241116/673877212cc64.jpg"
-            alt="Homesun WeChat QR Code"
-            style="width: 160px; border: 1px solid #eee; padding: 6px;"
-          />
-        </div>
+  <div class="n_main">
+    <!-- 顶部三列联系方式栏 -->
+    <div class="contact_info">
+      <div class="container">
+        <ul class="clearfix">
+          <li class="col-sm-4 col-xs-12 clearfix">
+            <div class="column">
+              <div class="icon">
+                <span style="background-position: -407px -213px;"></span>
+              </div>
+              <div class="wrap">
+                <em>Call Us</em>
+                <p>
+                  Tel : <a rel="nofollow" href={`Tel:${SITE.phone}`}>{SITE.phone}</a>
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="col-sm-4 col-xs-12 clearfix">
+            <div class="column">
+              <div class="icon">
+                <span style="background-position: -335px -212px;"></span>
+              </div>
+              <div class="wrap">
+                <em>Email us</em>
+                <p>
+                  Email :{' '}
+                  <a rel="nofollow" target="_blank" href={`mailto:${SITE.email}`}>
+                    {SITE.email}
+                  </a>
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="col-sm-4 col-xs-12 clearfix">
+            <div class="column">
+              <div class="icon">
+                <span style="background-position: -264px -212px;"></span>
+              </div>
+              <div class="wrap">
+                <em>Address</em>
+                <p>{SITE.address}</p>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
+    </div>
 
-      <div class="col-md-7 col-sm-12">
-        <h3>Send Us an Inquiry</h3>
-        <!-- 替换 action 为你的 Cloudflare Worker 接口或 Formspree / Web3Forms 地址 -->
-        <form id="contactPageForm" action="https://api.web3forms.com/submit" method="POST" style="margin-top: 20px;">
-          <input type="hidden" name="access_key" value="007ddd91-be4f-4381-b504-f9464f95e06d" />
-          <input type="hidden" name="subject" value="New Inquiry from hssolar.com" />
+    <!-- 下方主体：左表单 + 右侧三项服务 -->
+    <div class="container">
+      <div class="contact">
+        <div class="con_main">
+          <div class="row">
+            <!-- 左侧询盘表单（自动走 Footer.astro 的 Web3Forms 提交流程） -->
+            <div class="col-sm-6">
+              <div class="send_column">
+                <div class="section_title">Message</div>
+                <div class="text">
+                  If you are interested in our solar products, want to know more details and get
+                  our quotation, please leave a message here and we will reply you within 12 hours.
+                </div>
+                <form
+                  class="layui-form"
+                  method="post"
+                  id="contactPageForm"
+                  action="javascript:;"
+                >
+                  <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+                  <input
+                    type="hidden"
+                    name="subject"
+                    value="New Inquiry from hssolar.com Contact Page"
+                  />
+                  <input type="hidden" name="from_name" value="Homesun Website" />
 
-          <div class="form-group">
-            <label>Your Name *</label>
-            <input type="text" name="name" class="form-control" required />
+                  <ul class="clearfix">
+                    <li>
+                      <span class="ms_e">
+                        <input
+                          lay-verType="tips"
+                          lay-verify="required|email"
+                          lay-reqText="Please enter a valid email"
+                          type="text"
+                          name="email"
+                          class="meInput"
+                          placeholder="Your Email *"
+                        />
+                      </span>
+                    </li>
+                    <li>
+                      <span class="ms_p">
+                        <input
+                          type="text"
+                          name="phone"
+                          class="meInput"
+                          placeholder="Phone / WhatsApp"
+                        />
+                      </span>
+                    </li>
+                    <li>
+                      <span class="ms_m">
+                        <textarea
+                          lay-verType="tips"
+                          lay-verify="required"
+                          lay-reqText="Please enter your inquiry details"
+                          placeholder="Enter your inquiry details (such as your country, product model and quantity, etc.) and other specific requirements to get an accurate quote *"
+                          maxlength="3000"
+                          name="message"
+                        ></textarea>
+                      </span>
+                    </li>
+                    <div class="clearfix"></div>
+                  </ul>
+                  <button class="send_btn" lay-submit lay-filter="contact" type="button">
+                    Submit
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- 右侧 Get in touch 服务卡片 -->
+            <div class="col-sm-6">
+              <div class="other page">
+                <div class="section_title">Get in touch</div>
+                <div class="det_pic_content clearfix" style="margin-top: 24px;">
+                  <ul id="list_three" class="list">
+                    <li>
+                      <div class="column">
+                        <a class="image" href="/category.html">
+                          <img
+                            src="/Public/theme/default/picture/contact-1.jpg"
+                            alt="Customer Demand"
+                          />
+                        </a>
+                        <div class="wrap">
+                          <a class="title" href="/category.html">Customer Demand</a>
+                          <div class="text">
+                            Meet customer demands for PV products like solar cells, modules,
+                            inverters, and energy storage systems.
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="column">
+                        <a class="image" href="/technical-services.html">
+                          <img
+                            src="/Public/theme/default/picture/contact-2.jpg"
+                            alt="Technical Support"
+                          />
+                        </a>
+                        <div class="wrap">
+                          <a class="title" href="/technical-services.html">Technical Support</a>
+                          <div class="text">
+                            Provide professional technical support and answer customers' questions
+                            about PV products and system sizing.
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="column">
+                        <a class="image" href="/faq.html">
+                          <img
+                            src="/Public/theme/default/picture/contact-3.jpg"
+                            alt="After-sales Service"
+                          />
+                        </a>
+                        <div class="wrap">
+                          <a class="title" href="/faq.html">After-sales Service</a>
+                          <div class="text">
+                            Offer comprehensive after-sales services, including warranty support,
+                            replacement, and system upgrade guidance.
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Your Email *</label>
-            <input type="email" name="email" class="form-control" required />
-          </div>
-          <div class="form-group">
-            <label>Phone / WhatsApp</label>
-            <input type="text" name="phone" class="form-control" />
-          </div>
-          <div class="form-group">
-            <label>Inquiry Details *</label>
-            <textarea
-              name="message"
-              rows="5"
-              class="form-control"
-              placeholder="Country, product model, wattage, quantity, etc."
-              required
-            ></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-lg">Submit Inquiry</button>
-          <div id="contact-status" style="margin-top: 15px;"></div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
-
-  <script is:inline>
-    const form = document.getElementById('contactPageForm');
-    const statusBox = document.getElementById('contact-status');
-    form?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      statusBox.innerHTML = '<span class="text-info">Sending...</span>';
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { Accept: 'application/json' },
-        });
-        if (res.ok) {
-          statusBox.innerHTML = '<div class="alert alert-success">Your message has been submitted successfully! We will reply within 12 hours.</div>';
-          form.reset();
-        } else {
-          statusBox.innerHTML = '<div class="alert alert-danger">Submission failed. Please email us directly at info@hssolar.com.</div>';
-        }
-      } catch {
-        statusBox.innerHTML = '<div class="alert alert-danger">Network error. Please try again later.</div>';
-      }
-    });
-  </script>
 </BaseLayout>
+
+<style is:global>
+  /* 修复原站右侧卡片内联小字号并保持 B2B 视觉统一 */
+  .contact .section_title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+  }
+  .contact_info .wrap em {
+    font-style: normal;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+  }
+  .contact_info .wrap p,
+  .contact_info .wrap p a {
+    font-size: 14.5px !important;
+    color: #4b5563 !important;
+  }
+  #list_three .wrap .title {
+    display: block;
+    font-size: 16.5px !important;
+    font-weight: 700 !important;
+    color: #2596d1 !important;
+    margin-bottom: 6px;
+  }
+  #list_three .wrap .text {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    color: #4b5563 !important;
+    height: auto !important;
+  }
+</style>
