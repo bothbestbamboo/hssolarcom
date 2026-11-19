@@ -535,3 +535,31 @@ header .header {
     inset: 0 !important;
   }
 }
+
+/* =========================================================
+   消除导航栏与内页 Banner 之间的白边（中英文站通用）
+   ========================================================= */
+html body .height {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+.inner_banner,
+.inner_banner > a,
+.inner_banner picture,
+.inner_banner img,
+.index_banner {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  border-top: 0 !important;
+}
+
+.inner_banner > a,
+.inner_banner picture {
+  display: block !important;
+  line-height: 0 !important;
+}

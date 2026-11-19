@@ -59,5 +59,33 @@ const {
     <Header />
     <slot />
     <Footer isHome={isHome} />
+    <script is:inline>
+      (function () {
+        function syncHeaderHeight() {
+          var header = document.querySelector('header.site-header-en, header.site-header-cn, header');
+          var spacer = document.querySelector('.height');
+          if (!header || !spacer) return;
+          // 仅在导航栏未滚动收缩时同步高度，避免页面滚动时跳动
+          if (header.classList.contains('small')) return;
+          var h = Math.floor(header.getBoundingClientRect().height);
+          if (h > 40) {
+            spacer.style.setProperty('height', h + 'px', 'important');
+          }
+        }
+
+        syncHeaderHeight();
+        window.addEventListener('load', syncHeaderHeight);
+        window.addEventListener('resize', syncHeaderHeight);
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(syncHeaderHeight);
+        }
+        var hdr = document.querySelector('header');
+        if (hdr) {
+          hdr.addEventListener('transitionend', function () {
+            if (!hdr.classList.contains('small')) syncHeaderHeight();
+          });
+        }
+      })();
+    </script>
 </body>
 </html>
