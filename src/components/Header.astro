@@ -2,137 +2,576 @@
 import { SITE, PRODUCT_CATEGORIES, POPULAR_TAGS } from '../data/site';
 ---
 
-<header class="large">
-    <div class="top-search clearfix">
-        <div class="input-group container">
-            <em>what are you looking for?</em>
-            <div class="header_search clearfix">
-                <form action="/category.html" method="get">
-                    <input name="labels" type="text" class="form-control" placeholder="Search">
-                    <input type="submit" class="search_btn btn_search1" value="">
-                </form>
-            </div>
-            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-            <div class="popular_searches">
-                <div class="search_title">Popular Searches</div>
-                <ul class="clearfix">
-                    {POPULAR_TAGS.map((tag) => (
-                        <li><a href={`/category-tags-${tag.id}.html`}>{tag.name}</a></li>
-                    ))}
-                </ul>
-            </div>
-        </div>
+<header class="large site-header-en">
+  <!-- 顶部弹出搜索栏 -->
+  <div class="top-search clearfix">
+    <div class="input-group container">
+      <em>What are you looking for?</em>
+      <div class="header_search clearfix">
+        <form action="/category.html" method="get">
+          <input
+            name="labels"
+            type="text"
+            class="form-control"
+            placeholder="Search solar modules, inverters, BESS..."
+          />
+          <input type="submit" class="search_btn btn_search1" value="" />
+        </form>
+      </div>
+      <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+      <div class="popular_searches">
+        <div class="search_title">Popular Searches</div>
+        <ul class="clearfix">
+          {POPULAR_TAGS.map((tag) => (
+            <li><a href={`/category-tags-${tag.id}.html`}>{tag.name}</a></li>
+          ))}
+        </ul>
+      </div>
     </div>
-    <div class="header clearfix">
-        <div class="container-big clearfix">
-            <h1>
-                <a id="logo" href="/">
-                    <img src={SITE.logoLight} alt={SITE.name}>
-                </a>
-            </h1>
-            <h1>
-                <a href="/" id="logo1">
-                    <img src={SITE.logoDark} alt={SITE.name}>
-                </a>
-            </h1>
-            <div class="header_right">
-                <div class="header_top">
-                    <ul class="menu">
-                        <li><a href="/about-us.html">About Us</a></li>
-                        <li><a href="/project.html">Project</a></li>
-                        <li><a href="/play-solar.html">Play Solar</a></li>
-                        <li><a href="/technical-services.html">Support</a></li>
-                        <li><a href="/faq.html">FAQ</a></li>
-                        <li><a href="/contact-us.html">Get in touch</a></li>
-                    </ul>
-                </div>
-                <div class="header_bottom">
-                    <div class="mainmenu-area">
-                        <div class="mainmenu-left visible-lg visible-md">
-                            <div class="mainmenu">
-                                <nav>
-                                    <ul class="clearfix">
-                                        {PRODUCT_CATEGORIES.map((cat) => (
-                                            <li class="product_vmegamenu">
-                                                <a href={`/category-${cat.id}.html`}>{cat.name}</a>
-                                                <ul class="vmegamenu">
-                                                    {cat.children.map((sub) => (
-                                                        <li>
-                                                            <a href={`/category-${sub.id}.html`} class="title">{sub.name}</a>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                                        <div class="search_box">
-                        <div class="attr-nav">
-                            <a class="search"><img src="/Public/theme/default/picture/search.png" alt="search"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  </div>
+
+  <!-- 主导航栏 -->
+  <div class="header clearfix">
+    <div class="container-big en-header-inner">
+      <!-- 左侧横版 LOGO（适配 340x102） -->
+      <div class="en-brand">
+        <a href="/" title={SITE.name}>
+          <img
+            src="/Uploads/images/logoen.png"
+            alt={SITE.name}
+            width="340"
+            height="102"
+          />
+        </a>
+      </div>
+
+      <!-- 右侧双层国际 B2B 导航区 -->
+      <div class="header_right en-nav-right">
+        <!-- 上排：外贸邮箱 + 电话 + 辅助栏目 -->
+        <div class="header_top en-top-bar">
+          <div class="en-top-contacts">
+            <a class="en-contact-link" rel="nofollow" href={`mailto:${SITE.email}`}>
+              <i class="fa fa-envelope-o"></i>
+              <span>{SITE.email}</span>
+            </a>
+            <a class="en-contact-link en-phone-link" rel="nofollow" href={`Tel:${SITE.phone}`}>
+              <i class="fa fa-phone"></i>
+              <span>{SITE.phone}</span>
+            </a>
+          </div>
+          <span class="en-top-divider" aria-hidden="true"></span>
+          <ul class="menu en-top-menu">
+            <li><a href="/about-us.html">About Us</a></li>
+            <li><a href="/project.html">Project</a></li>
+            <li><a href="/play-solar.html">Play Solar</a></li>
+            <li><a href="/technical-services.html">Support</a></li>
+            <li><a href="/faq.html">FAQ</a></li>
+            <li><a href="/contact-us.html">Get in touch</a></li>
+          </ul>
         </div>
 
-        <div class="wrapper">
-            <nav id="main-nav">
-                <ul class="first-nav">
-                    <li><a href="/">Home</a></li>
-                </ul>
-                <ul class="second-nav">
-                    <li>
-                        <a href="/category.html">Product</a>
-                        <ul class="nav_child">
-                            {PRODUCT_CATEGORIES.map((cat) => (
-                                <li>
-                                    <a href={`/category-${cat.id}.html`}>{cat.name}</a>
-                                    <ul>
-                                        {cat.children.map((sub) => (
-                                            <li><a href={`/category-${sub.id}.html`}>{sub.name}</a></li>
-                                        ))}
-                                    </ul>
-                                </li>
+        <!-- 下排：无箭头极简主导航 + 搜索 + Get a Quote -->
+        <div class="header_bottom en-main-bar">
+          <div class="mainmenu-area">
+            <div class="mainmenu-left visible-lg visible-md">
+              <div class="mainmenu">
+                <nav>
+                  <ul class="clearfix en-main-menu">
+                    {PRODUCT_CATEGORIES.map((cat) => (
+                      <li class="product_vmegamenu">
+                        <a href={`/category-${cat.id}.html`}>{cat.name}</a>
+                        {cat.children && cat.children.length > 0 && (
+                          <ul class="vmegamenu">
+                            {cat.children.map((sub) => (
+                              <li>
+                                <a href={`/category-${sub.id}.html`} class="title">{sub.name}</a>
+                              </li>
                             ))}
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/about-us.html">About Us</a>
-                        <ul class="nav_child">
-                            <li><a href="/about-us.html">Company Introduction</a></li>
-                            <li><a href="/why-we-different.html">Why We Are Different</a></li>
-                            <li><a href="/news.html">News &amp; Events</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/project.html">Project</a></li>
-                    <li>
-                        <a href="/play-solar.html">Solar energy knowledge</a>
-                        <ul class="nav_child">
-                            <li><a href="/pages-8.html">Why Photovoltaics</a></li>
-                            <li><a href="/pages-9.html">Benefits of PV System</a></li>
-                            <li><a href="/pages-13.html">Solar Basics</a></li>
-                            <li><a href="/pages-14.html">Future Clean Energy</a></li>
-                            <li><a href="/faq.html">FAQ</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/technical-services.html">Support</a>
-                        <ul class="nav_child">
-                            <li><a href="/technical-services.html">Technical Services</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/contact-us.html">Get in touch</a></li>
-                </ul>
-                <ul class="select_lan clearfix">
-                    <li class="title">Select language <i class="fa fa-angle-double-down"></i></li>
-                    <li><a href="#"><p>English</p></a></li>
-                    <li><a href="#"><p>中文</p></a></li>
-                </ul>
-            </nav>
-            <a class="toggle"><span></span><span></span><span></span></a>
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <div class="en-header-actions">
+            <div class="search_box">
+              <div class="attr-nav">
+                <a
+                  class="search en-search-btn"
+                  href="javascript:void(0);"
+                  title="Search Products"
+                  aria-label="Search Products"
+                >
+                  <i class="fa fa-search"></i>
+                </a>
+              </div>
+            </div>
+            <a href="/contact-us.html" class="en-quote-btn">Get a Quote</a>
+          </div>
         </div>
+      </div>
     </div>
+
+    <!-- 移动端抽屉导航 -->
+    <div class="wrapper">
+      <nav id="main-nav">
+        <ul class="first-nav">
+          <li><a href="/">Home</a></li>
+        </ul>
+        <ul class="second-nav">
+          <li>
+            <a href="/category.html">Products</a>
+            <ul class="nav_child">
+              {PRODUCT_CATEGORIES.map((cat) => (
+                <li>
+                  <a href={`/category-${cat.id}.html`}>{cat.name}</a>
+                  {cat.children && cat.children.length > 0 && (
+                    <ul>
+                      {cat.children.map((sub) => (
+                        <li><a href={`/category-${sub.id}.html`}>{sub.name}</a></li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </li>
+          <li>
+            <a href="/about-us.html">About Us</a>
+            <ul class="nav_child">
+              <li><a href="/about-us.html">Company Introduction</a></li>
+              <li><a href="/why-we-different.html">Why We Are Different</a></li>
+              <li><a href="/news.html">News &amp; Events</a></li>
+            </ul>
+          </li>
+          <li><a href="/project.html">Project</a></li>
+          <li>
+            <a href="/play-solar.html">Solar Knowledge</a>
+            <ul class="nav_child">
+              <li><a href="/news-8.html">Why Photovoltaics</a></li>
+              <li><a href="/news-9.html">Benefits of PV System</a></li>
+              <li><a href="/news-13.html">Solar Basics</a></li>
+              <li><a href="/news-14.html">Future Clean Energy</a></li>
+              <li><a href="/faq.html">FAQ</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/technical-services.html">Support</a>
+            <ul class="nav_child">
+              <li><a href="/technical-services.html">Technical Services</a></li>
+            </ul>
+          </li>
+          <li><a href="/contact-us.html">Get in touch</a></li>
+        </ul>
+      </nav>
+      <a class="toggle"><span></span><span></span><span></span></a>
+    </div>
+  </div>
 </header>
+
+<style is:global>
+  /* =========================================================
+     Homesun Solar EN - Modern B2B Header (340x102 logoen.png)
+     ========================================================= */
+  header.site-header-en,
+  header.site-header-en.large,
+  header.site-header-en.small {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 16px rgba(15, 23, 42, 0.06) !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    transition: all 0.25s ease;
+    z-index: 999 !important;
+  }
+
+  header.site-header-en a,
+  header.site-header-en a:hover,
+  header.site-header-en a:focus {
+    text-decoration: none !important;
+  }
+
+  header.site-header-en .header {
+    padding: 0 !important;
+    height: auto !important;
+    background: transparent !important;
+  }
+
+  header.site-header-en .en-header-inner {
+    max-width: 1340px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 10px 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+    box-sizing: border-box;
+    transition: padding 0.25s ease;
+  }
+
+  header.site-header-en.small .en-header-inner {
+    padding: 6px 24px !important;
+  }
+
+  header.site-header-en .en-header-inner::before,
+  header.site-header-en .en-header-inner::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* 左侧 LOGO 区（340x102 高清适配） */
+  header.site-header-en .en-brand {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  header.site-header-en .en-brand a {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  header.site-header-en .en-brand img {
+    height: 54px !important;
+    width: auto !important;
+    max-width: 210px !important;
+    object-fit: contain;
+    display: block !important;
+    transition: height 0.25s ease;
+  }
+
+  header.site-header-en.small .en-brand img {
+    height: 46px !important;
+  }
+
+  /* 右侧双层导航容器 */
+  header.site-header-en .en-nav-right {
+    float: none !important;
+    width: auto !important;
+    flex: 1 1 auto;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 上排：外贸联系方式 + 辅助菜单 */
+  header.site-header-en .header_top.en-top-bar {
+    float: none !important;
+    width: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 14px !important;
+    padding: 0 0 7px 0 !important;
+    margin: 0 0 2px 0 !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+  }
+
+  header.site-header-en .en-top-contacts {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  header.site-header-en .en-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    color: #2596d1 !important;
+    white-space: nowrap;
+  }
+
+  header.site-header-en .en-contact-link:hover {
+    color: #1a7bb9 !important;
+  }
+
+  header.site-header-en .en-top-divider {
+    width: 1px;
+    height: 12px;
+    background: #cbd5e1;
+    display: inline-block;
+  }
+
+  header.site-header-en .header_top ul.menu.en-top-menu {
+    float: none !important;
+    width: auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+
+  header.site-header-en .header_top ul.menu.en-top-menu li {
+    position: relative;
+    padding: 0 10px !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+  }
+
+  header.site-header-en .header_top ul.menu.en-top-menu li:first-child {
+    padding-left: 0 !important;
+  }
+
+  header.site-header-en .header_top ul.menu.en-top-menu li:last-child {
+    padding-right: 0 !important;
+  }
+
+  header.site-header-en .header_top ul.menu.en-top-menu li + li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 11px;
+    background: #e2e8f0;
+  }
+
+  header.site-header-en .header_top ul.menu.en-top-menu li a {
+    font-size: 12.5px !important;
+    font-weight: 500 !important;
+    color: #64748b !important;
+    transition: color 0.2s ease;
+    white-space: nowrap !important;
+  }
+
+  header.site-header-en .header_top ul.menu.en-top-menu li a:hover {
+    color: #2596d1 !important;
+  }
+
+  /* 下排：主导航 + 搜索 + Get a Quote */
+  header.site-header-en .header_bottom.en-main-bar {
+    float: none !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 18px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  header.site-header-en .mainmenu-area,
+  header.site-header-en .mainmenu-left,
+  header.site-header-en .mainmenu {
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  header.site-header-en .mainmenu nav > ul.en-main-menu {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex-wrap: nowrap !important;
+    gap: 4px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  header.site-header-en .mainmenu nav > ul.en-main-menu > li {
+    position: relative;
+    float: none !important;
+    margin: 0 !important;
+    padding: 5px 0 !important;
+    background: none !important;
+  }
+
+  /* 清除原站箭头与所有伪元素下划线 */
+  header.site-header-en .mainmenu nav > ul.en-main-menu > li::before,
+  header.site-header-en .mainmenu nav > ul.en-main-menu > li::after,
+  header.site-header-en .mainmenu nav > ul.en-main-menu > li > a::before,
+  header.site-header-en .mainmenu nav > ul.en-main-menu > li > a::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    border: none !important;
+  }
+
+  header.site-header-en .mainmenu nav > ul.en-main-menu > li > a {
+    display: inline-block !important;
+    padding: 7px 12px !important;
+    border-radius: 8px !important;
+    font-size: 14.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    color: #1e293b !important;
+    line-height: 1.4 !important;
+    white-space: nowrap !important;
+    background-color: transparent !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* 柔和浅蓝圆角悬停高亮 */
+  header.site-header-en .mainmenu nav > ul.en-main-menu > li:hover > a {
+    background-color: #f0f9ff !important;
+    color: #2596d1 !important;
+  }
+
+  /* 悬浮圆角白卡下拉菜单 */
+  header.site-header-en .mainmenu nav > ul.en-main-menu > li > .vmegamenu {
+    top: 100% !important;
+    left: 0 !important;
+    min-width: 215px !important;
+    padding: 8px !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.1) !important;
+  }
+
+  header.site-header-en .mainmenu nav > ul.en-main-menu > li > .vmegamenu li {
+    width: 100% !important;
+    margin: 2px 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: none !important;
+  }
+
+  header.site-header-en .mainmenu nav > ul.en-main-menu > li > .vmegamenu li a.title {
+    display: block !important;
+    padding: 9px 14px !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    color: #334155 !important;
+    line-height: 1.45 !important;
+    white-space: nowrap;
+    transition: background-color 0.18s ease, color 0.18s ease, padding-left 0.18s ease;
+  }
+
+  header.site-header-en .mainmenu nav > ul.en-main-menu > li > .vmegamenu li a.title:hover {
+    background-color: #f0f9ff !important;
+    color: #2596d1 !important;
+    padding-left: 18px !important;
+  }
+
+  /* 右侧搜索按钮 + Get a Quote 按钮 */
+  header.site-header-en .en-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  header.site-header-en .search_box {
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  header.site-header-en .en-search-btn {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    background: #f1f5f9 !important;
+    color: #334155 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  header.site-header-en .en-search-btn:hover {
+    background: #e0f2fe !important;
+    color: #2596d1 !important;
+  }
+
+  header.site-header-en .en-quote-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 36px !important;
+    padding: 0 18px !important;
+    border-radius: 18px !important;
+    background: linear-gradient(135deg, #2596d1 0%, #1a7bb9 100%) !important;
+    color: #ffffff !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    box-shadow: 0 4px 12px rgba(37, 150, 209, 0.24);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  }
+
+  header.site-header-en .en-quote-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(37, 150, 209, 0.34);
+    filter: brightness(1.04);
+    color: #ffffff !important;
+  }
+
+  /* 精确匹配新导航栏高度（覆盖 b2b-typography.css 里的 112px） */
+  html body .height {
+    height: 94px !important;
+  }
+
+  /* 中等桌面屏适配（防止 6 个英文菜单项折行） */
+  @media (max-width: 1260px) {
+    header.site-header-en .en-header-inner {
+      padding: 8px 16px !important;
+      gap: 14px !important;
+    }
+    header.site-header-en .en-brand img {
+      height: 46px !important;
+    }
+    header.site-header-en .en-phone-link {
+      display: none !important;
+    }
+    header.site-header-en .header_bottom.en-main-bar {
+      gap: 12px !important;
+    }
+    header.site-header-en .mainmenu nav > ul.en-main-menu {
+      gap: 2px !important;
+    }
+    header.site-header-en .mainmenu nav > ul.en-main-menu > li > a {
+      padding: 6px 8px !important;
+      font-size: 13.5px !important;
+    }
+    header.site-header-en .en-quote-btn {
+      padding: 0 14px !important;
+      font-size: 13px !important;
+    }
+  }
+
+  /* 平板及手机端适配（<= 991px） */
+  @media (max-width: 991px) {
+    header.site-header-en .en-header-inner {
+      padding: 10px 56px 10px 16px !important;
+    }
+    header.site-header-en .en-brand img,
+    header.site-header-en.small .en-brand img {
+      height: 38px !important;
+    }
+    header.site-header-en .header_top.en-top-bar,
+    header.site-header-en .en-quote-btn {
+      display: none !important;
+    }
+    header.site-header-en .header_bottom.en-main-bar {
+      width: auto !important;
+      gap: 8px !important;
+    }
+    html body .height {
+      height: 60px !important;
+    }
+  }
+</style>
