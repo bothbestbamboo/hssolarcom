@@ -1,5 +1,6 @@
 ---
 title: "Technical Services"
+bannerImg: "/Public/theme/default/image/suppport.jpg"
 seoTitle: "Technical Services - Homesun: China Solar Panels Supplier"
 description: "Homesun offers full technical support including remote, online, offline, mointoring, upgrade. Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
 keywords: "solar panels, china, supplier"

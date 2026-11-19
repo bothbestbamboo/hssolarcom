@@ -1,5 +1,6 @@
 ---
 title: "Company Introduction"
+bannerImg: "/Public/theme/default/image/about-us-banner.jpg"
 seoTitle: "About - Homesun: China Solar Panels Supplier"
 description: "Homesun locates in Xuancheng, mainly manufacturing HJT and TOPCON solar panels. Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
 keywords: "solar panels, china, supplier"

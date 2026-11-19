@@ -1,5 +1,6 @@
 ---
 title: "Privacy Policy"
+bannerImg: "/Public/theme/default/picture/product.jpg"
 seoTitle: "Privacy Policy - Homesun: China Solar Panels Supplier"
 description: "privacy policy. Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
 keywords: "solar panels, china, supplier"

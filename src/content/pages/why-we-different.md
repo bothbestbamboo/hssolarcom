@@ -1,5 +1,6 @@
 ---
 title: "Company Introduction"
+bannerImg: "/Public/theme/default/image/why-different.jpg"
 seoTitle: "Why We Different - Homesun: China Solar Panels Supplier"
 description: "Homesun is absolutely different than most of China's solar panels supplier because of its unique solar technology in HJT. Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
 keywords: "solar panels, china, supplier"

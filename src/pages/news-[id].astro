@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import InnerBanner from '../components/InnerBanner.astro';
+import NewsSidebar from '../components/NewsSidebar.astro';
 
 export async function getStaticPaths() {
   const allEntries = await getCollection('news');
@@ -24,14 +25,16 @@ export async function getStaticPaths() {
 const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 
-const parentMap: Record<string, { label: string; href: string }> = {
-  news: { label: 'News & Events', href: '/news.html' },
-  case: { label: 'Projects', href: '/project.html' },
-  solution: { label: 'Solutions', href: '/category-5.html' },
-  knowledge: { label: 'Play Solar', href: '/play-solar.html' },
+const parentMap: Record<string, { label: string; href: string; banner: string }> = {
+  news: { label: 'News', href: '/news.html', banner: '/Public/theme/default/image/news.jpg' },
+  case: { label: 'Project', href: '/project.html', banner: '/Public/theme/default/image/project.jpg' },
+  project: { label: 'Project', href: '/project.html', banner: '/Public/theme/default/image/project.jpg' },
+  solution: { label: 'Solution', href: '/category-5.html', banner: '/Public/theme/default/image/news.jpg' },
+  knowledge: { label: 'Play Solar', href: '/play-solar.html', banner: '/Public/theme/default/image/play-solar.jpg' },
 };
 
 const parentCrumb = parentMap[entry.data.type] || parentMap.news;
+const sidebarType = entry.data.type === 'project' ? 'case' : entry.data.type;
 ---
 
 <BaseLayout
@@ -41,40 +44,50 @@ const parentCrumb = parentMap[entry.data.type] || parentMap.news;
 >
   <InnerBanner
     title={parentCrumb.label}
-    bannerImg="/Uploads/images/20241119/673c9f55de2e1.jpg"
+    bannerImg={parentCrumb.banner}
     breadcrumbs={[parentCrumb, { label: entry.data.title }]}
   />
 
-  <article class="container" style="padding: 40px 15px 60px; max-width: 960px;">
-    <h1 style="font-size: 30px; font-weight: 700; margin-bottom: 12px;">
-      {entry.data.title}
-    </h1>
-    {entry.data.date && (
-      <p style="color: #888; font-size: 14px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
-        Published: {entry.data.date}
-      </p>
-    )}
+  <div class="n_main">
+    <div class="container clearfix">
+      <!-- 右侧正文区 -->
+      <div id="sidebar" class="penci-sticky-sidebar n_right">
+        <div class="theiaStickySidebar">
+          <div class="blog_main">
+            <h1>{entry.data.title}</h1>
+            {entry.data.date && (
+              <div class="blog-info">
+                <i class="fa fa-calendar"></i>{entry.data.date}
+              </div>
+            )}
+            <div class="blog_p page phone markdown-body">
+              <Content />
+            </div>
 
-    <div class="article-body markdown-body phone" style="margin-top: 25px;">
-  <Content />
-</div>
-
-    <div class="article-body phone" style="margin-top: 25px; font-size: 16px; line-height: 1.85;">
-      <Content />
-    </div>
-
-    <hr style="margin: 40px 0 25px;" />
-    <div class="row">
-      <div class="col-sm-6">
-        {prev && (
-          <a href={`/news-${prev.data.id}.html`}>&larr; Prev: {prev.data.title}</a>
-        )}
+            <ul class="navigation clearfix">
+              {prev && (
+                <li class="prev_post">
+                  <a href={`/news-${prev.data.id}.html`}>
+                    <span class="meta_nav">Previous</span>
+                    <div class="post_title">{prev.data.title}</div>
+                  </a>
+                </li>
+              )}
+              {next && (
+                <li class="next_post">
+                  <a href={`/news-${next.data.id}.html`}>
+                    <span class="meta_nav">Next</span>
+                    <div class="post_title">{next.data.title}</div>
+                  </a>
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-6 text-right">
-        {next && (
-          <a href={`/news-${next.data.id}.html`}>Next: {next.data.title} &rarr;</a>
-        )}
-      </div>
+
+      <!-- 左侧栏 -->
+      <NewsSidebar activeType={sidebarType} />
     </div>
-  </article>
+  </div>
 </BaseLayout>

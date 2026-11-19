@@ -11,6 +11,8 @@ const allNews = await getCollection('news', ({ data }) => data.type === 'news');
 const latestThreeNews = allNews
   .sort((a, b) => b.data.date.localeCompare(a.data.date) || b.data.id - a.data.id)
   .slice(0, 3);
+
+const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
 ---
 
 <div id="footer">
@@ -43,8 +45,11 @@ const latestThreeNews = allNews
                 <div class="text">Please continue to read, follow, subscribe, and we welcome you to tell us what you think.</div>
                 <div class="letter_box">
                     <form class="layui-form" id="emailForm">
-                        <input name="email" id="user_email" type="text" placeholder="Your Email.." lay-verify="required" lay-reqText="Please enter your email">
-                        <input name="content" type="hidden" value="Newsletter Subscription (Footer)">
+                        <input type="hidden" name="access_key" value={WEB3FORMS_KEY}>
+                        <input type="hidden" name="subject" value="New Subscriber from hssolar.com Footer">
+                        <input type="hidden" name="from_name" value="Homesun Website">
+                        <input name="email" id="user_email" type="text" placeholder="Your Email.." lay-verify="required|email" lay-reqText="Please enter a valid email">
+                        <input name="message" type="hidden" value="Newsletter Subscription (Footer)">
                         <button type="button" lay-submit lay-filter="send"><img src="/Public/theme/default/picture/send.png" alt="send"></button>
                     </form>
                 </div>
@@ -122,19 +127,22 @@ const latestThreeNews = allNews
                 <div class="text">If you are interested in our solar products, want to know more details and get our quotation, please leave a message here and we will reply you within 12 hours.</div>
                 <div class="inquiry">
                     <form method="post" id="floatingForm" class="layui-form" action="">
+                        <input type="hidden" name="access_key" value={WEB3FORMS_KEY}>
+                        <input type="hidden" name="subject" value="New Floating Inquiry from hssolar.com">
+                        <input type="hidden" name="from_name" value="Homesun Website">
                         <div class="input-group">
                             <span class="ms_e">
-                                <input lay-verType="tips" lay-verify="required" lay-reqText="Please enter your email" class="form-control" name="email" tabindex="10" type="text" placeholder="Your Email *">
+                                <input lay-verType="tips" lay-verify="required|email" lay-reqText="Please enter a valid email" class="form-control" name="email" tabindex="10" type="text" placeholder="Your Email *">
                             </span>
                         </div>
                         <div class="input-group">
                             <span class="ms_p">
-                                <input class="form-control" name="phone" tabindex="10" type="text" placeholder="Phone">
+                                <input class="form-control" name="phone" tabindex="10" type="text" placeholder="Phone / WhatsApp">
                             </span>
                         </div>
                         <div class="input-group">
                             <span class="ms_m">
-                                <textarea lay-verType="tips" lay-verify="required" lay-reqText="Please enter your query details" name="content" class="form-control" tabindex="13" placeholder="Enter your inquiry details (such as your country, product model and quantity, etc.) and other specific requirements to get an accurate quote *"></textarea>
+                                <textarea lay-verType="tips" lay-verify="required" lay-reqText="Please enter your query details" name="message" class="form-control" tabindex="13" placeholder="Enter your inquiry details (such as your country, product model and quantity, etc.) and other specific requirements to get an accurate quote *"></textarea>
                             </span>
                         </div>
                         <button type="button" lay-submit lay-filter="contact" class="main_more">Submit</button>
@@ -181,6 +189,49 @@ const latestThreeNews = allNews
     </a>
 </div>
 
+<style is:global>
+    #footer .letter_box {
+        position: relative;
+        margin-top: 16px;
+    }
+    #footer #emailForm {
+        position: relative !important;
+        width: 100%;
+        max-width: 280px;
+    }
+    #footer #emailForm input[name="email"] {
+        width: 100% !important;
+        height: 44px !important;
+        line-height: 44px !important;
+        padding: 0 48px 0 18px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        border-radius: 22px !important;
+    }
+    #footer #emailForm button {
+        position: absolute !important;
+        right: 14px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 28px !important;
+        height: 28px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer;
+    }
+    #footer #emailForm button img {
+        display: block !important;
+        margin: 0 !important;
+        max-width: 20px;
+        height: auto;
+    }
+</style>
+
 <script is:inline type="text/javascript" src="/Public/layui/layui.js"></script>
 <script is:inline type="text/javascript" src="/Public/theme/default/js/bootstrap.min.js"></script>
 <script is:inline type="text/javascript" src="/Public/theme/default/js/swiper.min.js"></script>
@@ -189,7 +240,7 @@ const latestThreeNews = allNews
 <script is:inline type="text/javascript" src="/Public/theme/default/js/slick_a.min.js"></script>
 <script is:inline type="text/javascript" src="/Public/theme/default/js/app.js"></script>
 
-<script is:inline define:vars={{ formEndpoint: SITE.formEndpoint }}>
+<script is:inline>
     if (document.querySelector('#pro_img_gallery')) {
         new Swiper('#pro_img_gallery', {
             autoHeight: true,
@@ -209,20 +260,36 @@ const latestThreeNews = allNews
     layui.use(function () {
         var form = layui.form, layer = layui.layer;
 
-        function submitInquiry(payload, successMsg, formEl) {
+        function submitInquiry(fields, successMsg, formEl) {
             var loadIdx = layer.load(1, { shade: 0.3 });
-            fetch(formEndpoint, {
+            var payload = Object.assign({}, fields, {
+                source_page: window.location.href,
+                botcheck: false
+            });
+
+            fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
                 body: JSON.stringify(payload)
             })
             .then(function (res) {
+                return res.json().then(function (json) {
+                    return { ok: res.ok, json: json };
+                });
+            })
+            .then(function (result) {
                 layer.close(loadIdx);
-                if (res.ok) {
+                if (result.ok && result.json && result.json.success) {
                     if (formEl) formEl.reset();
                     layer.alert(successMsg, { title: 'Success Message', btn: ['OK'], shade: 0.5, icon: 1 });
                 } else {
-                    layer.alert('Submission failed! Please email info@hssolar.com directly.', { title: 'Error Message', btn: ['OK'], shade: 0.5, icon: 2 });
+                    var errMsg = (result.json && result.json.message)
+                        ? result.json.message
+                        : 'Submission failed! Please email info@hssolar.com directly.';
+                    layer.alert(errMsg, { title: 'Error Message', btn: ['OK'], shade: 0.5, icon: 2 });
                 }
             })
             .catch(function () {
@@ -234,7 +301,7 @@ const latestThreeNews = allNews
         form.on('submit(contact)', function (data) {
             submitInquiry(
                 data.field,
-                'Your message has been submitted successfully<br>we will arrange for a sales specialist to contact you as soon as possible!',
+                'Your message has been submitted successfully.<br>We will arrange for a sales specialist to contact you as soon as possible!',
                 data.form
             );
             return false;
@@ -253,11 +320,12 @@ const latestThreeNews = allNews
 
 {isHome && (
     <script is:inline type="text/javascript">
-        \$('.ewt-fade-in').each(function () {
+        $('.ewt-fade-in').each(function () {
             if (this.complete) {
-                \$(this).addClass('loaded');
+                $(this).addClass('loaded');
             } else {
-                $(this).on('load', function () {$(this).addClass('loaded');
+                $(this).on('load', function () {
+                    $(this).addClass('loaded');
                 });
             }
         });
