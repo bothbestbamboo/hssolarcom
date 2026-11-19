@@ -36,12 +36,15 @@ import { SITE, PRODUCT_CATEGORIES, POPULAR_TAGS } from '../data/site';
       <!-- 左侧横版 LOGO（适配 340x102） -->
       <div class="en-brand">
         <a href="/" title={SITE.name}>
-          <img
-            src="/Uploads/images/logoen.png"
-            alt={SITE.name}
-            width="340"
-            height="102"
-          />
+          <!-- 1. Logo img 标签 -->
+<img
+  src="/Uploads/images/logoen.png"
+  alt={SITE.name}
+  width="340"
+  height="102"
+  decoding="async"
+  fetchpriority="high"
+/>
         </a>
       </div>
 
@@ -185,7 +188,6 @@ import { SITE, PRODUCT_CATEGORIES, POPULAR_TAGS } from '../data/site';
     left: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.98) !important;
-    backdrop-filter: blur(8px);
     box-shadow: 0 2px 16px rgba(15, 23, 42, 0.06) !important;
     border-bottom: 1px solid #e5e7eb !important;
     transition: all 0.25s ease;
@@ -551,6 +553,9 @@ import { SITE, PRODUCT_CATEGORIES, POPULAR_TAGS } from '../data/site';
       padding: 0 14px !important;
       font-size: 13px !important;
     }
+    html body .height {
+    height: 86px !important;
+  }
   }
 
   /* 平板及手机端适配（<= 991px） */

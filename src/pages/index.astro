@@ -31,28 +31,38 @@ const latestNews = allNews
   .slice(0, 3);
 
 const banners = [
-  '/Uploads/images/20241119/673c9f32ace84.jpg',
-  '/Uploads/images/20241119/673c9f55de2e1.jpg',
-  '/Uploads/images/20241127/67466cc896043.jpg',
+  { src: '/Uploads/images/20241119/673c9f32ace84.jpg', alt: 'Homesun High-Efficiency Solar Panels Manufacturer' },
+  { src: '/Uploads/images/20241119/673c9f55de2e1.jpg', alt: 'Homesun Complete Solar Energy Storage Solution' },
+  { src: '/Uploads/images/20241127/67466cc896043.jpg', alt: 'Homesun Global Commercial & Utility PV Projects' },
 ];
 ---
 
 <BaseLayout
   title="Homesun: China Solar Panels Supplier"
-  description="Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
+  description="Homesun manufactures solar panels, modules, inverters and offers full solar solutions, factory based in China with worldwide shipping."
   keywords="solar panels, china, supplier"
+  isHome={true}
+  preloadImage={banners[0].src}
 >
   <div class="height"></div>
 
-  <!-- 首页轮播图 -->
+  <!-- 首页轮播图：图片重裁为 1920x720 后，将下方 height="970" 同步改为 height="720" -->
   <div class="swiper-banner index_banner">
     <div class="swiper-wrapper">
-      {banners.map((img) => (
+      {banners.map((banner, idx) => (
         <div class="swiper-slide">
           <div class="slide-inner">
             <a href="/">
               <picture>
-                <img src={img} alt="banner" />
+                <img
+                  src={banner.src}
+                  alt={banner.alt}
+                  width="1920"
+                  height="970"
+                  loading={idx === 0 ? 'eager' : 'lazy'}
+                  fetchpriority={idx === 0 ? 'high' : 'low'}
+                  decoding="async"
+                />
               </picture>
             </a>
           </div>
@@ -80,7 +90,12 @@ const banners = [
                 <div class="moudle">
                   <a href={`/product-detail-${item.data.id}.html`} class="images">
                     <picture>
-                      <img src={item.data.image} alt={item.data.title} />
+                      <img
+                        src={item.data.image}
+                        alt={item.data.title}
+                        loading="lazy"
+                        decoding="async"
+                      />
                     </picture>
                   </a>
                   <a href={`/product-detail-${item.data.id}.html`} class="title">
@@ -108,8 +123,13 @@ const banners = [
           <a class="images">
             <picture>
               <source type="image/webp" srcset="/Public/theme/default/picture/1721045333_3vVNWtUjmd.webp" />
-              <source type="image/jpeg" srcset="/Public/theme/default/picture/1721045333_3vVNWtUjmd.png" />
-              <img class="img" src="/Public/theme/default/picture/1721045333_3vVNWtUjmd.png" alt="High Performance, Affordable Pricing" />
+              <img
+                class="img"
+                src="/Public/theme/default/picture/1721045333_3vVNWtUjmd.png"
+                alt="High Performance, Affordable Pricing"
+                loading="lazy"
+                decoding="async"
+              />
             </picture>
           </a>
           <div class="wrap">
@@ -127,8 +147,13 @@ const banners = [
           <a class="images">
             <picture>
               <source type="image/webp" srcset="/Public/theme/default/picture/1721095476_ZCdp1MpELP.webp" />
-              <source type="image/jpeg" srcset="/Public/theme/default/picture/1721095476_ZCdp1MpELP.png" />
-              <img class="img" src="/Public/theme/default/picture/1721095476_ZCdp1MpELP.png" alt="Rethinking Quality" />
+              <img
+                class="img"
+                src="/Public/theme/default/picture/1721095476_ZCdp1MpELP.png"
+                alt="Rethinking Quality"
+                loading="lazy"
+                decoding="async"
+              />
             </picture>
           </a>
           <div class="wrap">
@@ -146,8 +171,13 @@ const banners = [
           <a class="images">
             <picture>
               <source type="image/webp" srcset="/Public/theme/default/picture/1721808780_1USSy0dTM9.webp" />
-              <source type="image/jpeg" srcset="/Public/theme/default/picture/1721808780_1USSy0dTM9.png" />
-              <img class="img" src="/Public/theme/default/picture/1721808780_1USSy0dTM9.png" alt="Technical Expertise" />
+              <img
+                class="img"
+                src="/Public/theme/default/picture/1721808780_1USSy0dTM9.png"
+                alt="Technical Expertise"
+                loading="lazy"
+                decoding="async"
+              />
             </picture>
           </a>
           <div class="wrap">
@@ -163,8 +193,13 @@ const banners = [
           <a class="images">
             <picture>
               <source type="image/webp" srcset="/Public/theme/default/picture/1721095611_eUbkVjMtB9.webp" />
-              <source type="image/jpeg" srcset="/Public/theme/default/picture/1721095611_eUbkVjMtB9.png" />
-              <img class="img" src="/Public/theme/default/picture/1721095611_eUbkVjMtB9.png" alt="Strong Socially Responsible Company" />
+              <img
+                class="img"
+                src="/Public/theme/default/picture/1721095611_eUbkVjMtB9.png"
+                alt="Strong Socially Responsible Company"
+                loading="lazy"
+                decoding="async"
+              />
             </picture>
           </a>
           <div class="wrap">
@@ -193,7 +228,12 @@ const banners = [
               <div class="moudle">
                 <a href={`/news-${item.data.id}.html`} class="images">
                   <picture>
-                    <img src={item.data.image} alt={item.data.title} />
+                    <img
+                      src={item.data.image}
+                      alt={item.data.title}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </picture>
                 </a>
                 <div class="wrap">
@@ -227,7 +267,12 @@ const banners = [
           <li>
             <a href={`/news-${item.data.id}.html`} class="images">
               <picture>
-                <img src={item.data.image} alt={item.data.title} />
+                <img
+                  src={item.data.image}
+                  alt={item.data.title}
+                  loading="lazy"
+                  decoding="async"
+                />
               </picture>
             </a>
             <div class="ovrly"></div>
@@ -265,7 +310,13 @@ const banners = [
               <div class="wrap">
                 <a href={`/news-${item.data.id}.html`} class="images">
                   <picture>
-                    <img class="img" src={item.data.image} alt={item.data.title} />
+                    <img
+                      class="img"
+                      src={item.data.image}
+                      alt={item.data.title}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </picture>
                 </a>
                 <div class="text">
@@ -291,7 +342,12 @@ const banners = [
               <div class="moudle">
                 <a href={`/news-${item.data.id}.html`} class="images">
                   <picture>
-                    <img src={item.data.image} alt={item.data.title} />
+                    <img
+                      src={item.data.image}
+                      alt={item.data.title}
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </picture>
                 </a>
                 <div class="wrap">
@@ -300,7 +356,7 @@ const banners = [
                   <div class="text">{item.data.summary}</div>
                   <div class="more">
                     <a href={`/news-${item.data.id}.html`}>
-                      More <img src="/Public/theme/default/picture/arrow.png" alt="more" />
+                      More <img src="/Public/theme/default/picture/arrow.png" alt="more" loading="lazy" decoding="async" />
                     </a>
                   </div>
                 </div>
@@ -311,6 +367,4 @@ const banners = [
       </div>
     </div>
   </div>
-
-  <div class="video_content clearfix"></div>
 </BaseLayout>

@@ -23,7 +23,16 @@ const {
 <div class="inner_banner">
   <a>
     <picture>
-      <img src={bannerImg} alt={bannerAlt} />
+      <!-- 内页 Banner 裁为 1920x400 后，将下方 height="650" 同步改为 height="400" -->
+      <img
+        src={bannerImg}
+        alt={bannerAlt}
+        width="1920"
+        height="650"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
     </picture>
   </a>
   <div class="ovrly"></div>

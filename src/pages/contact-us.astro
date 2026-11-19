@@ -4,16 +4,18 @@ import InnerBanner from '../components/InnerBanner.astro';
 import { SITE } from '../data/site';
 
 const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
+const CONTACT_BANNER = '/Public/theme/default/image/contact-us.jpg';
 ---
 
 <BaseLayout
   title="Contact - Homesun: China Solar Panels Supplier"
-  description="Buy solar panels directly from China supplier. Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
+  description="Buy solar panels directly from China supplier. Homesun manufactures solar panels, modules, inverters and offers full solar solutions, factory based in China with worldwide shipping."
   keywords="solar panels, china, supplier"
+  preloadImage={CONTACT_BANNER}
 >
   <InnerBanner
     title="Get in touch"
-    bannerImg="/Public/theme/default/image/contact-us.jpg"
+    bannerImg={CONTACT_BANNER}
     bannerAlt="Contact"
     breadcrumbs={[{ label: 'Get in touch' }]}
   />
@@ -80,12 +82,7 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
                   If you are interested in our solar products, want to know more details and get
                   our quotation, please leave a message here and we will reply you within 12 hours.
                 </div>
-                <form
-                  class="layui-form"
-                  method="post"
-                  id="contactPageForm"
-                  action="javascript:;"
-                >
+                <form class="layui-form" method="post" id="contactPageForm">
                   <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
                   <input
                     type="hidden"
@@ -98,10 +95,9 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
                     <li>
                       <span class="ms_e">
                         <input
-                          lay-verType="tips"
                           lay-verify="required|email"
                           lay-reqText="Please enter a valid email"
-                          type="text"
+                          type="email"
                           name="email"
                           class="meInput"
                           placeholder="Your Email *"
@@ -121,7 +117,6 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
                     <li>
                       <span class="ms_m">
                         <textarea
-                          lay-verType="tips"
                           lay-verify="required"
                           lay-reqText="Please enter your inquiry details"
                           placeholder="Enter your inquiry details (such as your country, product model and quantity, etc.) and other specific requirements to get an accurate quote *"
@@ -132,7 +127,7 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
                     </li>
                     <div class="clearfix"></div>
                   </ul>
-                  <button class="send_btn" lay-submit lay-filter="contact" type="button">
+                  <button class="send_btn" lay-submit lay-filter="contact" type="submit">
                     Submit
                   </button>
                 </form>
@@ -151,6 +146,8 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
                           <img
                             src="/Public/theme/default/picture/contact-1.jpg"
                             alt="Customer Demand"
+                            loading="lazy"
+                            decoding="async"
                           />
                         </a>
                         <div class="wrap">
@@ -168,6 +165,8 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
                           <img
                             src="/Public/theme/default/picture/contact-2.jpg"
                             alt="Technical Support"
+                            loading="lazy"
+                            decoding="async"
                           />
                         </a>
                         <div class="wrap">
@@ -185,6 +184,8 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
                           <img
                             src="/Public/theme/default/picture/contact-3.jpg"
                             alt="After-sales Service"
+                            loading="lazy"
+                            decoding="async"
                           />
                         </a>
                         <div class="wrap">
@@ -208,7 +209,6 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
 </BaseLayout>
 
 <style is:global>
-  /* 修复原站右侧卡片内联小字号并保持 B2B 视觉统一 */
   .contact .section_title {
     font-size: 24px !important;
     font-weight: 700 !important;

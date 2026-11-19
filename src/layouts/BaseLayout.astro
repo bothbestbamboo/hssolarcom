@@ -10,6 +10,8 @@ interface Props {
   description?: string;
   keywords?: string;
   isHome?: boolean;
+  preloadImage?: string;
+  needLightbox?: boolean;
 }
 
 const {
@@ -17,75 +19,81 @@ const {
   description = SITE.defaultDescription,
   keywords = SITE.defaultKeywords,
   isHome = false,
+  preloadImage,
+  needLightbox = false,
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
     <meta name="description" content={description}>
     <meta name="keywords" content={keywords}>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/png">
-    <link type="text/css" rel="stylesheet" href="/Public/layui/css/layui.css">
-    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/moban.css">
-    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/swiper.css">
-    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/style.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
+    )}
+
+    <!-- 核心首屏布局 CSS（保持同步防样式闪烁） -->
+    <link rel="stylesheet" href="/Public/theme/default/css/moban.css">
+    <link rel="stylesheet" href="/Public/theme/default/css/bootstrap.css">
+    <link rel="stylesheet" href="/Public/theme/default/css/swiper.css">
+    <link rel="stylesheet" href="/Public/theme/default/css/style.css">
+
+    <!-- 图标字体与 Web 字体改为异步加载，不阻塞首屏绘制 -->
+    <link
+      rel="stylesheet"
+      href="/Public/theme/default/css/font-awesome.min.css"
+      media="print"
+      onload="this.media='all'"
+    >
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-  rel="stylesheet"
-/>
-    <link type="text/css" rel="stylesheet" href="/Public/theme/default/css/magnific-popup.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    {needLightbox && (
+      <link
+        rel="stylesheet"
+        href="/Public/theme/default/css/magnific-popup.css"
+        media="print"
+        onload="this.media='all'"
+      >
+    )}
+
+    <noscript>
+      <link rel="stylesheet" href="/Public/theme/default/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+
     <slot name="head" />
-    <script is:inline type="text/javascript" src="/Public/Script/jquery.min.js"></script>
-    <script is:inline>
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            $(function () {
-                $('.phone img').attr("style", "");
-                $(".phone img").attr("width", "");
-                $(".phone img").attr("height", "");
-            });
-        }
-    </script>
+
+    <!-- jQuery 使用 defer：最早发现并下载，但不阻塞 HTML 解析，且保证在 Footer 中其他 defer 脚本前执行 -->
+    <script is:inline defer src="/Public/Script/jquery.min.js"></script>
 </head>
 <body>
     <Header />
     <slot />
     <Footer isHome={isHome} />
-    <script is:inline>
-      (function () {
-        function syncHeaderHeight() {
-          var header = document.querySelector('header.site-header-en, header.site-header-cn, header');
-          var spacer = document.querySelector('.height');
-          if (!header || !spacer) return;
-          // 仅在导航栏未滚动收缩时同步高度，避免页面滚动时跳动
-          if (header.classList.contains('small')) return;
-          var h = Math.floor(header.getBoundingClientRect().height);
-          if (h > 40) {
-            spacer.style.setProperty('height', h + 'px', 'important');
-          }
-        }
 
-        syncHeaderHeight();
-        window.addEventListener('load', syncHeaderHeight);
-        window.addEventListener('resize', syncHeaderHeight);
-        if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(syncHeaderHeight);
+    <style is:global>
+      /* 替代原头部 jQuery UA 判断脚本 */
+      @media (max-width: 768px) {
+        .phone img {
+          width: auto !important;
+          height: auto !important;
+          max-width: 100% !important;
         }
-        var hdr = document.querySelector('header');
-        if (hdr) {
-          hdr.addEventListener('transitionend', function () {
-            if (!hdr.classList.contains('small')) syncHeaderHeight();
-          });
-        }
-      })();
-    </script>
+      }
+    </style>
 </body>
 </html>
