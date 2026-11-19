@@ -18,8 +18,8 @@ export const SITE = {
   email: 'info@hssolar.com',
   address: 'Industrial Zone, Ningguo, Xuancheng, China',
   wechatQr: '/Uploads/images/20241116/673877212cc64.jpg',
-  logoLight: '/Uploads/images/20241119/673c39df93256.png',
-  logoDark: '/Uploads/images/20241119/673c39d87f714.png',
+  logoLight: '/Uploads/images/logoen.png',
+  logoDark: '/Uploads/images/logoen.png',
   copyright: 'Copyright © 2026 Homesun Solar Technology Co., Ltd. All Rights Reserved.',
   // 替换为你自己的无服务器表单接收地址（如 Formspree / Web3Forms / Cloudflare Worker）
   formEndpoint: 'https://formspree.io/f/YOUR_FORM_ID',

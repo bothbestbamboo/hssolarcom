@@ -424,3 +424,74 @@ header .header {
     font-size: 16.5px !important;
   }
 }
+
+/* =========================================================
+   首页 Latest News / 最新新闻：固定 16:10 图片框 + 卡片等高对齐
+   ========================================================= */
+.news_content .scrollbar_news .swiper-wrapper {
+  align-items: stretch !important;
+}
+
+.news_content .scrollbar_news .swiper-slide {
+  height: auto !important;
+  display: flex !important;
+}
+
+.news_content .moudle {
+  width: 100%;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* 锁定图片框为固定 16:10 比例（如需更方正可改为 4 / 3，需更扁可改为 16 / 9） */
+.news_content .moudle .images {
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 10 !important;
+  height: auto !important;
+  overflow: hidden !important;
+  background-color: #f3f4f6;
+  flex-shrink: 0;
+}
+
+.news_content .moudle .images picture {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.news_content .moudle .images img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+
+/* 下方文字区自动撑满，保证三张卡片底部与按钮完全齐平 */
+.news_content .moudle .wrap {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.news_content .moudle .wrap .title {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  white-space: normal !important;
+}
+
+.news_content .moudle .wrap .text {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.news_content .moudle .wrap .more {
+  margin-top: auto !important;
+  padding-top: 12px;
+}
