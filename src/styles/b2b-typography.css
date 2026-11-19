@@ -495,3 +495,43 @@ header .header {
   margin-top: auto !important;
   padding-top: 12px;
 }
+
+/* =========================================================
+   新闻/项目/光伏知识列表页：固定左侧封面图尺寸，防止竖图拉长卡片
+   ========================================================= */
+.news ul li .img {
+  position: relative !important;
+  height: 210px !important;
+  overflow: hidden !important;
+  background-color: #f3f4f6;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.news ul li .img > a,
+.news ul li .img picture {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.news ul li .img img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+}
+
+/* 手机端全宽展示时严格锁定 16:10 比例，避免竖图撑高 */
+@media (max-width: 768px) {
+  .news ul li .img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+  .news ul li .img > a {
+    position: absolute !important;
+    inset: 0 !important;
+  }
+}
