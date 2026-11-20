@@ -86,14 +86,42 @@ const {
     <Footer isHome={isHome} />
 
     <style is:global>
-      /* 替代原头部 jQuery UA 判断脚本 */
-      @media (max-width: 768px) {
-        .phone img {
-          width: auto !important;
-          height: auto !important;
-          max-width: 100% !important;
-        }
-      }
-    </style>
+  /* 1. 替代原头部 jQuery UA 判断脚本 */
+  @media (max-width: 768px) {
+    .phone img {
+      width: auto !important;
+      height: auto !important;
+      max-width: 100% !important;
+    }
+  }
+
+  /* 2. 修复首页与内页 Banner 在手机端被竖向挤压变形 */
+  .index_banner .slide-inner img,
+  .swiper-banner .slide-inner img,
+  .inner_banner img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    display: block;
+  }
+
+  @media (max-width: 991px) {
+    .index_banner,
+    .swiper-banner,
+    .index_banner .swiper-slide,
+    .index_banner .slide-inner,
+    .inner_banner {
+      height: auto !important;
+      min-height: 0 !important;
+    }
+  }
+
+  /* 3. 桌面端直接显示左侧产品分类，避免等待 JS 展开导致闪烁 */
+  @media (min-width: 993px) {
+    .modules .toggle_content {
+      display: block !important;
+    }
+  }
+</style>
 </body>
 </html>

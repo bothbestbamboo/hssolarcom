@@ -97,7 +97,7 @@ jQuery(function ($) {
     $('#floatHide').css({ display: 'none', opacity: 0 });
   });
 
-  /* 4. FAQ 折叠面板（仅存在 .accordion 时运行） */
+  /* 4. FAQ 折叠面板 */
   var $accordions = $('.accordion');
   if ($accordions.length) {
     $accordions.find('> li:eq(0) a').addClass('active').next().slideDown();
@@ -116,7 +116,7 @@ jQuery(function ($) {
     });
   }
 
-  /* 5. 页内锚点平滑滚动（修复 jQuery 3 属性选择器引号报错） */
+  /* 5. 页内锚点平滑滚动 */
   $('.main-more a[href*="#"], area[href*="#"]').on('click', function () {
     if (
       location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') &&
@@ -132,7 +132,84 @@ jQuery(function ($) {
     }
   });
 
-  /* 6. 按需初始化 Swiper（仅当页面存在对应容器时才创建实例） */
+  /* 6. 左侧产品分类栏（桌面端常显，手机端<=992px点击展开/收起） */
+  var $modules = $('.modules');
+  if ($modules.length) {
+    var iconPlus = 'icon-plus-sign';
+    var iconMinus = 'icon-minus-sign';
+    var lastMobileState = null;
+
+    function syncSidebarAccordion() {
+      var isMobile = window.innerWidth <= 992;
+      if (isMobile === lastMobileState) return;
+      lastMobileState = isMobile;
+
+      if (isMobile) {
+        $modules.addClass('accordion').find('.toggle_content').hide();
+        $modules.find('.block .unfold').off('click.sidebar').on('click.sidebar', function () {
+          var $btn = $(this);
+          $btn.toggleClass('active').parent().find('.toggle_content').stop(true, true).slideToggle(250, function () {
+            $btn.children('i')
+              .toggleClass(iconMinus, $btn.hasClass('active'))
+              .toggleClass(iconPlus, !$btn.hasClass('active'));
+          });
+        });
+      } else {
+        $modules.removeClass('accordion');
+        $modules.find('.unfold').removeClass('active').off('click.sidebar')
+          .parent().find('.toggle_content').removeAttr('style').show();
+        $modules.find('.unfold i').removeClass(iconMinus).addClass(iconPlus);
+      }
+    }
+
+    syncSidebarAccordion();
+    $(window).on('resize', syncSidebarAccordion);
+  }
+
+  /* 7. Play Solar 等内页锚点按钮跳转与高亮 */
+  $('.pnav-link, .header-pnav-link').on('click', function (e) {
+    var targetSelector = $(this).attr('data-href') || $(this).attr('href');
+    if (targetSelector && targetSelector.charAt(0) === '#') {
+      var $target = $(targetSelector);
+      if ($target.length) {
+        e.preventDefault();
+        var headerH = $('header').outerHeight() || 80;
+        var bodyScroll = Math.max(0, $target.offset().top - headerH - 60);
+        $('html, body').stop(true).animate({ scrollTop: bodyScroll }, 600);
+      }
+    }
+  });
+
+  var $tabBox = $('.js-page-nav-box');
+  if ($tabBox.length) {
+    var $tab = $('.js-page-nav');
+    var $navPages = $('.nav-page');
+    if ($tab.length) {
+      window.addEventListener('scroll', function () {
+        var headerH = $('header').outerHeight() || 80;
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
+        var tabTop = $tabBox.offset().top;
+        $tab.toggleClass('fixed', scrollTop > tabTop - headerH);
+
+        $navPages.each(function () {
+          var $sec = $(this);
+          var topPos = $sec.offset().top - headerH - 80;
+          var bottomPos = topPos + $sec.outerHeight();
+          var secId = $sec.attr('id');
+          if (scrollTop >= topPos && scrollTop < bottomPos) {
+            $('.pnav-item').removeClass('current');
+            $('.pnav-link').each(function () {
+              if ($(this).attr('data-href') === '#' + secId || $(this).attr('href') === '#' + secId) {
+                $(this).parent().addClass('current');
+              }
+            });
+          }
+        });
+      }, { passive: true });
+    }
+  }
+
+  /* 8. 按需初始化 Swiper */
   if (typeof Swiper === 'undefined') return;
 
   if (document.querySelector('.swiper-banner')) {

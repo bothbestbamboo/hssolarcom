@@ -579,4 +579,75 @@ import { SITE, PRODUCT_CATEGORIES, POPULAR_TAGS } from '../data/site';
       height: 60px !important;
     }
   }
+
+  /* 修复顶行高低错位、滚动裁切，并使上下两排左右两端精准对齐 */
+  header.site-header-en.small .header,
+  header.site-header-en.large .header {
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    height: auto !important;
+  }
+
+  header.site-header-en .en-nav-right {
+    align-items: stretch !important;
+  }
+
+  header.site-header-en .header_top.en-top-bar,
+  header.site-header-en.small .header_top.en-top-bar {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    line-height: 1.4 !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin: 0 0 4px 0 !important;
+    padding: 0 0 6px 12px !important;
+    position: static !important;
+    transform: none !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+  }
+
+  header.site-header-en .en-top-divider {
+    display: none !important;
+  }
+
+  header.site-header-en .en-contact-link,
+  header.site-header-en .header_top ul.menu.en-top-menu,
+  header.site-header-en .header_top ul.menu.en-top-menu li,
+  header.site-header-en .header_top ul.menu.en-top-menu li a {
+    height: auto !important;
+    line-height: 1.4 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  header.site-header-en .header_top ul.menu.en-top-menu li a {
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  header.site-header-en .header_bottom.en-main-bar {
+    justify-content: space-between !important;
+  }
+
+  @media (max-width: 1260px) {
+    header.site-header-en .header_top.en-top-bar,
+    header.site-header-en.small .header_top.en-top-bar {
+      padding-left: 8px !important;
+    }
+  }
+
+  @media (max-width: 991px) {
+    header.site-header-en .en-nav-right {
+      align-items: flex-end !important;
+    }
+    header.site-header-en .header_bottom.en-main-bar {
+      width: auto !important;
+      justify-content: flex-end !important;
+    }
+  }
 </style>
