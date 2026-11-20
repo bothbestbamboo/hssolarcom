@@ -674,7 +674,18 @@ import { SITE, PRODUCT_CATEGORIES, POPULAR_TAGS } from '../data/site';
   }
 
   @media (max-width: 991px) {
+    header.site-header-en .en-header-inner,
+    header.site-header-en.small .en-header-inner {
+      padding: 10px 56px 10px 16px !important;
+    }
+    header.site-header-en .header_top.en-top-bar,
+    header.site-header-en.small .header_top.en-top-bar,
+    header.site-header-en.large .header_top.en-top-bar,
+    header.site-header-en .en-quote-btn {
+      display: none !important;
+    }
     header.site-header-en .en-nav-right {
+      flex: 0 0 auto !important;
       align-items: flex-end !important;
     }
     header.site-header-en .header_bottom.en-main-bar {
