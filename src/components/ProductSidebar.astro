@@ -48,7 +48,7 @@ const newProducts = (await getCollection('products'))
                 })}
               </ul>
             </div>
-            <script is:inline src="/Public/theme/default/js/mtree.js"></script>
+            <script is:inline defer src="/Public/theme/default/js/mtree.js"></script>
           </section>
 
           <!-- New Product（按 ID 倒序自动读取最新 5 款产品） -->
@@ -60,7 +60,12 @@ const newProducts = (await getCollection('products'))
                   <li>
                     <div class="li clearfix">
                       <a class="img" href={`/product-detail-${item.data.id}.html`}>
-                        <img src={item.data.image} alt={item.data.title} />
+                        <img
+                          src={item.data.image}
+                          alt={item.data.title}
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </a>
                       <div class="h4">
                         <a href={`/product-detail-${item.data.id}.html`}>{item.data.title}</a>
@@ -83,3 +88,13 @@ const newProducts = (await getCollection('products'))
     </div>
   </div>
 </div>
+
+<style is:global>
+  /* 防止 mtree 在 JS 加载前或异常时保持透明空白 */
+  ul.mtree {
+    opacity: 1 !important;
+  }
+  ul.mtree > li:not(.mtree-open) > ul {
+    display: none;
+  }
+</style>

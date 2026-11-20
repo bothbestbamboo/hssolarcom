@@ -48,18 +48,29 @@ const sections =
         id: Number(id),
         ...val,
       }));
+
+const PLAY_BANNER = '/Public/theme/default/image/play-solar.jpg';
 ---
 
 <BaseLayout
   title="Play Solar - Homesun: China Solar Panels Supplier"
-  description="Solar is a clean and free energy. Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
+  description="Solar is a clean and free energy. Homesun manufactures solar panels, modules, inverters and offers full solar solutions, factory based in China with worldwide shipping."
   keywords="solar panels, china, supplier"
+  preloadImage={PLAY_BANNER}
 >
   <div class="height"></div>
   <div class="inner_banner">
     <a>
       <picture>
-        <img src="/Public/theme/default/image/play-solar.jpg" alt="play-solar" />
+        <img
+          src={PLAY_BANNER}
+          alt="play-solar"
+          width="1920"
+          height="650"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
       </picture>
     </a>
     <div class="ovrly"></div>
@@ -81,9 +92,9 @@ const sections =
     <div class="page-nav-box js-page-nav-box">
       <div class="page-nav js-page-nav">
         <ul class="list">
-          {sections.map((sec) => (
-            <li class="pnav-item">
-              <a href="javascript:;" data-href={`#overview_${sec.id}`} class="pnav-link"></a>
+          {sections.map((sec, idx) => (
+            <li class={`pnav-item${idx === 0 ? ' current' : ''}`} data-target={`#overview_${sec.id}`}>
+              <a href={`#overview_${sec.id}`} data-href={`#overview_${sec.id}`} class="pnav-link"></a>
               <p>{sec.title}</p>
             </li>
           ))}
@@ -97,7 +108,7 @@ const sections =
           <div class="container clearfix">
             <div class="img_left">
               <picture>
-                <img src={sec.image} alt={sec.title} />
+                <img src={sec.image} alt={sec.title} loading="lazy" decoding="async" />
               </picture>
             </div>
             <div class="wrap">
@@ -112,4 +123,65 @@ const sections =
       </div>
     ))}
   </div>
+
+  <style is:global>
+    .js-page-nav .pnav-item {
+      cursor: pointer;
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var items = document.querySelectorAll('.js-page-nav .pnav-item');
+      var navBox = document.querySelector('.js-page-nav-box');
+      var navBar = document.querySelector('.js-page-nav');
+      var pages = document.querySelectorAll('.nav-page');
+      if (!items.length) return;
+
+      function getOffset() {
+        var header = document.querySelector('header');
+        var headerH = header ? header.getBoundingClientRect().height : 80;
+        var navH = navBar ? navBar.getBoundingClientRect().height : 60;
+        return headerH + navH + 16;
+      }
+
+      items.forEach(function (item) {
+        item.addEventListener('click', function (e) {
+          var link = item.querySelector('.pnav-link');
+          var selector = item.getAttribute('data-target') || (link && (link.getAttribute('data-href') || link.getAttribute('href')));
+          if (!selector || selector.charAt(0) !== '#') return;
+          var target = document.querySelector(selector);
+          if (!target) return;
+
+          e.preventDefault();
+          var y = target.getBoundingClientRect().top + window.pageYOffset - getOffset();
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+
+          items.forEach(function (el) { el.classList.remove('current'); });
+          item.classList.add('current');
+        });
+      });
+
+      if (navBox && navBar) {
+        window.addEventListener('scroll', function () {
+          var header = document.querySelector('header');
+          var headerH = header ? header.getBoundingClientRect().height : 80;
+          var boxTop = navBox.getBoundingClientRect().top + window.pageYOffset;
+          navBar.classList.toggle('fixed', window.pageYOffset > boxTop - headerH);
+
+          var scrollCheck = window.pageYOffset + getOffset() + 20;
+          pages.forEach(function (sec) {
+            var top = sec.offsetTop;
+            var bottom = top + sec.offsetHeight;
+            if (scrollCheck >= top && scrollCheck < bottom) {
+              var id = '#' + sec.id;
+              items.forEach(function (el) {
+                el.classList.toggle('current', el.getAttribute('data-target') === id);
+              });
+            }
+          });
+        }, { passive: true });
+      }
+    })();
+  </script>
 </BaseLayout>

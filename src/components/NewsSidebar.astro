@@ -34,7 +34,8 @@ const latestNews = (await getCollection('news'))
             </li>
           </ul>
         </div>
-        <script is:inline src="/Public/theme/default/js/mtree.js"></script>
+        <!-- 替换原来的 mtree.js 引入 -->
+<script is:inline defer src="/Public/theme/default/js/mtree.js"></script>
       </section>
 
       <!-- Recently Updated（自动取最新 8 篇新闻） -->
@@ -66,3 +67,9 @@ const latestNews = (await getCollection('news'))
     </div>
   </div>
 </div>
+
+<style is:global>
+  ul.mtree {
+    opacity: 1 !important;
+  }
+</style>
