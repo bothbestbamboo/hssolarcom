@@ -18,8 +18,8 @@ export const SITE = {
   email: 'info@hssolar.com',
   address: 'Industrial Zone, Ningguo, Xuancheng, China',
   wechatQr: '/Uploads/images/20241116/673877212cc64.jpg',
-  logoLight: '/Uploads/images/logoen.png',
-  logoDark: '/Uploads/images/logoen-dark.png',
+  logoLight: '/Uploads/images/logoen-dark.png',
+  logoDark: '/Uploads/images/logoen.png',
   copyright: 'Copyright © 2026 Homesun Solar Technology Co., Ltd. All Rights Reserved.',
   web3formsKey: '007ddd91-be4f-4381-b504-f9464f95e06d',
 };
