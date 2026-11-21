@@ -19,10 +19,9 @@ export const SITE = {
   address: 'Industrial Zone, Ningguo, Xuancheng, China',
   wechatQr: '/Uploads/images/20241116/673877212cc64.jpg',
   logoLight: '/Uploads/images/logoen.png',
-  logoDark: '/Uploads/images/logoen.png',
+  logoDark: '/Uploads/images/logoen-dark.png',
   copyright: 'Copyright © 2026 Homesun Solar Technology Co., Ltd. All Rights Reserved.',
-  // 替换为你自己的无服务器表单接收地址（如 Formspree / Web3Forms / Cloudflare Worker）
-  formEndpoint: 'https://formspree.io/f/YOUR_FORM_ID',
+  web3formsKey: '007ddd91-be4f-4381-b504-f9464f95e06d',
 };
 
 export const POPULAR_TAGS = [
