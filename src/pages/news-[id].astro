@@ -58,13 +58,13 @@ const formattedDate = entry.data.date ? entry.data.date.slice(0, 10) : '';
       <!-- 右侧正文区 -->
       <div class="hs-main-col">
         <article class="hs-surface-card hs-detail-article">
-          <header class="hs-detail-header">
-            <div class="hs-detail-meta">
-              <span class="hs-article-badge">{parentCrumb.label}</span>
-              {formattedDate && <time datetime={formattedDate}>{formattedDate}</time>}
-            </div>
-            <h1 class="hs-detail-title">{entry.data.title}</h1>
-          </header>
+          <div class="hs-detail-header">
+  <div class="hs-detail-meta">
+    <span class="hs-article-badge">{parentCrumb.label}</span>
+    {formattedDate && <time datetime={formattedDate}>{formattedDate}</time>}
+  </div>
+  <h1 class="hs-detail-title">{entry.data.title}</h1>
+</div>
 
           <div class="markdown-body phone">
             <Content />

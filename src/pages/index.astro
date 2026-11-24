@@ -801,16 +801,19 @@ const formatDate = (dateStr: string) => {
   }
 
   main.hs-home .hs-hero-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    background: linear-gradient(
-      95deg,
-      rgba(15, 23, 42, 0.86) 0%,
-      rgba(15, 23, 42, 0.62) 48%,
-      rgba(15, 23, 42, 0.22) 100%
-    );
-  }
+  background: linear-gradient(
+    95deg,
+    rgba(15, 23, 42, 0.56) 0%,
+    rgba(15, 23, 42, 0.28) 48%,
+    rgba(15, 23, 42, 0.05) 100%
+  );
+}
+main.hs-home .hs-hero-title {
+  text-shadow: 0 2px 14px rgba(15, 23, 42, 0.45);
+}
+main.hs-home .hs-hero-desc {
+  text-shadow: 0 1px 10px rgba(15, 23, 42, 0.42);
+}
 
   main.hs-home .hs-hero-content {
     position: relative;
