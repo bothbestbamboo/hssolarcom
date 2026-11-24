@@ -12,69 +12,79 @@ const products = (await getCollection('products')).sort((a, b) => a.data.id - b.
   description="Explore Homesun Solar modules, inverters, battery storage, mounting systems and solar accessories."
 >
   <InnerBanner
-    title="All Products"
+    title="All Solar Products"
+    subtitle="Factory-direct PV modules, inverters, battery storage systems, and complete solar accessories."
     bannerImg="/Public/theme/default/picture/product.jpg"
     breadcrumbs={[{ label: 'Products' }]}
   />
 
-  <div class="n_main">
-    <div class="container clearfix">
-      <!-- 右侧产品列表 -->
-      <div class="n_right">
-        <div id="search-notice" style="display:none; margin-bottom: 20px;" class="alert alert-info">
-          Search results for: <strong id="search-keyword"></strong>
-          <a href="/category.html" style="margin-left: 12px;">Clear</a>
+  <section class="hs-inner-section">
+    <div class="hs-inner-container hs-two-col">
+      <!-- 左侧产品分类与新品 -->
+      <ProductSidebar />
+
+      <!-- 右侧产品网格 -->
+      <div class="hs-main-col">
+        <div id="search-notice" class="hs-search-banner" hidden>
+          <div>
+            Search results for: <strong id="search-keyword"></strong>
+            <span id="search-count" class="hs-search-count"></span>
+          </div>
+          <a href="/category.html" class="hs-search-clear">Clear Filter</a>
         </div>
 
-        <div class="row" id="product-grid">
+        <div class="hs-pro-grid" id="product-grid">
           {products.map((item) => (
-            <div
-              class="col-md-4 col-sm-6 product-card"
+            <article
+              class="hs-pro-card product-card"
               data-title={item.data.title.toLowerCase()}
               data-tags={(item.data.tags || []).join(' ').toLowerCase()}
-              style="margin-bottom: 30px;"
             >
-              <div class="thumbnail" style="height: 100%; border-color: #eee;">
-                <a href={`/product-detail-${item.data.id}.html`}>
+              <a href={`/product-detail-${item.data.id}.html`} class="hs-pro-media">
+                {item.data.tags && item.data.tags.length > 0 && (
+                  <span class="hs-pro-badge">{item.data.tags[0]}</span>
+                )}
+                <picture>
                   <img
                     src={item.data.image}
                     alt={item.data.title}
-                    style="width:100%; height:220px; object-fit:contain; padding:10px;"
+                    loading="lazy"
+                    decoding="async"
                   />
+                </picture>
+              </a>
+              <div class="hs-pro-body">
+                <a href={`/product-detail-${item.data.id}.html`} class="hs-pro-title">
+                  {item.data.title}
                 </a>
-                <div class="caption">
-                  <h4 style="font-size: 15px; line-height: 1.45; min-height: 44px;">
-                    <a href={`/product-detail-${item.data.id}.html`} style="color:#333;">
-                      {item.data.title}
-                    </a>
-                  </h4>
-                  <a href={`/product-detail-${item.data.id}.html`} class="btn btn-primary btn-sm">
-                    View Details
-                  </a>
-                </div>
+                <a href={`/product-detail-${item.data.id}.html`} class="hs-pro-cta">
+                  View Specs &amp; Quote <span>→</span>
+                </a>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
-        <p id="no-result" style="display:none; text-align:center; padding:60px 0; color:#666;">
-          No product data...
-        </p>
+        <div id="no-result" class="hs-empty-box" hidden>
+          No matching solar products found. Try another keyword or{' '}
+          <a href="/contact-us.html" style="color: #2596d1; font-weight: 600;">contact our sales team</a>{' '}
+          for custom specifications.
+        </div>
       </div>
-
-      <!-- 左侧折叠分类 + New Product -->
-      <ProductSidebar />
     </div>
-  </div>
+  </section>
 
   <script is:inline>
     (function () {
       const params = new URLSearchParams(window.location.search);
-      const q = (params.get('labels') || '').trim().toLowerCase();
+      const raw = (params.get('labels') || '').trim();
+      const q = raw.toLowerCase();
       if (!q) return;
 
-      document.getElementById('search-notice').style.display = 'block';
-      document.getElementById('search-keyword').textContent = params.get('labels');
+      const notice = document.getElementById('search-notice');
+      const kwEl = document.getElementById('search-keyword');
+      const countEl = document.getElementById('search-count');
+      const noRes = document.getElementById('no-result');
 
       const cards = document.querySelectorAll('.product-card');
       let visibleCount = 0;
@@ -87,9 +97,54 @@ const products = (await getCollection('products')).sort((a, b) => a.data.id - b.
           card.style.display = 'none';
         }
       });
-      if (visibleCount === 0) {
-        document.getElementById('no-result').style.display = 'block';
+
+      if (notice && kwEl) {
+        kwEl.textContent = raw;
+        if (countEl) countEl.textContent = `(${visibleCount} found)`;
+        notice.hidden = false;
+      }
+      if (noRes && visibleCount === 0) {
+        noRes.hidden = false;
       }
     })();
   </script>
 </BaseLayout>
+
+<style>
+  .hs-search-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    border-radius: 12px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e3a8a;
+    font-size: 14px;
+  }
+  .hs-search-banner[hidden] {
+    display: none;
+  }
+  .hs-search-count {
+    margin-left: 6px;
+    color: #475569;
+    font-size: 13px;
+  }
+  .hs-search-clear {
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid #93c5fd;
+    color: #1a7bb9;
+    font-size: 12.5px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .hs-search-clear:hover {
+    background: #2596d1;
+    border-color: #2596d1;
+    color: #ffffff;
+  }
+</style>

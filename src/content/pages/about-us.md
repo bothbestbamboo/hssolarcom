@@ -2,18 +2,26 @@
 title: "Company Introduction"
 bannerImg: "/Public/theme/default/image/about-us-banner.jpg"
 seoTitle: "About - Homesun: China Solar Panels Supplier"
-description: "Homesun locates in Xuancheng, mainly manufacturing HJT and TOPCON solar panels. Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
+description: "Homesun locates in Xuancheng, mainly manufacturing HJT and TOPCon solar panels. Homesun manufactures solar panels, modules, inverters and offers full solar solutions from our factory in China with worldwide shipping."
 keywords: "solar panels, china, supplier"
 ---
 
-<p><span style="font-size: 18px; color: #333333; font-family: Arial;"><img style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 16px;" src="/Uploads/images/20241124/c-i-1.jpg" alt=""></span></p>
-                <p>&nbsp;</p>
-                <p><span style="font-size: 18px; color: #333333; font-family: Arial;">Homesun New Energy is a leading photovoltaic enterprise, founded in 2014. Homesun currently produces photovoltaic modules, photovoltaic systems, batteries and provides complete solution design and equipment supply. As a professional photovoltaic module manufacturer, the annual production capacity exceeds 1.2GW, and more than 2.7GW of solar modules have been sold in more than 110 countries.</span></p>
-                <p>&nbsp;</p>
-                <p><span style="font-family: Arial; font-size: 18px; color: #333333;">Innovation gene drives Homesun Technology to be different. We continuously develop new technologies and products, such as half-cut process, HJT, N-type and shingled technology, to provide our customers with higher power and efficiency.</span></p>
-                <p><span style="font-family: Arial; font-size: 18px; color: #333333;">&nbsp;</span></p>
-                <p><span style="font-family: Arial; font-size: 18px; color: #333333;">Homesun New Energy is committed to bringing clean solar energy to everyone through reliable and high-end products. "Taste the Sunshine" is not only our slogan, but also our commitment to provide customers with excellent and high-quality products every day.</span></p>
-                <p><span style="font-family: Arial; font-size: 16px; color: #333333;">&nbsp;</span></p>
-                <p><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 16px;">&nbsp;</span></p>
-                <p><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 16px;"><img src="/Uploads/images/20241124/c-i-2.jpg" alt=""><br></span></p>
-                <p><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 16px;"><img src="/Uploads/images/20241124/c-i-3.jpg" alt=""></span></p>
+![Homesun Solar Manufacturing Facility](/Uploads/images/20241124/c-i-1.jpg)
+
+<div class="hs-about-metrics">
+  <div class="hs-about-metric"><strong>2014</strong><span>Year Founded</span></div>
+  <div class="hs-about-metric"><strong>1.2GW+</strong><span>Annual Production Capacity</span></div>
+  <div class="hs-about-metric"><strong>2.7GW+</strong><span>Cumulative Modules Shipped</span></div>
+  <div class="hs-about-metric"><strong>110+</strong><span>Countries &amp; Regions Served</span></div>
+</div>
+
+Homesun New Energy is a leading photovoltaic enterprise founded in 2014. Homesun manufactures photovoltaic modules, complete solar power systems, and energy storage batteries while delivering turnkey solution design and global equipment supply.
+
+Innovation drives Homesun Technology forward. We continuously advance our cell and module processes—including half-cut cell architecture, HJT, N-Type TOPCon, and shingled technology—to deliver higher output, better low-light yield, and superior reliability for our global partners.
+
+Homesun New Energy is committed to bringing dependable, high-efficiency clean energy to residential, commercial, and utility projects worldwide. **"Taste the Sunshine"** is both our brand slogan and our daily manufacturing commitment.
+
+<div class="hs-about-gallery">
+  <img src="/Uploads/images/20241124/c-i-2.jpg" alt="Homesun Automated PV Production Line" loading="lazy" decoding="async" />
+  <img src="/Uploads/images/20241124/c-i-3.jpg" alt="Homesun Quality Control and Global Export" loading="lazy" decoding="async" />
+</div>

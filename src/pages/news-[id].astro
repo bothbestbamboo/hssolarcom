@@ -26,15 +26,16 @@ const { entry, prev, next } = Astro.props;
 const { Content } = await render(entry);
 
 const parentMap: Record<string, { label: string; href: string; banner: string }> = {
-  news: { label: 'News', href: '/news.html', banner: '/Public/theme/default/image/news.jpg' },
-  case: { label: 'Project', href: '/project.html', banner: '/Public/theme/default/image/project.jpg' },
-  project: { label: 'Project', href: '/project.html', banner: '/Public/theme/default/image/project.jpg' },
-  solution: { label: 'Solution', href: '/category-5.html', banner: '/Public/theme/default/image/news.jpg' },
+  news: { label: 'News & Insights', href: '/news.html', banner: '/Public/theme/default/image/news.jpg' },
+  case: { label: 'Projects', href: '/project.html', banner: '/Public/theme/default/image/project.jpg' },
+  project: { label: 'Projects', href: '/project.html', banner: '/Public/theme/default/image/project.jpg' },
+  solution: { label: 'Solutions', href: '/category-5.html', banner: '/Public/theme/default/image/news.jpg' },
   knowledge: { label: 'Play Solar', href: '/play-solar.html', banner: '/Public/theme/default/image/play-solar.jpg' },
 };
 
 const parentCrumb = parentMap[entry.data.type] || parentMap.news;
 const sidebarType = entry.data.type === 'project' ? 'case' : entry.data.type;
+const formattedDate = entry.data.date ? entry.data.date.slice(0, 10) : '';
 ---
 
 <BaseLayout
@@ -45,49 +46,198 @@ const sidebarType = entry.data.type === 'project' ? 'case' : entry.data.type;
   <InnerBanner
     title={parentCrumb.label}
     bannerImg={parentCrumb.banner}
+    isDetail={true}
     breadcrumbs={[parentCrumb, { label: entry.data.title }]}
   />
 
-  <div class="n_main">
-    <div class="container clearfix">
-      <!-- 右侧正文区 -->
-      <div id="sidebar" class="penci-sticky-sidebar n_right">
-        <div class="theiaStickySidebar">
-          <div class="blog_main">
-            <h1>{entry.data.title}</h1>
-            {entry.data.date && (
-              <div class="blog-info">
-                <i class="fa fa-calendar"></i>{entry.data.date}
-              </div>
-            )}
-            <div class="blog_p page phone markdown-body">
-              <Content />
-            </div>
-
-            <ul class="navigation clearfix">
-              {prev && (
-                <li class="prev_post">
-                  <a href={`/news-${prev.data.id}.html`}>
-                    <span class="meta_nav">Previous</span>
-                    <div class="post_title">{prev.data.title}</div>
-                  </a>
-                </li>
-              )}
-              {next && (
-                <li class="next_post">
-                  <a href={`/news-${next.data.id}.html`}>
-                    <span class="meta_nav">Next</span>
-                    <div class="post_title">{next.data.title}</div>
-                  </a>
-                </li>
-              )}
-            </ul>
-          </div>
-        </div>
-      </div>
-
+  <section class="hs-inner-section">
+    <div class="hs-inner-container hs-two-col">
       <!-- 左侧栏 -->
       <NewsSidebar activeType={sidebarType} />
+
+      <!-- 右侧正文区 -->
+      <div class="hs-main-col">
+        <article class="hs-surface-card hs-detail-article">
+          <header class="hs-detail-header">
+            <div class="hs-detail-meta">
+              <span class="hs-article-badge">{parentCrumb.label}</span>
+              {formattedDate && <time datetime={formattedDate}>{formattedDate}</time>}
+            </div>
+            <h1 class="hs-detail-title">{entry.data.title}</h1>
+          </header>
+
+          <div class="markdown-body phone">
+            <Content />
+          </div>
+
+          <!-- 文末咨询引导 -->
+          <div class="hs-detail-cta">
+            <div>
+              <h3>Need Technical Specs or Factory Pricing?</h3>
+              <p>Talk directly with Homesun engineers for module datasheets and turnkey BOM proposals.</p>
+            </div>
+            <a href="/contact-us.html" class="hs-detail-cta-btn">Get a Quote →</a>
+          </div>
+
+          <!-- 上一篇 / 下一篇 -->
+          {(prev || next) && (
+            <nav class="hs-post-nav" aria-label="Adjacent articles">
+              {prev ? (
+                <a href={`/news-${prev.data.id}.html`} class="hs-post-nav-card">
+                  <span class="hs-post-nav-dir">← Previous</span>
+                  <span class="hs-post-nav-title">{prev.data.title}</span>
+                </a>
+              ) : (
+                <div />
+              )}
+              {next && (
+                <a href={`/news-${next.data.id}.html`} class="hs-post-nav-card is-next">
+                  <span class="hs-post-nav-dir">Next →</span>
+                  <span class="hs-post-nav-title">{next.data.title}</span>
+                </a>
+              )}
+            </nav>
+          )}
+        </article>
+      </div>
     </div>
-  </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .hs-detail-header {
+    padding-bottom: 22px;
+    margin-bottom: 26px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .hs-detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hs-detail-title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.32;
+    letter-spacing: -0.015em;
+    color: #0f172a;
+  }
+
+  .hs-detail-cta {
+    margin-top: 36px;
+    padding: 24px 26px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #0f172a 0%, #1a7bb9 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .hs-detail-cta h3 {
+    margin: 0 0 4px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .hs-detail-cta p {
+    margin: 0;
+    font-size: 13.5px;
+    color: rgba(226, 232, 240, 0.9);
+  }
+
+  .hs-detail-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    height: 42px;
+    padding: 0 22px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .hs-detail-cta-btn:hover {
+    background: #e0f2fe;
+    color: #1a7bb9;
+    transform: translateY(-1px);
+  }
+
+  .hs-post-nav {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid #e2e8f0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .hs-post-nav-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .hs-post-nav-card:hover {
+    border-color: #2596d1;
+    background: #f0f9ff;
+  }
+
+  .hs-post-nav-card.is-next {
+    text-align: right;
+  }
+
+  .hs-post-nav-dir {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #2596d1;
+  }
+
+  .hs-post-nav-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: #0f172a;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  @media (max-width: 767px) {
+    .hs-detail-title {
+      font-size: 22px;
+    }
+    .hs-detail-cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hs-post-nav {
+      grid-template-columns: 1fr;
+    }
+    .hs-post-nav-card.is-next {
+      text-align: left;
+    }
+  }
+</style>

@@ -6,54 +6,63 @@ interface BreadcrumbItem {
 
 interface Props {
   title: string;
+  subtitle?: string;
   bannerImg: string;
   bannerAlt?: string;
   breadcrumbs?: BreadcrumbItem[];
+  isDetail?: boolean;
 }
 
 const {
   title,
+  subtitle,
   bannerImg,
   bannerAlt = title,
   breadcrumbs = [],
+  isDetail = false,
 } = Astro.props;
 ---
 
 <div class="height"></div>
-<div class="inner_banner">
-  <a>
-    <picture>
-      <!-- 内页 Banner 裁为 1920x400 后，将下方 height="650" 同步改为 height="400" -->
-      <img
-        src={bannerImg}
-        alt={bannerAlt}
-        width="1920"
-        height="650"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
-    </picture>
-  </a>
-  <div class="ovrly"></div>
-  <div class="bgs"></div>
-</div>
 
-<div class="mbx_section">
-  <div class="container">
-    <div class="maintitle">{title}</div>
-    <div class="mbx">
-      <a href="/"><i class="fa fa-home"></i> Home</a>
+<section class="hs-inner-banner" aria-label={title}>
+  <picture class="hs-inner-banner-media">
+    <img
+      src={bannerImg}
+      alt={bannerAlt}
+      width="1920"
+      height="400"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+  </picture>
+  <div class="hs-inner-banner-scrim" aria-hidden="true"></div>
+
+  <div class="hs-inner-banner-body">
+    <nav class="hs-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Home
+      </a>
       {breadcrumbs.map((item, idx) => (
         <>
-          <span>/</span>
+          <span class="hs-breadcrumb-sep" aria-hidden="true">/</span>
           {item.href && idx < breadcrumbs.length - 1 ? (
             <a href={item.href}>{item.label}</a>
           ) : (
-            <h2>{item.label}</h2>
+            <span class="hs-breadcrumb-current">{item.label}</span>
           )}
         </>
       ))}
-    </div>
+    </nav>
+
+    {isDetail ? (
+      <div class="hs-inner-title">{title}</div>
+    ) : (
+      <h1 class="hs-inner-title">{title}</h1>
+    )}
+
+    {subtitle && <p class="hs-inner-subtitle">{subtitle}</p>}
   </div>
-</div>
+</section>

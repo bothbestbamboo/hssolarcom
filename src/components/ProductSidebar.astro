@@ -14,87 +14,103 @@ const newProducts = (await getCollection('products'))
   .slice(0, 5);
 ---
 
-<div class="left_fixed">
-  <div class="left_fixed_box">
-    <div id="main" class="n_left penci-main-sticky-sidebar">
-      <div class="theiaStickySidebar">
-        <div class="modules">
-          <!-- 蓝色 Product Categories 折叠菜单 -->
-          <section class="block left_nav">
-            <div class="unfold nav_h4">Product Categories</div>
-            <div class="toggle_content clearfix">
-              <ul class="mtree">
-                {topCategories.map((top) => {
-                  const subs = getSubCategories(top.id);
-                  const isTopActive =
-                    activeCategoryId === top.id ||
-                    subs.some((s) => s.id === activeCategoryId);
-                  return (
-                    <li class={`clearfix ${isTopActive ? 'mtree-open active' : ''}`}>
-                      <span></span>
-                      <a href={`/category-${top.id}.html`}>{top.name}</a>
-                      {subs.length > 0 && (
-                        <ul>
-                          {subs.map((sub) => (
-                            <li class={activeCategoryId === sub.id ? 'active' : ''}>
-                              <span></span>
-                              <a href={`/category-${sub.id}.html`}>{sub.name}</a>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            <script is:inline defer src="/Public/theme/default/js/mtree.js"></script>
-          </section>
-
-          <!-- New Product（按 ID 倒序自动读取最新 5 款产品） -->
-          <section class="block hot_left">
-            <h4 class="left_h4">New Product</h4>
-            <div class="toggle_content clearfix">
-              <ul>
-                {newProducts.map((item) => (
-                  <li>
-                    <div class="li clearfix">
-                      <a class="img" href={`/product-detail-${item.data.id}.html`}>
-                        <img
-                          src={item.data.image}
-                          alt={item.data.title}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </a>
-                      <div class="h4">
-                        <a href={`/product-detail-${item.data.id}.html`}>{item.data.title}</a>
-                      </div>
-                      <a
-                        rel="nofollow"
-                        href={`/product-detail-${item.data.id}.html`}
-                        class="more"
-                      >
-                        Read more <i class="fa fa-caret-right"></i>
-                      </a>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        </div>
-      </div>
+<aside class="hs-sidebar" aria-label="Product Navigation">
+  <!-- 产品分类卡片 -->
+  <section class="hs-side-card">
+    <div class="hs-side-head">
+      <span>Product Categories</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
     </div>
-  </div>
-</div>
+    <div class="hs-side-body">
+      <ul class="hs-cat-menu">
+        <li class={`hs-cat-item ${!activeCategoryId ? 'is-active' : ''}`}>
+          <div class="hs-cat-row">
+            <a href="/category.html" class="hs-cat-link">All Products</a>
+          </div>
+        </li>
+        {topCategories.map((top) => {
+          const subs = getSubCategories(top.id);
+          const isSubActive = subs.some((s) => s.id === activeCategoryId);
+          const isTopActive = activeCategoryId === top.id || isSubActive;
+          return (
+            <li class={`hs-cat-item ${isTopActive ? 'is-active is-open' : ''}`}>
+              <div class="hs-cat-row">
+                <a href={`/category-${top.id}.html`} class="hs-cat-link">
+                  {top.name}
+                </a>
+                {subs.length > 0 && (
+                  <button
+                    type="button"
+                    class="hs-cat-toggle"
+                    aria-label={`Toggle ${top.name} subcategories`}
+                    aria-expanded={isTopActive ? 'true' : 'false'}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+                  </button>
+                )}
+              </div>
+              {subs.length > 0 && (
+                <ul class="hs-sub-menu">
+                  {subs.map((sub) => (
+                    <li class={activeCategoryId === sub.id ? 'is-active' : ''}>
+                      <a href={`/category-${sub.id}.html`}>{sub.name}</a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
 
-<style is:global>
-  /* 防止 mtree 在 JS 加载前或异常时保持透明空白 */
-  ul.mtree {
-    opacity: 1 !important;
-  }
-  ul.mtree > li:not(.mtree-open) > ul {
-    display: none;
-  }
-</style>
+  <!-- 最新产品推荐 -->
+  <section class="hs-side-card">
+    <div class="hs-side-head hs-side-head-light">
+      <span>New Products</span>
+    </div>
+    <div class="hs-side-body">
+      <ul class="hs-mini-products">
+        {newProducts.map((item) => (
+          <li>
+            <a href={`/product-detail-${item.data.id}.html`} class="hs-mini-pro">
+              <span class="hs-mini-pro-img">
+                <img
+                  src={item.data.image}
+                  alt={item.data.title}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <span class="hs-mini-pro-info">
+                <span class="hs-mini-pro-title">{item.data.title}</span>
+                <span class="hs-mini-pro-cta">View Specs →</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 快捷工厂报价卡 -->
+  <section class="hs-side-cta">
+    <h4>Need a Custom BOM?</h4>
+    <p>Share your project wattage and delivery port to get direct factory pricing within 12 hours.</p>
+    <a href="/contact-us.html">Request Factory Quote</a>
+  </section>
+</aside>
+
+<script is:inline>
+  (function () {
+    document.querySelectorAll('.hs-cat-toggle').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var li = btn.closest('.hs-cat-item');
+        if (!li) return;
+        var isOpen = li.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    });
+  })();
+</script>

@@ -1,71 +1,64 @@
 ---
-title: "Company Introduction"
+title: "Why We Are Different"
 bannerImg: "/Public/theme/default/image/why-different.jpg"
-seoTitle: "Why We Different - Homesun: China Solar Panels Supplier"
-description: "Homesun is absolutely different than most of China's solar panels supplier because of its unique solar technology in HJT. Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping."
-keywords: "solar panels, china, supplier"
+seoTitle: "Why We Are Different - Homesun: China Solar Panels Supplier"
+description: "Homesun stands apart among China solar panel suppliers with HJT and N-Type TOPCon manufacturing, strict TÜV/Intertek quality control, and complete solar solutions with worldwide shipping."
+keywords: "solar panels, china, supplier, HJT solar panels"
 ---
 
-<div class="page_quality2L clearfix">
-                    <div class="clearfix spe_main">
-                        <div class="page_quality2L_img" style="width: 747px;"><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;"><img style="width: 747px;" src="/Uploads/images/20241124/w-w-d-1.jpg"></span></div>
-                        <div class="text-detail" style="width: 747px; padding: 29.9062px 14.9531px;">
-                            <p><span style="font-size: 24px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;"><strong>High performance, affordable price</strong></span></p>
-                            <p>&nbsp;</p>
-                            <p><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;">It is essential to install high-efficiency modules to increase the energy production per square meter. Our modules reach +700Wp, ensuring an excellent price/performance ratio.</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="dadasfs" style="margin-top: 20px;">
-                    <div class="page_quality2L clearfix">
-                        <div class="clearfix spe_main spe_main_2">
-                            <div class="page_quality2L_img" style="width: 747px;"><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;"><img style="width: 747px;" src="/Uploads/images/20241124/w-w-d-2.jpg"></span></div>
-                            <div class="text-detail" style="width: 747px; padding: 29.9062px 14.9531px;">
-                                <p><span style="font-size: 24px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;"><strong>Technical expertise</strong></span></p>
-                                <p>&nbsp;</p>
-                                <p><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;">We are proud of our highly skilled workforce. Our manufacturing expertise is matched only by our complete technical and customer support.</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dadasfs" style="margin-top: 20px;">
-                        <div class="page_quality2L clearfix">
-                            <div class="clearfix spe_main">
-                                <div class="page_quality2L_img" style="width: 747px;"><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;"><img style="width: 747px;" src="/Uploads/images/20241124/w-w-d-3.jpg"></span></div>
-                                <div class="text-detail" style="width: 747px; padding: 29.9062px 14.9531px;">
-                                    <p><span style="font-size: 24px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;"><strong>Beautiful design</strong></span></p>
-                                    <p>&nbsp;</p>
-                                    <p><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;">Superior aesthetics are our hallmark. Why? Because we believe functionality and attractive, cutting-edge design go hand in hand.</span></p>
-                                    <p><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;">&nbsp;</span></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dadasfs" style="margin-top: 20px;">
-                            <div class="det_pic_content clearfix mceTmpl">
-                                <div class="">
-                                    <div class="page_quality2L clearfix">
-                                        <div class="clearfix spe_main spe_main_2">
-                                            <div class="page_quality2L_img"><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;"><img src="/Uploads/images/20241124/w-w-d-4.jpg"></span></div>
-                                            <div class="text-detail">
-                                                <p><span style="font-size: 24px; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;"><strong>Quality assurance</strong></span></p>
-                                                <p>&nbsp;</p>
-                                                <p><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;">Our components undergo stringent quality controls at every stage of production and are inspected and certified by world-class independent institutes such as TÜV and Intertek.</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="dadasfs" style="margin-top: 20px;">
-                                        <div class="page_quality2L clearfix">
-                                            <div class="clearfix spe_main">
-                                                <div class="page_quality2L_img"><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;"><img src="/Uploads/images/20241124/w-w-d-5.jpg"></span></div>
-                                                <div class="text-detail">
-                                                    <p><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;"><span style="font-size: 24px;"><strong>30-year product warranty</strong></span></span></p>
-                                                    <p>&nbsp;</p>
-                                                    <p><span style="font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;">Homesun's PV module linear performance guarantees up to 91.25% power output at the end of 30 years, while the modules also provide up to 30 years of product coverage.</span></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="hs-feature-list">
+  <div class="hs-feature-row">
+    <div class="hs-feature-media">
+      <img src="/Uploads/images/20241124/w-w-d-1.jpg" alt="High performance, affordable price" loading="lazy" decoding="async" />
+    </div>
+    <div class="hs-feature-text">
+      <span class="hs-feature-num">01 · PERFORMANCE</span>
+      <h2>High Performance, Factory Pricing</h2>
+      <p>Installing high-efficiency modules maximizes energy generation per square meter. Homesun N-Type and HJT modules reach 700Wp+ peak power, ensuring an outstanding price-to-performance ratio and lower LCOE.</p>
+    </div>
+  </div>
+
+  <div class="hs-feature-row is-reverse">
+    <div class="hs-feature-media">
+      <img src="/Uploads/images/20241124/w-w-d-2.jpg" alt="Technical expertise" loading="lazy" decoding="async" />
+    </div>
+    <div class="hs-feature-text">
+      <span class="hs-feature-num">02 · ENGINEERING</span>
+      <h2>Technical Expertise</h2>
+      <p>We are proud of our highly skilled manufacturing and PV engineering workforce. Our production expertise is matched by responsive technical consultation, system sizing, and dedicated customer support.</p>
+    </div>
+  </div>
+
+  <div class="hs-feature-row">
+    <div class="hs-feature-media">
+      <img src="/Uploads/images/20241124/w-w-d-3.jpg" alt="Modern module aesthetics" loading="lazy" decoding="async" />
+    </div>
+    <div class="hs-feature-text">
+      <span class="hs-feature-num">03 · DESIGN</span>
+      <h2>Modern Industrial Design</h2>
+      <p>Refined aesthetics—from full-black residential modules to sleek bifacial glass-glass panels—are a hallmark of our product line, proving high electrical output and clean architectural appearance go hand in hand.</p>
+    </div>
+  </div>
+
+  <div class="hs-feature-row is-reverse">
+    <div class="hs-feature-media">
+      <img src="/Uploads/images/20241124/w-w-d-4.jpg" alt="Strict quality assurance" loading="lazy" decoding="async" />
+    </div>
+    <div class="hs-feature-text">
+      <span class="hs-feature-num">04 · CERTIFICATION</span>
+      <h2>Stringent Quality Assurance</h2>
+      <p>Every module undergoes multi-stage inspection and EL testing during production, and is independently certified by globally recognized testing organizations including TÜV and Intertek.</p>
+    </div>
+  </div>
+
+  <div class="hs-feature-row">
+    <div class="hs-feature-media">
+      <img src="/Uploads/images/20241124/w-w-d-5.jpg" alt="30-year linear performance warranty" loading="lazy" decoding="async" />
+    </div>
+    <div class="hs-feature-text">
+      <span class="hs-feature-num">05 · WARRANTY</span>
+      <h2>30-Year Performance Coverage</h2>
+      <p>Homesun's linear performance warranty guarantees up to 91.25% power output at year 30 on select bifacial HJT series, backed by long-term product material and workmanship protection.</p>
+    </div>
+  </div>
+</div>

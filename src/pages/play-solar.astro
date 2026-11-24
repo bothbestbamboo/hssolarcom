@@ -1,31 +1,32 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import InnerBanner from '../components/InnerBanner.astro';
 
 const defaultIntroMap: Record<number, { title: string; image: string; summary: string }> = {
   8: {
     title: 'Why Photovoltaics',
     image: '/Uploads/images/20241116/67386ab8880da.jpg',
     summary:
-      "A solar power system from Homesun solar on your roof, the sun's rays into electricity, which you can use for self-consumption. A solar power system in combination with an electricity storage unit from Homesun solar is particularly clever! It ensures that you can use your solar power even when the sun is not shining - exactly when you need it. As a result you have to buy less electricity from an energy supplier - and can save up to 80% on your electricity costs!",
+      'A Homesun solar power system turns rooftop sunlight directly into clean electricity for self-consumption. Paired with a Homesun lithium battery storage unit, your facility can store daytime generation and use solar power day and night—cutting grid electricity costs by up to 80%.',
   },
   9: {
     title: 'Benefits of PV System',
     image: '/Uploads/images/20241116/67386b51b8d3e.jpg',
     summary:
-      'Having an Homesun solar power system on your roof lets you turn solar radiation into energy you can use – in many ways. On-grid, off-grid or hybrid solutions: Perfectly customized to your requirements. Direct self-consumption of solar power: Gaining independence from energy suppliers and reducing your electricity bills. Storage to increase self-consumption share: Ensuring that you can use solar power even when the sun is not shining.',
+      'Whether on-grid, off-grid, or hybrid, a tailored Homesun PV system maximizes energy independence and lowers utility bills. Adding energy storage increases your self-consumption share and ensures stable backup power during grid outages.',
   },
   13: {
     title: 'Solar Basics',
     image: '/Uploads/images/20241123/67417df4c6112.jpg',
     summary:
-      'In order to have a deeper understanding of photovoltaic products and technologies, we need to start with the basic knowledge of electricity and solar panels. Here you can obtain comprehensive and professional photovoltaic basic knowledge.',
+      'Understanding photovoltaic modules, inverters, and storage starts with the fundamentals of solar generation and electrical sizing. Explore clear, practical technical guides built for project buyers and system designers.',
   },
   14: {
     title: 'Future Clean Energy',
     image: '/Uploads/images/20241125/67446bdacd824.jpg',
     summary:
-      'As the world moves towards clean, sustainable energy, solar energy is set to play a significant role. Solar panels are leading the renewable energy revolution due to technological improvements, falling costs, and increased environmental consciousness.',
+      'As global industries transition to decarbonized power, high-efficiency N-Type and HJT solar panels are leading the renewable revolution through higher conversion efficiency, longer warranties, and lower levelized energy costs.',
   },
 };
 
@@ -58,130 +59,272 @@ const PLAY_BANNER = '/Public/theme/default/image/play-solar.jpg';
   keywords="solar panels, china, supplier"
   preloadImage={PLAY_BANNER}
 >
-  <div class="height"></div>
-  <div class="inner_banner">
-    <a>
-      <picture>
-        <img
-          src={PLAY_BANNER}
-          alt="play-solar"
-          width="1920"
-          height="650"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-        />
-      </picture>
-    </a>
-    <div class="ovrly"></div>
-    <div class="bgs"></div>
-  </div>
+  <InnerBanner
+    title="Solar Knowledge Hub"
+    subtitle="Practical guides covering photovoltaic fundamentals, system architecture, energy storage, and clean energy trends."
+    bannerImg={PLAY_BANNER}
+    bannerAlt="Solar Knowledge Hub"
+    breadcrumbs={[{ label: 'Play Solar' }]}
+  />
 
-  <div class="mbx_section">
-    <div class="container">
-      <div class="maintitle">Solar energy knowledge</div>
-      <div class="mbx">
-        <a href="/"><i class="fa fa-home"></i>Home</a>
-        <span>/</span>
-        <h2>Solar energy knowledge</h2>
-      </div>
+  <!-- 吸顶章节快捷切换条 -->
+  <div class="hs-play-anchor-wrap">
+    <div class="hs-inner-container">
+      <nav class="hs-play-nav" aria-label="Knowledge topics">
+        {sections.map((sec, idx) => (
+          <a
+            href={`#overview_${sec.id}`}
+            class={`hs-play-pill ${idx === 0 ? 'is-active' : ''}`}
+            data-target={`#overview_${sec.id}`}
+          >
+            <span>0{idx + 1}</span>
+            {sec.title}
+          </a>
+        ))}
+      </nav>
     </div>
   </div>
 
-  <div class="n_main">
-    <div class="page-nav-box js-page-nav-box">
-      <div class="page-nav js-page-nav">
-        <ul class="list">
-          {sections.map((sec, idx) => (
-            <li class={`pnav-item${idx === 0 ? ' current' : ''}`} data-target={`#overview_${sec.id}`}>
-              <a href={`#overview_${sec.id}`} data-href={`#overview_${sec.id}`} class="pnav-link"></a>
-              <p>{sec.title}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-
-    {sections.map((sec) => (
-      <div class="nav-page" id={`overview_${sec.id}`}>
-        <div class="solar_text clearfix">
-          <div class="container clearfix">
-            <div class="img_left">
-              <picture>
-                <img src={sec.image} alt={sec.title} loading="lazy" decoding="async" />
-              </picture>
-            </div>
-            <div class="wrap">
-              <div class="maintitle">{sec.title}</div>
-              <p>{sec.summary}</p>
-              <div class="more_btn">
-                <a href={`/news-${sec.id}.html`}>Read more</a>
-              </div>
-            </div>
+  <!-- 图文交替知识板块 -->
+  <section class="hs-inner-section">
+    <div class="hs-inner-container hs-play-stack">
+      {sections.map((sec, idx) => (
+        <article
+          id={`overview_${sec.id}`}
+          class={`hs-play-card ${idx % 2 === 1 ? 'is-reverse' : ''}`}
+        >
+          <div class="hs-play-media">
+            <picture>
+              <img src={sec.image} alt={sec.title} loading="lazy" decoding="async" />
+            </picture>
           </div>
-        </div>
-      </div>
-    ))}
-  </div>
-
-  <style is:global>
-    .js-page-nav .pnav-item {
-      cursor: pointer;
-    }
-  </style>
+          <div class="hs-play-body">
+            <span class="hs-play-step">CHAPTER 0{idx + 1}</span>
+            <h2>{sec.title}</h2>
+            <p>{sec.summary}</p>
+            <a href={`/news-${sec.id}.html`} class="hs-play-btn">
+              Read Full Guide
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 
   <script is:inline>
     (function () {
-      var items = document.querySelectorAll('.js-page-nav .pnav-item');
-      var navBox = document.querySelector('.js-page-nav-box');
-      var navBar = document.querySelector('.js-page-nav');
-      var pages = document.querySelectorAll('.nav-page');
-      if (!items.length) return;
+      const pills = document.querySelectorAll('.hs-play-pill');
+      const cards = document.querySelectorAll('.hs-play-card');
+      if (!pills.length) return;
 
       function getOffset() {
-        var header = document.querySelector('header');
-        var headerH = header ? header.getBoundingClientRect().height : 80;
-        var navH = navBar ? navBar.getBoundingClientRect().height : 60;
-        return headerH + navH + 16;
+        const header = document.querySelector('header');
+        const nav = document.querySelector('.hs-play-anchor-wrap');
+        return (header ? header.offsetHeight : 88) + (nav ? nav.offsetHeight : 60) + 20;
       }
 
-      items.forEach(function (item) {
-        item.addEventListener('click', function (e) {
-          var link = item.querySelector('.pnav-link');
-          var selector = item.getAttribute('data-target') || (link && (link.getAttribute('data-href') || link.getAttribute('href')));
-          if (!selector || selector.charAt(0) !== '#') return;
-          var target = document.querySelector(selector);
+      pills.forEach((pill) => {
+        pill.addEventListener('click', (e) => {
+          const sel = pill.getAttribute('data-target');
+          const target = sel ? document.querySelector(sel) : null;
           if (!target) return;
-
           e.preventDefault();
-          var y = target.getBoundingClientRect().top + window.pageYOffset - getOffset();
+          const y = target.getBoundingClientRect().top + window.pageYOffset - getOffset();
           window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
-
-          items.forEach(function (el) { el.classList.remove('current'); });
-          item.classList.add('current');
+          pills.forEach((el) => el.classList.remove('is-active'));
+          pill.classList.add('is-active');
         });
       });
 
-      if (navBox && navBar) {
-        window.addEventListener('scroll', function () {
-          var header = document.querySelector('header');
-          var headerH = header ? header.getBoundingClientRect().height : 80;
-          var boxTop = navBox.getBoundingClientRect().top + window.pageYOffset;
-          navBar.classList.toggle('fixed', window.pageYOffset > boxTop - headerH);
-
-          var scrollCheck = window.pageYOffset + getOffset() + 20;
-          pages.forEach(function (sec) {
-            var top = sec.offsetTop;
-            var bottom = top + sec.offsetHeight;
-            if (scrollCheck >= top && scrollCheck < bottom) {
-              var id = '#' + sec.id;
-              items.forEach(function (el) {
-                el.classList.toggle('current', el.getAttribute('data-target') === id);
+      window.addEventListener(
+        'scroll',
+        () => {
+          const checkY = window.pageYOffset + getOffset() + 40;
+          cards.forEach((card) => {
+            const top = card.offsetTop;
+            const bottom = top + card.offsetHeight;
+            if (checkY >= top && checkY < bottom) {
+              const id = '#' + card.id;
+              pills.forEach((el) => {
+                el.classList.toggle('is-active', el.getAttribute('data-target') === id);
               });
             }
           });
-        }, { passive: true });
-      }
+        },
+        { passive: true }
+      );
     })();
   </script>
 </BaseLayout>
+
+<style>
+  .hs-play-anchor-wrap {
+    position: sticky;
+    top: 86px;
+    z-index: 40;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e2e8f0;
+    padding: 14px 0;
+  }
+
+  .hs-play-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .hs-play-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .hs-play-pill span {
+    font-size: 12px;
+    font-weight: 700;
+    color: #2596d1;
+  }
+
+  .hs-play-pill:hover,
+  .hs-play-pill.is-active {
+    background: #2596d1;
+    border-color: #2596d1;
+    color: #ffffff;
+  }
+
+  .hs-play-pill:hover span,
+  .hs-play-pill.is-active span {
+    color: #bae6fd;
+  }
+
+  .hs-play-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .hs-play-card {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+  }
+
+  .hs-play-card.is-reverse .hs-play-media {
+    order: 2;
+  }
+
+  .hs-play-card.is-reverse .hs-play-body {
+    order: 1;
+  }
+
+  .hs-play-media {
+    min-height: 320px;
+    overflow: hidden;
+    background: #e2e8f0;
+  }
+
+  .hs-play-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .hs-play-card:hover .hs-play-media img {
+    transform: scale(1.05);
+  }
+
+  .hs-play-body {
+    padding: 42px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hs-play-step {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #2596d1;
+    margin-bottom: 10px;
+  }
+
+  .hs-play-body h2 {
+    margin: 0 0 16px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.28;
+    color: #0f172a;
+  }
+
+  .hs-play-body p {
+    margin: 0 0 26px;
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #475569;
+  }
+
+  .hs-play-btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 24px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2596d1 0%, #1a7bb9 100%);
+    color: #ffffff;
+    font-size: 14.5px;
+    font-weight: 600;
+    box-shadow: 0 8px 18px rgba(37, 150, 209, 0.24);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hs-play-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(37, 150, 209, 0.34);
+    color: #ffffff;
+  }
+
+  @media (max-width: 991px) {
+    .hs-play-anchor-wrap {
+      top: 58px;
+    }
+    .hs-play-card {
+      grid-template-columns: 1fr;
+    }
+    .hs-play-card.is-reverse .hs-play-media {
+      order: 1;
+    }
+    .hs-play-card.is-reverse .hs-play-body {
+      order: 2;
+    }
+    .hs-play-media {
+      min-height: 0;
+      aspect-ratio: 16 / 10;
+    }
+    .hs-play-body {
+      padding: 26px 22px;
+    }
+    .hs-play-body h2 {
+      font-size: 22px;
+    }
+  }
+</style>

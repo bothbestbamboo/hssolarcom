@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { POPULAR_TAGS } from '../data/site';
 
 interface Props {
   activeType?: 'news' | 'case' | 'solution' | 'knowledge';
@@ -16,60 +17,70 @@ const latestNews = (await getCollection('news'))
   .slice(0, 8);
 ---
 
-<div id="main" class="n_left penci-main-sticky-sidebar">
-  <div class="theiaStickySidebar">
-    <div class="modules">
-      <!-- 蓝色 Category 栏目框 -->
-      <section class="block left_nav">
-        <div class="unfold nav_h4">Category</div>
-        <div class="toggle_content clearfix">
-          <ul class="mtree">
-            <li class={`clearfix ${activeType === 'news' ? 'active' : ''}`}>
-              <span></span>
-              <a href="/news.html">News<i></i></a>
-            </li>
-            <li class={`clearfix ${activeType === 'case' ? 'active' : ''}`}>
-              <span></span>
-              <a href="/project.html">Project<i></i></a>
-            </li>
-          </ul>
-        </div>
-        <!-- 替换原来的 mtree.js 引入 -->
-<script is:inline defer src="/Public/theme/default/js/mtree.js"></script>
-      </section>
-
-      <!-- Recently Updated（自动取最新 8 篇新闻） -->
-      <section class="block blog_nav blog_nav2">
-        <div class="unfold left_h4">Recently Updated</div>
-        <div class="toggle_content clearfix">
-          <ul>
-            {latestNews.map((item) => (
-              <li>
-                <a href={`/news-${item.data.id}.html`}>
-                  <i class="fa fa-caret-right"></i>{item.data.title}
-                </a>
-                <i></i>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <!-- Tags -->
-      <section class="block hot_tags">
-        <div class="unfold left_h4">Tags</div>
-        <div class="toggle_content clearfix">
-          <a href="/category-tags-5.html">Monofacial</a>
-          <a href="/category-tags-6.html">Bifacial</a>
-          <a href="/category-tags-7.html">730W</a>
-        </div>
-      </section>
+<aside class="hs-sidebar" aria-label="Content Navigation">
+  <!-- 栏目分类 -->
+  <section class="hs-side-card">
+    <div class="hs-side-head">
+      <span>Explore Sections</span>
     </div>
-  </div>
-</div>
+    <div class="hs-side-body">
+      <ul class="hs-cat-menu">
+        <li class={`hs-cat-item ${activeType === 'news' ? 'is-active' : ''}`}>
+          <div class="hs-cat-row">
+            <a href="/news.html" class="hs-cat-link">News &amp; Insights</a>
+          </div>
+        </li>
+        <li class={`hs-cat-item ${activeType === 'case' ? 'is-active' : ''}`}>
+          <div class="hs-cat-row">
+            <a href="/project.html" class="hs-cat-link">Global Projects</a>
+          </div>
+        </li>
+        <li class={`hs-cat-item ${activeType === 'knowledge' ? 'is-active' : ''}`}>
+          <div class="hs-cat-row">
+            <a href="/play-solar.html" class="hs-cat-link">Solar Knowledge Hub</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
 
-<style is:global>
-  ul.mtree {
-    opacity: 1 !important;
-  }
-</style>
+  <!-- 最近更新 -->
+  <section class="hs-side-card">
+    <div class="hs-side-head hs-side-head-light">
+      <span>Recently Updated</span>
+    </div>
+    <div class="hs-side-body">
+      <ul class="hs-side-news">
+        {latestNews.map((item) => (
+          <li>
+            <a href={`/news-${item.data.id}.html`}>
+              <span class="hs-side-news-dot" aria-hidden="true"></span>
+              <span>{item.data.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 热门标签 -->
+  <section class="hs-side-card">
+    <div class="hs-side-head hs-side-head-light">
+      <span>Popular Tags</span>
+    </div>
+    <div class="hs-side-body">
+      <div class="hs-side-tags">
+        {POPULAR_TAGS.map((tag) => (
+          <a href={`/category-tags-${tag.id}.html`}>{tag.name}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 工厂报价卡 -->
+  <section class="hs-side-cta">
+    <h4>Planning a Solar Project?</h4>
+    <p>Get datasheets, system sizing advice, and manufacturer pricing directly from our team.</p>
+    <a href="/contact-us.html">Get a Factory Quote</a>
+  </section>
+</aside>

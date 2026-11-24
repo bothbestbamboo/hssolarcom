@@ -13,72 +13,79 @@ interface Props {
 const {
   items,
   activeType = 'news',
-  buttonText = 'See more',
+  buttonText = 'Read Article',
   emptyText = 'No articles published in this section yet.',
   pageSize = 10,
 } = Astro.props;
+
+const badgeLabel =
+  activeType === 'case'
+    ? 'Case Study'
+    : activeType === 'solution'
+      ? 'Solution'
+      : activeType === 'knowledge'
+        ? 'Solar Guide'
+        : 'Industry News';
+
+const formatDate = (dateStr?: string) => (dateStr ? dateStr.slice(0, 10) : '');
 ---
 
-<div class="n_main">
-  <div class="container clearfix">
-    <!-- 右侧主列表区（原站 style.css 通过 n_right 浮动在右，n_left 浮动在左） -->
-    <div id="sidebar" class="penci-sticky-sidebar n_right">
-      <div class="theiaStickySidebar">
-        <div class="news">
-          {items.length > 0 ? (
-            <>
-              <ul class="clearfix" id="news-list-container" data-page-size={pageSize}>
-                {items.map((item, index) => (
-                  <li style={index >= pageSize ? 'display:none;' : ''}>
-                    <div class="li">
-                      <div class="img">
-                        <a href={`/news-${item.data.id}.html`}>
-                          <picture>
-                            <img
-                              src={item.data.image}
-                              alt={item.data.title}
-                              loading={index < 3 ? 'eager' : 'lazy'}
-                            />
-                          </picture>
-                        </a>
-                        <div class="post-image-mask"><span></span></div>
-                      </div>
-                      <div class="text">
-                        <a href={`/news-${item.data.id}.html`} class="h4">
-                          {item.data.title}
-                        </a>
-                        {item.data.date && (
-                          <div class="day">
-                            <i class="fa fa-calendar"></i>{item.data.date}
-                          </div>
-                        )}
-                        <p>{item.data.summary}</p>
-                        <a href={`/news-${item.data.id}.html`}>
-                          <span>{buttonText}</span>
-                        </a>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-
-              <div class="page_p clearfix" id="news-pagination">
-                <div class="total">Total records<span>{items.length}</span></div>
-              </div>
-            </>
-          ) : (
-            <div style="padding: 60px 0; text-align: center; color: #666;">
-              {emptyText}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-
+<section class="hs-inner-section">
+  <div class="hs-inner-container hs-two-col">
     <!-- 左侧栏 -->
     <NewsSidebar activeType={activeType} />
+
+    <!-- 右侧主列表 -->
+    <div class="hs-main-col">
+      {items.length > 0 ? (
+        <>
+          <ul class="hs-article-list" id="news-list-container" data-page-size={pageSize}>
+            {items.map((item, index) => (
+              <li style={index >= pageSize ? 'display:none;' : ''}>
+                <article class="hs-article-card">
+                  <a href={`/news-${item.data.id}.html`} class="hs-article-media">
+                    <picture>
+                      <img
+                        src={item.data.image}
+                        alt={item.data.title}
+                        loading={index < 3 ? 'eager' : 'lazy'}
+                        decoding="async"
+                      />
+                    </picture>
+                  </a>
+
+                  <div class="hs-article-body">
+                    <div class="hs-article-meta">
+                      <span class="hs-article-badge">{badgeLabel}</span>
+                      {item.data.date && <span>{formatDate(item.data.date)}</span>}
+                    </div>
+                    <a href={`/news-${item.data.id}.html`} class="hs-article-title">
+                      {item.data.title}
+                    </a>
+                    {item.data.summary && (
+                      <p class="hs-article-summary">{item.data.summary}</p>
+                    )}
+                    <a href={`/news-${item.data.id}.html`} class="hs-article-cta">
+                      {buttonText}
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ul>
+
+          <div class="hs-pagination" id="news-pagination">
+            <div class="hs-pag-links"></div>
+            <div class="hs-pag-total">Total records: <strong>{items.length}</strong></div>
+          </div>
+        </>
+      ) : (
+        <div class="hs-empty-box">{emptyText}</div>
+      )}
+    </div>
   </div>
-</div>
+</section>
 
 <script is:inline>
   (function () {
@@ -91,7 +98,10 @@ const {
     const total = items.length;
     const totalPages = Math.ceil(total / pageSize);
 
-    if (totalPages <= 1) return;
+    if (totalPages <= 1) {
+      pagBox.style.display = 'none';
+      return;
+    }
 
     const params = new URLSearchParams(window.location.search);
     let currentPage = Math.max(1, Math.min(totalPages, parseInt(params.get('page') || '1', 10) || 1));
@@ -105,27 +115,29 @@ const {
         li.style.display = idx >= start && idx < end ? '' : 'none';
       });
 
-      let html = '';
+      let linksHtml = '';
       if (currentPage > 1) {
-        html += `<a href="javascript:void(0);" data-page="${currentPage - 1}">Prev</a>`;
+        linksHtml += `<a href="javascript:void(0);" class="hs-pag-btn" data-page="${currentPage - 1}">Prev</a>`;
       }
       for (let i = 1; i <= totalPages; i++) {
         if (i === currentPage) {
-          html += `<span class="active" style="background-color:#2596d1; color:#fff; border-color:#2596d1;">${i}</span>`;
+          linksHtml += `<span class="hs-pag-current">${i}</span>`;
         } else {
-          html += `<a href="javascript:void(0);" data-page="${i}">${i}</a>`;
+          linksHtml += `<a href="javascript:void(0);" class="hs-pag-btn" data-page="${i}">${i}</a>`;
         }
       }
       if (currentPage < totalPages) {
-        html += `<a href="javascript:void(0);" data-page="${currentPage + 1}">Next</a>`;
+        linksHtml += `<a href="javascript:void(0);" class="hs-pag-btn" data-page="${currentPage + 1}">Next</a>`;
       }
-      html += `<div class="total">Total records<span>${total}</span></div>`;
-      pagBox.innerHTML = html;
+
+      pagBox.innerHTML =
+        `<div class="hs-pag-links">${linksHtml}</div>` +
+        `<div class="hs-pag-total">Showing <strong>${start + 1}–${Math.min(end, total)}</strong> of <strong>${total}</strong></div>`;
 
       if (shouldScroll) {
-        const mainEl = document.querySelector('.n_main');
-        if (mainEl) {
-          mainEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const sectionEl = document.querySelector('.hs-inner-section');
+        if (sectionEl) {
+          sectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }

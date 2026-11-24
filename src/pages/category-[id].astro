@@ -9,7 +9,8 @@ export async function getStaticPaths() {
   const allProducts = await getCollection('products');
 
   return CATEGORIES.map((cat) => {
-    const childIds = CATEGORIES.filter((c) => c.parentId === cat.id).map((c) => c.id);
+    const subCategories = CATEGORIES.filter((c) => c.parentId === cat.id && !c.hidden);
+    const childIds = subCategories.map((c) => c.id);
     const matchIds = [cat.id, ...childIds];
 
     const filteredProducts =
@@ -25,12 +26,12 @@ export async function getStaticPaths() {
 
     return {
       params: { id: String(cat.id) },
-      props: { cat, parentCat, products: filteredProducts },
+      props: { cat, parentCat, subCategories, products: filteredProducts },
     };
   });
 }
 
-const { cat, parentCat, products } = Astro.props;
+const { cat, parentCat, subCategories, products } = Astro.props;
 
 const breadcrumbs =
   cat.id === 31
@@ -48,49 +49,102 @@ const breadcrumbs =
 >
   <InnerBanner
     title={cat.name}
-    bannerImg={cat.bannerImg || '/Uploads/images/20241119/673c9f32ace84.jpg'}
+    subtitle={cat.description}
+    bannerImg={cat.bannerImg || '/Public/theme/default/picture/product.jpg'}
     breadcrumbs={breadcrumbs}
   />
 
-  <div class="n_main">
-    <div class="container clearfix">
-      <!-- 右侧产品列表 -->
-      <div class="n_right">
+  <section class="hs-inner-section">
+    <div class="hs-inner-container hs-two-col">
+      <!-- 左侧产品分类 -->
+      <ProductSidebar activeCategoryId={cat.id === 31 ? undefined : cat.id} />
+
+      <!-- 右侧产品网格 -->
+      <div class="hs-main-col">
+        {subCategories.length > 0 && (
+          <div class="hs-subcat-bar" aria-label="Subcategories">
+            <span class="hs-subcat-label">Subcategories:</span>
+            {subCategories.map((sub) => (
+              <a href={`/category-${sub.id}.html`} class="hs-subcat-pill">
+                {sub.name}
+              </a>
+            ))}
+          </div>
+        )}
+
         {products.length > 0 ? (
-          <div class="row">
+          <div class="hs-pro-grid">
             {products.map((item) => (
-              <div class="col-md-4 col-sm-6" style="margin-bottom: 30px;">
-                <div class="thumbnail" style="height: 100%; border-color: #eee;">
-                  <a href={`/product-detail-${item.data.id}.html`}>
+              <article class="hs-pro-card">
+                <a href={`/product-detail-${item.data.id}.html`} class="hs-pro-media">
+                  {item.data.tags && item.data.tags.length > 0 && (
+                    <span class="hs-pro-badge">{item.data.tags[0]}</span>
+                  )}
+                  <picture>
                     <img
                       src={item.data.image}
                       alt={item.data.title}
-                      style="width:100%; height:220px; object-fit:contain; padding:10px;"
+                      loading="lazy"
+                      decoding="async"
                     />
+                  </picture>
+                </a>
+                <div class="hs-pro-body">
+                  <a href={`/product-detail-${item.data.id}.html`} class="hs-pro-title">
+                    {item.data.title}
                   </a>
-                  <div class="caption">
-                    <h4 style="font-size: 15px; line-height: 1.45; min-height: 44px;">
-                      <a href={`/product-detail-${item.data.id}.html`} style="color:#333;">
-                        {item.data.title}
-                      </a>
-                    </h4>
-                    <a href={`/product-detail-${item.data.id}.html`} class="btn btn-primary btn-sm">
-                      View Details
-                    </a>
-                  </div>
+                  <a href={`/product-detail-${item.data.id}.html`} class="hs-pro-cta">
+                    View Specs &amp; Quote <span>→</span>
+                  </a>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         ) : (
-          <div style="text-align: center; padding: 80px 0; color: #666; font-size: 15px;">
-            No product data...
+          <div class="hs-empty-box">
+            No products listed in this category yet.{' '}
+            <a href="/contact-us.html" style="color: #2596d1; font-weight: 600;">Contact us</a>{' '}
+            for the latest factory catalog.
           </div>
         )}
       </div>
-
-      <!-- 左侧折叠分类 + New Product -->
-      <ProductSidebar activeCategoryId={cat.id === 31 ? undefined : cat.id} />
     </div>
-  </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .hs-subcat-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+  }
+  .hs-subcat-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-right: 4px;
+  }
+  .hs-subcat-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    transition: all 0.18s ease;
+  }
+  .hs-subcat-pill:hover {
+    background: #2596d1;
+    border-color: #2596d1;
+    color: #ffffff;
+  }
+</style>

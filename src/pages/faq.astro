@@ -2,12 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import InnerBanner from '../components/InnerBanner.astro';
 
-// 将旧站 faq.html 中的实际问答替换到这里，增删非常直观
 const faqs = [
   {
     question: 'What solar products does Homesun Solar manufacture and supply?',
     answer:
-      'Homesun Solar supplies N-Type TOPCon, HJT, PERC, and shingled PV modules (up to 730W+), grid-tie/hybrid/off-grid inverters, residential & commercial BESS battery storage, mounting structures, and full PV accessories.',
+      'Homesun Solar supplies N-Type TOPCon, HJT, PERC, and shingled PV modules (up to 750Wp), grid-tie/hybrid/off-grid inverters, residential & commercial BESS battery storage, mounting structures, and full PV accessories.',
   },
   {
     question: 'What certifications do Homesun solar panels carry?',
@@ -17,7 +16,7 @@ const faqs = [
   {
     question: 'Do you support OEM/ODM orders and worldwide shipping?',
     answer:
-      'Yes. Our factory in Xuancheng, China supports OEM/ODM customization and ships full-container and project orders to over 100 countries worldwide.',
+      'Yes. Our factory in Xuancheng, China supports OEM/ODM customization and ships full-container and project orders to over 110 countries worldwide.',
   },
   {
     question: 'What is the warranty period for your solar modules?',
@@ -52,6 +51,7 @@ const faqSchema = {
 >
   <InnerBanner
     title="Frequently Asked Questions"
+    subtitle="Quick answers on Homesun PV modules, certifications, OEM manufacturing, warranties, and global shipping."
     bannerImg="/Public/theme/default/image/faq.jpg"
     breadcrumbs={[
       { label: 'Play Solar', href: '/play-solar.html' },
@@ -59,80 +59,199 @@ const faqSchema = {
     ]}
   />
 
-  <div class="container" style="padding: 45px 15px 65px; max-width: 920px;">
-    <div class="faq-list">
-      {faqs.map((item, index) => (
-        <details class="faq-item" open={index === 0}>
-          <summary class="faq-question">
-            <span class="faq-num">Q{index + 1}.</span>
-            <span>{item.question}</span>
-          </summary>
-          <div class="faq-answer">
-            <p>{item.answer}</p>
-          </div>
-        </details>
-      ))}
-    </div>
+  <section class="hs-inner-section">
+    <div class="hs-inner-container hs-faq-container">
+      <div class="hs-faq-list">
+        {faqs.map((item, index) => (
+          <details class="hs-faq-item" open={index === 0}>
+            <summary class="hs-faq-question">
+              <span class="hs-faq-num">0{index + 1}</span>
+              <span class="hs-faq-qtext">{item.question}</span>
+              <span class="hs-faq-icon" aria-hidden="true"></span>
+            </summary>
+            <div class="hs-faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
 
-    <div class="well text-center" style="margin-top: 40px;">
-      <h4 style="margin-top: 0;">Still have technical or pricing questions?</h4>
-      <p style="color: #666;">Send us your project specifications and our team will respond within 12 hours.</p>
-      <a href="/contact-us.html" class="btn btn-primary">Contact Our Team</a>
+      <div class="hs-faq-cta">
+        <div>
+          <h2>Still Have Technical or Pricing Questions?</h2>
+          <p>Send us your project specifications and our sales engineers will respond within 12 hours.</p>
+        </div>
+        <a href="/contact-us.html" class="hs-faq-cta-btn">Contact Our Team →</a>
+      </div>
     </div>
-  </div>
+  </section>
 
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </BaseLayout>
 
 <style>
-  .faq-list {
+  .hs-faq-container {
+    max-width: 960px;
+  }
+
+  .hs-faq-list {
     display: flex;
     flex-direction: column;
     gap: 14px;
   }
-  .faq-item {
-    border: 1px solid #e2e6ea;
-    border-radius: 4px;
-    background: #fff;
+
+  .hs-faq-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  .faq-question {
+
+  .hs-faq-item[open] {
+    border-color: #93c5fd;
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+  }
+
+  .hs-faq-question {
     list-style: none;
     cursor: pointer;
-    padding: 18px 20px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #222;
+    padding: 20px 22px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    background: #f9fafb;
+    gap: 14px;
+    font-size: 16.5px;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.4;
   }
-  .faq-question::-webkit-details-marker {
+
+  .hs-faq-question::-webkit-details-marker {
     display: none;
   }
-  .faq-question::after {
-    content: '+';
-    margin-left: auto;
-    font-size: 20px;
-    color: #0d6efd;
-    font-weight: 400;
-  }
-  .faq-item[open] .faq-question::after {
-    content: '−';
-  }
-  .faq-num {
-    color: #0d6efd;
+
+  .hs-faq-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #eff6ff;
+    color: #2596d1;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
   }
-  .faq-answer {
-    padding: 16px 20px 18px;
-    border-top: 1px solid #eee;
-    color: #555;
+
+  .hs-faq-item[open] .hs-faq-num {
+    background: #2596d1;
+    color: #ffffff;
+  }
+
+  .hs-faq-qtext {
+    flex: 1 1 auto;
+  }
+
+  .hs-faq-icon {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .hs-faq-icon::before,
+  .hs-faq-icon::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 14px;
+    height: 2px;
+    background: #2596d1;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .hs-faq-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .hs-faq-item[open] .hs-faq-icon::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0;
+  }
+
+  .hs-faq-answer {
+    padding: 0 22px 22px 68px;
+    color: #475569;
     font-size: 15px;
     line-height: 1.75;
   }
-  .faq-answer p {
+
+  .hs-faq-answer p {
     margin: 0;
+  }
+
+  .hs-faq-cta {
+    margin-top: 38px;
+    padding: 34px 36px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #0f172a 0%, #164e63 55%, #1a7bb9 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .hs-faq-cta h2 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .hs-faq-cta p {
+    margin: 0;
+    font-size: 14.5px;
+    color: rgba(226, 232, 240, 0.9);
+  }
+
+  .hs-faq-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 24px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0f172a;
+    font-size: 14.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .hs-faq-cta-btn:hover {
+    background: #e0f2fe;
+    color: #1a7bb9;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 767px) {
+    .hs-faq-question {
+      padding: 16px;
+      font-size: 15px;
+    }
+    .hs-faq-answer {
+      padding: 0 16px 18px 16px;
+    }
+    .hs-faq-cta {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 26px 22px;
+    }
   }
 </style>
