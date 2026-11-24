@@ -12,265 +12,1003 @@ const latestThreeNews = allNews
   .sort((a, b) => b.data.date.localeCompare(a.data.date) || b.data.id - a.data.id)
   .slice(0, 3);
 
-const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
+const WEB3FORMS_KEY = SITE.web3formsKey;
 ---
 
-<div id="footer">
-    <div class="foot_top clearfix">
-        <div class="container clearfix">
-            <div class="foot_left">
-                <div class="bottom_logo">
-                    <picture>
-                        <img class="img" width="150" height="45" src={SITE.logoLight} alt="Homesun Logo" loading="lazy" decoding="async">
-                    </picture>
-                </div>
-                <div class="text">
-                    When you want to 'taste the sun', you will find Homesun New Energy
-                    <a href="/contact-us.html">More</a>
-                </div>
-            </div>
-            <div class="foot_right">
-                <ul>
-                    <li><img src="/Public/theme/default/picture/tel.png" alt="tel" loading="lazy" decoding="async"><a rel="nofollow" href={`Tel:${SITE.phone}`}>Call us : {SITE.phone}</a></li>
-                    <li><img src="/Public/theme/default/picture/mail.png" alt="mail" loading="lazy" decoding="async"><a rel="nofollow" target="_blank" href={`mailto:${SITE.email}`}>Mail us : {SITE.email}</a></li>
-                    <li><img src="/Public/theme/default/picture/add.png" alt="address" loading="lazy" decoding="async"><span>Add : {SITE.address}</span></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer_list clearfix">
-        <div class="container clearfix">
-            <div class="newsletter">
-                <div class="title_h4">Communication</div>
-                <div class="text">Please continue to read, follow, subscribe, and we welcome you to tell us what you think.</div>
-                <div class="letter_box">
-                    <form class="layui-form" id="emailForm">
-                        <input type="hidden" name="access_key" value={WEB3FORMS_KEY}>
-                        <input type="hidden" name="subject" value="New Subscriber from hssolar.com Footer">
-                        <input type="hidden" name="from_name" value="Homesun Website">
-                        <input name="email" id="user_email" type="email" placeholder="Your Email.." lay-verify="required|email" lay-reqText="Please enter a valid email">
-                        <input name="message" type="hidden" value="Newsletter Subscription (Footer)">
-                        <button type="submit" lay-submit lay-filter="send" aria-label="Subscribe"><img src="/Public/theme/default/picture/send.png" alt="send" loading="lazy" decoding="async"></button>
-                    </form>
-                </div>
-            </div>
-            <section class="footer_link">
-                <div class="title_h4">Support</div>
-                <ul>
-                    <li><a href="/technical-services.html">Technical Services</a></li>
-                </ul>
-            </section>
-            <section class="footer_pro">
-                <div class="title_h4">Product</div>
-                <ul>
-                    {PRODUCT_CATEGORIES.map((cat) => (
-                        <li><a href={`/category-${cat.id}.html`}>{cat.name}</a></li>
-                    ))}
-                </ul>
-            </section>
-            <section class="footer_so">
-                <div class="title_h4">News</div>
-                <ul>
-                    {latestThreeNews.map((item) => (
-                        <li><a href={`/news-${item.data.id}.html`}>{item.data.title}</a></li>
-                    ))}
-                </ul>
-            </section>
-            <section class="footer_tags">
-                <div class="title_h4">Popular tags</div>
-                <ul>
-                    {POPULAR_TAGS.map((tag) => (
-                        <li><a href={`/category-tags-${tag.id}.html`}>{tag.name}</a></li>
-                    ))}
-                </ul>
-            </section>
-        </div>
-    </div>
-    <div class="footer_bottom clearfix">
-        <div class="container clearfix">
-            <div class="footer_nav">
-                {SITE.copyright}
-                <img src="/Public/theme/default/picture/ipv6.png" alt="IPv6" loading="lazy" decoding="async"> Support for IPv6 networks
-            </div>
-            <div class="links">
-                <a href="/privacy-policy.html">Privacy Policy</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<a href="javascript:;" class="back_top">Top</a>
-
-<div id="online_qq_layer">
-    <div id="online_qq_tab">
-        <a id="floatShow" rel="nofollow" href="javascript:void(0);">
-            <div class="livechat-girl animated">
-                <img class="girl" src="/Public/theme/default/picture/en_3.png" alt="Online Inquiry" loading="lazy" decoding="async">
-                <div class="animated-circles">
-                    <div class="circle c-1"></div>
-                    <div class="circle c-2"></div>
-                    <div class="circle c-3"></div>
-                </div>
-            </div>
+<footer class="hs-footer">
+  <!-- 页脚顶部：品牌 Logo 与联系方式 -->
+  <div class="hs-footer-top">
+    <div class="hs-footer-container hs-footer-top-inner">
+      <div class="hs-footer-brand">
+        <a href="/" class="hs-footer-logo" title={SITE.name}>
+          <img
+            src={SITE.logoLight}
+            alt="Homesun Solar Logo"
+            width="160"
+            height="48"
+            loading="lazy"
+            decoding="async"
+          />
         </a>
-        <a id="floatHide" rel="nofollow" href="javascript:void(0);"><i></i></a>
-    </div>
-    <div id="onlineService">
-        <div class="online_form">
-            <div class="i_message_inquiry">
-                <em class="title">Message</em>
-                <div class="text">If you are interested in our solar products, want to know more details and get our quotation, please leave a message here and we will reply you within 12 hours.</div>
-                <div class="inquiry">
-                    <form method="post" id="floatingForm" class="layui-form" action="">
-                        <input type="hidden" name="access_key" value={WEB3FORMS_KEY}>
-                        <input type="hidden" name="subject" value="New Floating Inquiry from hssolar.com">
-                        <input type="hidden" name="from_name" value="Homesun Website">
-                        <div class="input-group">
-                            <span class="ms_e">
-                                <input lay-verify="required|email" lay-reqText="Please enter a valid email" class="form-control" name="email" type="email" placeholder="Your Email *">
-                            </span>
-                        </div>
-                        <div class="input-group">
-                            <span class="ms_p">
-                                <input class="form-control" name="phone" type="text" placeholder="Phone / WhatsApp">
-                            </span>
-                        </div>
-                        <div class="input-group">
-                            <span class="ms_m">
-                                <textarea lay-verify="required" lay-reqText="Please enter your query details" name="message" class="form-control" placeholder="Enter your inquiry details (such as your country, product model and quantity, etc.) and other specific requirements to get an accurate quote *"></textarea>
-                            </span>
-                        </div>
-                        <button type="submit" lay-submit lay-filter="contact" class="main_more">Submit</button>
-                    </form>
-                </div>
-            </div>
+        <p class="hs-footer-tagline">
+          Vertically integrated Chinese manufacturer of high-efficiency solar PV modules, inverters,
+          and complete energy storage systems for global markets.
+        </p>
+      </div>
+
+      <div class="hs-footer-contacts">
+        <a rel="nofollow" href={`Tel:${SITE.phone}`} class="hs-contact-pill">
+          <span class="hs-pill-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span>
+            <small>Phone / WhatsApp</small>
+            <strong>{SITE.phone}</strong>
+          </span>
+        </a>
+
+        <a rel="nofollow" href={`mailto:${SITE.email}`} class="hs-contact-pill">
+          <span class="hs-pill-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </span>
+          <span>
+            <small>Sales Email</small>
+            <strong>{SITE.email}</strong>
+          </span>
+        </a>
+
+        <div class="hs-contact-pill">
+          <span class="hs-pill-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span>
+            <small>Factory Address</small>
+            <strong>{SITE.address}</strong>
+          </span>
         </div>
+      </div>
     </div>
+  </div>
+
+  <!-- 页脚主体：4 列均衡布局 -->
+  <div class="hs-footer-main">
+    <div class="hs-footer-container hs-footer-grid">
+      <!-- 列 1：订阅与热门标签 -->
+      <div class="hs-footer-col">
+        <div class="hs-footer-heading">Newsletter</div>
+        <p class="hs-footer-note">
+          Receive product catalogs, new module releases, and solar market insights directly from our factory.
+        </p>
+        <form class="layui-form hs-sub-form" id="emailForm">
+          <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+          <input type="hidden" name="subject" value="New Subscriber from hssolar.com Footer" />
+          <input type="hidden" name="from_name" value="Homesun Website" />
+          <input name="message" type="hidden" value="Newsletter Subscription (Footer)" />
+          <input
+            name="email"
+            id="user_email"
+            type="email"
+            placeholder="Enter your business email..."
+            lay-verify="required|email"
+            lay-reqText="Please enter a valid email"
+          />
+          <button type="submit" lay-submit lay-filter="send" aria-label="Subscribe">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          </button>
+        </form>
+
+        <div class="hs-footer-tags">
+          <span class="hs-tags-label">Popular Tags:</span>
+          <div class="hs-tags-list">
+            {POPULAR_TAGS.map((tag) => (
+              <a href={`/category-tags-${tag.id}.html`}>{tag.name}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- 列 2：产品分类 -->
+      <div class="hs-footer-col">
+        <div class="hs-footer-heading">Products</div>
+        <ul class="hs-footer-links">
+          {PRODUCT_CATEGORIES.map((cat) => (
+            <li><a href={`/category-${cat.id}.html`}>{cat.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- 列 3：快捷导航（补齐原 Support 空白） -->
+      <div class="hs-footer-col">
+        <div class="hs-footer-heading">Quick Links</div>
+        <ul class="hs-footer-links">
+          <li><a href="/about-us.html">About Homesun</a></li>
+          <li><a href="/project.html">Global Projects</a></li>
+          <li><a href="/play-solar.html">Solar Knowledge Hub</a></li>
+          <li><a href="/technical-services.html">Technical Services</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/contact-us.html">Get in Touch</a></li>
+        </ul>
+      </div>
+
+      <!-- 列 4：最新资讯 -->
+      <div class="hs-footer-col">
+        <div class="hs-footer-heading">Latest News</div>
+        <ul class="hs-footer-news">
+          {latestThreeNews.map((item) => (
+            <li>
+              <a href={`/news-${item.data.id}.html`}>{item.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 页脚底部版权条 -->
+  <div class="hs-footer-bottom">
+    <div class="hs-footer-container hs-footer-bottom-inner">
+      <div class="hs-copyright">{SITE.copyright}</div>
+      <div class="hs-legal-links">
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/contact-us.html">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 返回顶部按钮（保留 .back_top 供 demo.js 自动控制显示与平滑滚动） -->
+<a href="javascript:;" class="back_top hs-back-top" aria-label="Back to Top" title="Back to Top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</a>
+
+<!-- 桌面端右侧极简联系悬浮栏 -->
+<aside class="hs-side-dock" aria-label="Quick Contact">
+  <div class="hs-dock-item">
+    <a rel="nofollow" href={`Tel:${SITE.phone}`} class="hs-dock-btn" aria-label="Call Homesun">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+    <div class="hs-dock-pop">
+      <span>Phone / WhatsApp</span>
+      <a rel="nofollow" href={`Tel:${SITE.phone}`}>{SITE.phone}</a>
+    </div>
+  </div>
+
+  <div class="hs-dock-item">
+    <a rel="nofollow" href={`mailto:${SITE.email}`} class="hs-dock-btn" aria-label="Email Homesun">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    </a>
+    <div class="hs-dock-pop">
+      <span>Email Sales Team</span>
+      <a rel="nofollow" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+    </div>
+  </div>
+
+  <div class="hs-dock-item">
+    <button type="button" class="hs-dock-btn" aria-label="WeChat QR Code">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3z"/><path d="M17 17h4v4h-4z"/></svg>
+    </button>
+    <div class="hs-dock-pop hs-dock-qr">
+      <span>Scan WeChat QR</span>
+      <img src={SITE.wechatQr} alt="Homesun WeChat QR" width="120" height="120" loading="lazy" decoding="async" />
+    </div>
+  </div>
+</aside>
+
+<!-- 右下角现代极简询盘浮窗 -->
+<div class="hs-float-widget" id="hsFloatWidget">
+  <button
+    type="button"
+    class="hs-fab-btn"
+    id="hsInquiryToggle"
+    aria-expanded="false"
+    aria-controls="hsInquiryPanel"
+  >
+    <span class="hs-fab-dot" aria-hidden="true"></span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Quick Quote</span>
+  </button>
+
+  <div class="hs-inquiry-panel" id="hsInquiryPanel" hidden>
+    <div class="hs-inquiry-head">
+      <div>
+        <div class="hs-inquiry-title">Request a Factory Quote</div>
+        <div class="hs-inquiry-sub">Fast response within 12 hours</div>
+      </div>
+      <button type="button" class="hs-inquiry-close" id="hsInquiryClose" aria-label="Close Quote Form">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="hs-inquiry-body">
+      <form method="post" id="floatingForm" class="layui-form hs-float-form" action="">
+        <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+        <input type="hidden" name="subject" value="New Floating Inquiry from hssolar.com" />
+        <input type="hidden" name="from_name" value="Homesun Website" />
+
+        <div class="hs-field">
+          <input
+            lay-verify="required|email"
+            lay-reqText="Please enter a valid email"
+            name="email"
+            type="email"
+            placeholder="Your Business Email *"
+          />
+        </div>
+        <div class="hs-field">
+          <input
+            name="phone"
+            type="text"
+            placeholder="Phone / WhatsApp (Optional)"
+          />
+        </div>
+        <div class="hs-field">
+          <textarea
+            lay-verify="required"
+            lay-reqText="Please enter your query details"
+            name="message"
+            rows="4"
+            placeholder="Share your country, product model, and estimated wattage/quantity for an accurate quote *"
+          ></textarea>
+        </div>
+        <button type="submit" lay-submit lay-filter="contact" class="hs-submit-btn">
+          Send Inquiry
+        </button>
+      </form>
+    </div>
+  </div>
 </div>
 
-<div class="fixed-contact">
-    <ul class="item-list clearfix">
-        <li class="online_p">
-            <div class="column">
-                <i class="icon"></i>
-                <a rel="nofollow" href={`Tel:${SITE.phone}`}>{SITE.phone}</a>
-            </div>
-        </li>
-        <li class="online_e">
-            <div class="column">
-                <i class="icon"></i>
-                <a rel="nofollow" target="_blank" href={`mailto:${SITE.email}`}>{SITE.email}</a>
-            </div>
-        </li>
-        <li class="online_code">
-            <div class="column">
-                <i class="icon"></i>
-                <a>
-                    <p>Scan to WeChat:</p><img src={SITE.wechatQr} alt="WeChat QR" loading="lazy" decoding="async">
-                </a>
-            </div>
-        </li>
-    </ul>
-</div>
-
-<div class="mobile_nav clearfix">
-    <a href="/">
-        <i style="background-position: -323px -160px"></i>
-        <p>Home</p>
-    </a>
-    <a href="/category.html">
-        <i style="background-position: -366px -160px"></i>
-        <p>Product</p>
-    </a>
-</div>
+<!-- 手机端 4 格现代底部导航栏 -->
+<nav class="hs-mobile-bar" aria-label="Mobile Quick Actions">
+  <a href="/" class="hs-mob-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="/category.html" class="hs-mob-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+    <span>Products</span>
+  </a>
+  <a rel="nofollow" href={`mailto:${SITE.email}`} class="hs-mob-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    <span>Email</span>
+  </a>
+  <button type="button" class="hs-mob-item hs-mob-quote" id="hsMobileQuoteBtn">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Get Quote</span>
+  </button>
+</nav>
 
 <style is:global>
-    #footer .letter_box {
-        position: relative;
-        margin-top: 16px;
+  /* =========================================================
+     Homesun Solar EN - Modern B2B Footer & Floating Inquiry
+     ========================================================= */
+  .hs-footer {
+    background: #0f172a;
+    color: #94a3b8;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .hs-footer *,
+  .hs-footer *::before,
+  .hs-footer *::after,
+  .hs-float-widget *,
+  .hs-side-dock *,
+  .hs-mobile-bar * {
+    box-sizing: border-box;
+  }
+
+  .hs-footer a {
+    text-decoration: none;
+  }
+
+  .hs-footer-container {
+    width: 100%;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* 顶部品牌与联系方式 */
+  .hs-footer-top {
+    padding: 46px 0 38px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .hs-footer-top-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 36px;
+  }
+
+  .hs-footer-brand {
+    max-width: 390px;
+  }
+
+  .hs-footer-logo {
+    display: inline-block;
+    margin-bottom: 14px;
+  }
+
+  .hs-footer-logo img {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+
+  .hs-footer-tagline {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #94a3b8;
+  }
+
+  .hs-footer-contacts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, auto));
+    gap: 14px;
+  }
+
+  .hs-contact-pill {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e2e8f0;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  a.hs-contact-pill:hover {
+    border-color: rgba(56, 189, 248, 0.5);
+    background: rgba(37, 150, 209, 0.12);
+    color: #ffffff;
+  }
+
+  .hs-pill-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(37, 150, 209, 0.18);
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .hs-contact-pill small {
+    display: block;
+    font-size: 11px;
+    color: #94a3b8;
+    line-height: 1.3;
+  }
+
+  .hs-contact-pill strong {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #f8fafc;
+    line-height: 1.35;
+  }
+
+  /* 主体 4 列 */
+  .hs-footer-main {
+    padding: 48px 0;
+  }
+
+  .hs-footer-grid {
+    display: grid;
+    grid-template-columns: 1.45fr 0.9fr 0.9fr 1.25fr;
+    gap: 40px;
+  }
+
+  .hs-footer-heading {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 18px;
+    letter-spacing: 0.01em;
+  }
+
+  .hs-footer-note {
+    margin: 0 0 16px;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #94a3b8;
+  }
+
+  .hs-sub-form {
+    position: relative;
+    max-width: 340px;
+  }
+
+  .hs-sub-form input[type='email'] {
+    width: 100%;
+    height: 44px;
+    padding: 0 52px 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    font-size: 13.5px;
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .hs-sub-form input[type='email']::placeholder {
+    color: #94a3b8;
+  }
+
+  .hs-sub-form input[type='email']:focus {
+    border-color: #38bdf8;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .hs-sub-form button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: #2596d1;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .hs-sub-form button:hover {
+    background: #38bdf8;
+    color: #0f172a;
+  }
+
+  .hs-footer-tags {
+    margin-top: 22px;
+  }
+
+  .hs-tags-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #cbd5e1;
+    margin-bottom: 8px;
+  }
+
+  .hs-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hs-tags-list a {
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    font-size: 12.5px;
+    transition: all 0.2s ease;
+  }
+
+  .hs-tags-list a:hover {
+    background: #2596d1;
+    border-color: #2596d1;
+    color: #ffffff;
+  }
+
+  .hs-footer-links,
+  .hs-footer-news {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hs-footer-links li a,
+  .hs-footer-news li a {
+    color: #cbd5e1;
+    font-size: 13.5px;
+    line-height: 1.5;
+    display: inline-block;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .hs-footer-links li a:hover,
+  .hs-footer-news li a:hover {
+    color: #38bdf8;
+    transform: translateX(3px);
+  }
+
+  .hs-footer-news li a {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* 底部版权栏 */
+  .hs-footer-bottom {
+    background: #090e1a;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 20px 0;
+  }
+
+  .hs-footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 13px;
+    color: #64748b;
+  }
+
+  .hs-legal-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .hs-legal-links a {
+    color: #94a3b8;
+    transition: color 0.2s ease;
+  }
+
+  .hs-legal-links a:hover {
+    color: #38bdf8;
+  }
+
+  /* ================= 返回顶部按钮 ================= */
+  a.back_top.hs-back-top {
+    position: fixed !important;
+    right: 24px !important;
+    bottom: 84px !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    background: rgba(15, 23, 42, 0.85) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.22);
+    text-indent: 0 !important;
+    line-height: 44px !important;
+    text-align: center !important;
+    z-index: 9990 !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+  }
+
+  a.back_top.hs-back-top::before {
+    display: none !important;
+    content: none !important;
+  }
+
+  a.back_top.hs-back-top svg {
+    vertical-align: middle;
+  }
+
+  a.back_top.hs-back-top:hover {
+    background: #2596d1 !important;
+    transform: translateY(-3px);
+    animation: none !important;
+  }
+
+  /* ================= 桌面端右侧快速联系栏 ================= */
+  .hs-side-dock {
+    position: fixed;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9980;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hs-dock-item {
+    position: relative;
+  }
+
+  .hs-dock-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .hs-dock-item:hover .hs-dock-btn {
+    background: #2596d1;
+    border-color: #2596d1;
+    color: #ffffff;
+  }
+
+  .hs-dock-pop {
+    position: absolute;
+    right: 54px;
+    top: 50%;
+    transform: translateY(-50%) translateX(8px);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 10px 14px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  }
+
+  .hs-dock-item:hover .hs-dock-pop,
+  .hs-dock-item:focus-within .hs-dock-pop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  .hs-dock-pop span {
+    display: block;
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 2px;
+  }
+
+  .hs-dock-pop a {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #0f172a;
+    text-decoration: none;
+  }
+
+  .hs-dock-pop a:hover {
+    color: #2596d1;
+  }
+
+  .hs-dock-qr {
+    text-align: center;
+    padding: 12px;
+  }
+
+  .hs-dock-qr img {
+    display: block;
+    width: 116px;
+    height: 116px;
+    margin-top: 6px;
+    border-radius: 6px;
+  }
+
+  /* ================= 右下角现代询盘浮窗 ================= */
+  .hs-float-widget {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9995;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .hs-fab-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, #2596d1 0%, #1a7bb9 100%);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 10px 26px rgba(37, 150, 209, 0.36);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hs-fab-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(37, 150, 209, 0.46);
+  }
+
+  .hs-fab-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.28);
+  }
+
+  .hs-inquiry-panel {
+    position: fixed;
+    right: 24px;
+    bottom: 84px;
+    width: 370px;
+    max-width: calc(100vw - 32px);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 24px 56px rgba(15, 23, 42, 0.22);
+    z-index: 9996;
+  }
+
+  .hs-inquiry-panel[hidden] {
+    display: none !important;
+  }
+
+  .hs-inquiry-head {
+    background: linear-gradient(135deg, #0f172a 0%, #1a7bb9 100%);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .hs-inquiry-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+  }
+
+  .hs-inquiry-sub {
+    font-size: 12.5px;
+    color: #bae6fd;
+    margin-top: 2px;
+  }
+
+  .hs-inquiry-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .hs-inquiry-close:hover {
+    background: rgba(255, 255, 255, 0.26);
+  }
+
+  .hs-inquiry-body {
+    padding: 18px 20px 20px;
+  }
+
+  .hs-float-form .hs-field {
+    margin-bottom: 12px;
+  }
+
+  .hs-float-form input,
+  .hs-float-form textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    background: #f8fafc;
+    color: #0f172a;
+    font-size: 13.5px;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hs-float-form textarea {
+    resize: vertical;
+    min-height: 92px;
+  }
+
+  .hs-float-form input:focus,
+  .hs-float-form textarea:focus {
+    background: #ffffff;
+    border-color: #2596d1;
+    box-shadow: 0 0 0 3px rgba(37, 150, 209, 0.14);
+  }
+
+  .hs-submit-btn {
+    width: 100%;
+    height: 44px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #2596d1 0%, #1a7bb9 100%);
+    color: #ffffff;
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter 0.2s ease, transform 0.15s ease;
+  }
+
+  .hs-submit-btn:hover {
+    filter: brightness(1.06);
+  }
+
+  .hs-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  /* ================= 手机端 4 格底部导航栏 ================= */
+  .hs-mobile-bar {
+    display: none;
+  }
+
+  /* 轻量级提交反馈弹窗 */
+  .hs-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .hs-modal-box {
+    background: #ffffff;
+    border-radius: 14px;
+    max-width: 400px;
+    width: 100%;
+    padding: 26px;
+    box-shadow: 0 24px 50px rgba(15, 23, 42, 0.24);
+    text-align: center;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+  }
+
+  .hs-modal-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 10px;
+  }
+
+  .hs-modal-msg {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #475569;
+    margin: 0 0 20px;
+  }
+
+  .hs-modal-btn {
+    background: #2596d1;
+    color: #ffffff;
+    border: 0;
+    border-radius: 8px;
+    padding: 9px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .hs-modal-btn:hover {
+    background: #1a7bb9;
+  }
+
+  /* ================= 响应式 ================= */
+  @media (max-width: 1120px) {
+    .hs-footer-top-inner {
+      flex-direction: column;
+      align-items: flex-start;
     }
-    #footer #emailForm {
-        position: relative !important;
-        width: 100%;
-        max-width: 280px;
+    .hs-footer-contacts {
+      width: 100%;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
-    #footer #emailForm input[name="email"] {
-        width: 100% !important;
-        height: 44px !important;
-        line-height: 44px !important;
-        padding: 0 48px 0 18px !important;
-        margin: 0 !important;
-        box-sizing: border-box !important;
-        border-radius: 22px !important;
+    .hs-footer-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
     }
-    #footer #emailForm button {
-        position: absolute !important;
-        right: 14px !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        width: 28px !important;
-        height: 28px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border: 0 !important;
-        background: transparent !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        cursor: pointer;
+  }
+
+  @media (max-width: 991px) {
+    .hs-side-dock,
+    .hs-fab-btn {
+      display: none !important;
     }
-    #footer #emailForm button img {
-        display: block !important;
-        margin: 0 !important;
-        max-width: 20px;
-        height: auto;
+
+    .hs-footer-contacts {
+      grid-template-columns: 1fr;
     }
-    /* 轻量级弹窗，替代 Layui layer.alert */
-    .hs-modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(15, 23, 42, 0.5);
-        z-index: 99999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 16px;
+
+    .hs-footer-bottom {
+      padding-bottom: 84px;
     }
-    .hs-modal-box {
-        background: #fff;
-        border-radius: 10px;
-        max-width: 400px;
-        width: 100%;
-        padding: 24px;
-        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.22);
-        text-align: center;
-        font-family: Inter, system-ui, -apple-system, sans-serif;
+
+    .hs-footer-bottom-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
     }
-    .hs-modal-title {
-        font-size: 17px;
-        font-weight: 700;
-        color: #0f172a;
-        margin: 0 0 10px;
+
+    a.back_top.hs-back-top {
+      right: 16px !important;
+      bottom: 76px !important;
+      width: 40px !important;
+      height: 40px !important;
+      line-height: 40px !important;
     }
-    .hs-modal-msg {
-        font-size: 14px;
-        line-height: 1.6;
-        color: #475569;
-        margin: 0 0 20px;
+
+    .hs-inquiry-panel {
+      left: 16px;
+      right: 16px;
+      bottom: 74px;
+      width: auto;
+      max-width: none;
     }
-    .hs-modal-btn {
-        background: #2596d1;
-        color: #fff;
-        border: 0;
-        border-radius: 6px;
-        padding: 8px 28px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
+
+    .hs-mobile-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 62px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid #e2e8f0;
+      box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.08);
+      z-index: 9994;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-items: center;
+      padding: 6px 8px;
+      gap: 6px;
     }
-    .hs-modal-btn:hover {
-        background: #1a7bb9;
+
+    .hs-mob-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 48px;
+      border: none;
+      background: transparent;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 10px;
+      cursor: pointer;
     }
+
+    .hs-mob-item.hs-mob-quote {
+      background: linear-gradient(135deg, #2596d1 0%, #1a7bb9 100%);
+      color: #ffffff;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hs-footer-container {
+      padding: 0 16px;
+    }
+    .hs-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+  }
 </style>
 
 <!-- 仅保留实际用到的 3 个脚本 -->
@@ -280,7 +1018,40 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', function () {
-    // 产品详情页相册初始化
+    // 1. 现代悬浮询盘开关（桌面按钮 + 手机底部 Quote 按钮共用）
+    var panel = document.getElementById('hsInquiryPanel');
+    var fabBtn = document.getElementById('hsInquiryToggle');
+    var mobBtn = document.getElementById('hsMobileQuoteBtn');
+    var closeBtn = document.getElementById('hsInquiryClose');
+
+    function setInquiryOpen(open) {
+      if (!panel) return;
+      panel.hidden = !open;
+      if (fabBtn) fabBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    if (fabBtn) {
+      fabBtn.addEventListener('click', function () {
+        setInquiryOpen(panel ? panel.hidden : true);
+      });
+    }
+    if (mobBtn) {
+      mobBtn.addEventListener('click', function () {
+        setInquiryOpen(panel ? panel.hidden : true);
+      });
+    }
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        setInquiryOpen(false);
+      });
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel && !panel.hidden) {
+        setInquiryOpen(false);
+      }
+    });
+
+    // 2. 产品详情页相册初始化
     if (document.querySelector('#pro_img_gallery') && typeof Swiper !== 'undefined') {
       new Swiper('#pro_img_gallery', {
         autoHeight: true,
@@ -297,7 +1068,7 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
       });
     }
 
-    // 轻量弹窗替代 layer.alert
+    // 3. 轻量弹窗替代 layer.alert
     function showModal(title, htmlMsg) {
       var old = document.getElementById('hs-inquiry-modal');
       if (old) old.remove();
@@ -365,19 +1136,20 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
       .then(function (result) {
         if (result.ok && result.json && result.json.success) {
           formEl.reset();
+          if (formEl.id === 'floatingForm') setInquiryOpen(false);
           var successMsg = filterType === 'send'
-            ? 'Thank you for your attention!'
-            : 'Your message has been submitted successfully.<br>We will arrange for a sales specialist to contact you as soon as possible!';
-          showModal('Success Message', successMsg);
+            ? 'Thank you for subscribing to Homesun updates!'
+            : 'Your inquiry has been submitted successfully.<br>Our sales engineer will contact you within 12 hours.';
+          showModal('Success', successMsg);
         } else {
           var errMsg = (result.json && result.json.message)
             ? result.json.message
             : 'Submission failed! Please email info@hssolar.com directly.';
-          showModal('Error Message', errMsg);
+          showModal('Error', errMsg);
         }
       })
       .catch(function () {
-        showModal('Error Message', 'Network error! Please email info@hssolar.com directly.');
+        showModal('Error', 'Network error! Please email info@hssolar.com directly.');
       })
       .finally(function () {
         if (triggerBtn) {
@@ -387,7 +1159,7 @@ const WEB3FORMS_KEY = '007ddd91-be4f-4381-b504-f9464f95e06d';
       });
     }
 
-    // 统一绑定页脚订阅、悬浮窗询盘以及任何沿用 lay-filter="contact"/"send" 的表单
+    // 4. 统一绑定页脚订阅、悬浮询盘及内页沿用 lay-filter="contact"/"send" 的表单
     document.querySelectorAll('form.layui-form').forEach(function (formEl) {
       var btn = formEl.querySelector('[lay-submit]');
       if (!btn) return;

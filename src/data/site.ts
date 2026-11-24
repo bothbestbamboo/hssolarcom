@@ -9,10 +9,23 @@ export interface Category extends SubCategory {
   children: SubCategory[];
 }
 
+export interface HomeBanner {
+  img: string;
+  alt: string;
+  badge: string;
+  title: string;
+  highlight: string;
+  subtitle: string;
+  primaryText: string;
+  primaryLink: string;
+  secondaryText: string;
+  secondaryLink: string;
+}
+
 export const SITE = {
   name: 'Homesun: China Solar Panels Supplier',
   defaultDescription:
-    'Homesun manufactures solar panels, module, inventer and offers full solar solution, the factory based in China, worldwide shipping.',
+    'Homesun manufactures solar panels, modules, inverters and offers full solar solutions, factory based in China with worldwide shipping.',
   defaultKeywords: 'solar panels, china, supplier',
   phone: '+86 13905633017',
   email: 'info@hssolar.com',
@@ -30,10 +43,47 @@ export const POPULAR_TAGS = [
   { id: 7, name: '730W' },
 ];
 
-export const HOME_BANNERS = [
-  { img: '/Uploads/images/20241119/673c9f32ace84.jpg', alt: 'banner', link: '/' },
-  { img: '/Uploads/images/20241119/673c9f55de2e1.jpg', alt: 'banner', link: '/' },
-  { img: '/Uploads/images/20241127/67466cc896043.jpg', alt: 'banner', link: '/' },
+// 后期更换无文字高清 Banner 图（建议 1920x720 或 1920x800），只需在此修改 img 和文案
+export const HOME_BANNERS: HomeBanner[] = [
+  {
+    img: '/Uploads/images/20241119/673c9f32ace84.jpg',
+    alt: 'Homesun High-Efficiency Solar Panels Manufacturer',
+    badge: 'VERTICALLY INTEGRATED PV MANUFACTURER',
+    title: 'High-Efficiency Solar Modules',
+    highlight: 'Built for Global Scale',
+    subtitle:
+      'Automated production lines delivering N-Type TOPCon, HJT, and PERC modules up to 750Wp with TÜV and Intertek certification.',
+    primaryText: 'Explore Solar Modules',
+    primaryLink: '/category-1.html',
+    secondaryText: 'Get a Factory Quote',
+    secondaryLink: '/contact-us.html',
+  },
+  {
+    img: '/Uploads/images/20241119/673c9f55de2e1.jpg',
+    alt: 'Homesun Complete Solar Energy Storage Solution',
+    badge: 'ONE-STOP ENERGY STORAGE',
+    title: 'Smart Inverters &',
+    highlight: 'Battery Storage Systems',
+    subtitle:
+      'Turnkey residential, commercial, and containerized BESS solutions engineered for reliable on-grid, hybrid, and off-grid power.',
+    primaryText: 'Explore BESS Storage',
+    primaryLink: '/category-4.html',
+    secondaryText: 'Request System Design',
+    secondaryLink: '/contact-us.html',
+  },
+  {
+    img: '/Uploads/images/20241127/67466cc896043.jpg',
+    alt: 'Homesun Global Commercial & Utility PV Projects',
+    badge: '110+ COUNTRIES SERVED',
+    title: 'Proven Commercial &',
+    highlight: 'Utility Solar Projects',
+    subtitle:
+      'Trusted by over 2,000 global partners for end-to-end solar supply, technical engineering support, and worldwide logistics.',
+    primaryText: 'View Case Studies',
+    primaryLink: '/project.html',
+    secondaryText: 'Contact Engineering',
+    secondaryLink: '/contact-us.html',
+  },
 ];
 
 export const PRODUCT_CATEGORIES: Category[] = [
@@ -41,7 +91,7 @@ export const PRODUCT_CATEGORIES: Category[] = [
     id: 1,
     name: 'Solar Module',
     description:
-      'Homesun offers a wide varieties of products related with solar including panels, module, inverter, storage system, accessories. Solar module includes N-Type, P-type and HJT',
+      'Homesun offers a wide variety of products related to solar including panels, modules, inverters, storage systems, and accessories. Solar modules include N-Type, P-Type and HJT.',
     keywords: 'solar module',
     children: [
       { id: 2, name: 'N-Type PV Module' },
@@ -57,7 +107,7 @@ export const PRODUCT_CATEGORIES: Category[] = [
     children: [
       { id: 12, name: 'Grid Tie Inverter' },
       { id: 13, name: 'Hybrid Inverter' },
-      { id: 14, name: 'Off Grid inverter' },
+      { id: 14, name: 'Off Grid Inverter' },
     ],
   },
   {
