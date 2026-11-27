@@ -36,6 +36,11 @@ const parentMap: Record<string, { label: string; href: string; banner: string }>
 const parentCrumb = parentMap[entry.data.type] || parentMap.news;
 const sidebarType = entry.data.type === 'project' ? 'case' : entry.data.type;
 const formattedDate = entry.data.date ? entry.data.date.slice(0, 10) : '';
+
+// 读取 Frontmatter 封面图，并避免与旧文章正文里已有的同路径图片重复
+const coverImage = entry.data.image?.trim() || '';
+const isCoverAlreadyInBody = coverImage ? (entry.body ?? '').includes(coverImage) : false;
+const showCover = Boolean(coverImage) && !isCoverAlreadyInBody;
 ---
 
 <BaseLayout
@@ -59,12 +64,23 @@ const formattedDate = entry.data.date ? entry.data.date.slice(0, 10) : '';
       <div class="hs-main-col">
         <article class="hs-surface-card hs-detail-article">
           <div class="hs-detail-header">
-  <div class="hs-detail-meta">
-    <span class="hs-article-badge">{parentCrumb.label}</span>
-    {formattedDate && <time datetime={formattedDate}>{formattedDate}</time>}
-  </div>
-  <h1 class="hs-detail-title">{entry.data.title}</h1>
-</div>
+            <div class="hs-detail-meta">
+              <span class="hs-article-badge">{parentCrumb.label}</span>
+              {formattedDate && <time datetime={formattedDate}>{formattedDate}</time>}
+            </div>
+            <h1 class="hs-detail-title">{entry.data.title}</h1>
+          </div>
+
+          {showCover && (
+            <figure class="hs-detail-cover">
+              <img
+                src={coverImage}
+                alt={entry.data.title}
+                loading="eager"
+                decoding="async"
+              />
+            </figure>
+          )}
 
           <div class="markdown-body phone">
             <Content />
@@ -129,6 +145,22 @@ const formattedDate = entry.data.date ? entry.data.date.slice(0, 10) : '';
     line-height: 1.32;
     letter-spacing: -0.015em;
     color: #0f172a;
+  }
+
+  .hs-detail-cover {
+    margin: 0 0 28px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    background: #f8fafc;
+  }
+
+  .hs-detail-cover img {
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    object-position: center;
   }
 
   .hs-detail-cta {
@@ -228,6 +260,13 @@ const formattedDate = entry.data.date ? entry.data.date.slice(0, 10) : '';
   @media (max-width: 767px) {
     .hs-detail-title {
       font-size: 22px;
+    }
+    .hs-detail-cover {
+      margin-bottom: 22px;
+    }
+    .hs-detail-cover img {
+      aspect-ratio: 16 / 10;
+      max-height: none;
     }
     .hs-detail-cta {
       flex-direction: column;
