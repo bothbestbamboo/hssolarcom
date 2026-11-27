@@ -76,28 +76,7 @@ jQuery(function ($) {
     $('.search_input').css({ height: '0' });
   });
 
-  /* 3. 右下角在线询盘浮窗 */
-  if ($('.animated-circles').length) {
-    setInterval(function () {
-      $('.animated-circles').toggleClass('animated');
-    }, 3000);
-  }
-
-  $('#floatShow').on('click', function (e) {
-    e.preventDefault();
-    $('#onlineService').stop(true, true).animate({ height: 'show', opacity: 'show' }, 'normal');
-    $('#floatShow').css({ display: 'none', opacity: 0 });
-    $('#floatHide').css({ display: 'block', opacity: 1 });
-  });
-
-  $('#floatHide').on('click', function (e) {
-    e.preventDefault();
-    $('#onlineService').stop(true, true).animate({ height: 'hide', opacity: 'hide' }, 'normal');
-    $('#floatShow').css({ display: 'block', opacity: 1 });
-    $('#floatHide').css({ display: 'none', opacity: 0 });
-  });
-
-  /* 4. FAQ 折叠面板 */
+    /* 4. FAQ 折叠面板 */
   var $accordions = $('.accordion');
   if ($accordions.length) {
     $accordions.find('> li:eq(0) a').addClass('active').next().slideDown();
