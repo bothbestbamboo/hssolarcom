@@ -46,21 +46,9 @@ const {
     <link rel="stylesheet" href="/Public/theme/default/css/swiper.css">
     <link rel="stylesheet" href="/Public/theme/default/css/style.css">
 
-    <!-- 图标字体与 Web 字体改为异步加载，不阻塞首屏绘制 -->
-    <link
-      rel="stylesheet"
-      href="/Public/theme/default/css/font-awesome.min.css"
-      media="print"
-      onload="this.media='all'"
-    >
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-    />
+    <!-- 本地 Inter 字体与图标样式（消除外部请求与延迟排队） -->
+    <link rel="stylesheet" href="/fonts/inter.css">
+    <link rel="stylesheet" href="/Public/theme/default/css/font-awesome.min.css">
 
     {needLightbox && (
       <link
@@ -73,7 +61,6 @@ const {
 
     <noscript>
       <link rel="stylesheet" href="/Public/theme/default/css/font-awesome.min.css">
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     </noscript>
 
     <slot name="head" />
