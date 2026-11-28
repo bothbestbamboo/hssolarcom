@@ -39,9 +39,9 @@ const topCategories = getTopCategories().map((cat) => {
 });
 
 const factoryStats = [
-  { value: '10+', label: 'Years Manufacturing', sub: 'Automated PV Production' },
+  { value: '10+', label: 'Years in PV Manufacturing', sub: 'Automated Production Lines' },
   { value: '750Wp', label: 'Max Module Output', sub: 'N-Type TOPCon & HJT' },
-  { value: '110+', label: 'Countries Reached', sub: 'Global Logistics Network' },
+  { value: '110+', label: 'Countries Served', sub: 'Global Export Logistics' },
   { value: '2,000+', label: 'Global B2B Partners', sub: 'TÜV & Intertek Certified' },
 ];
 
@@ -52,16 +52,16 @@ const formatDate = (dateStr: string) => {
 ---
 
 <BaseLayout
-  title="Homesun: China Solar Panels Supplier"
-  description="Homesun manufactures solar panels, modules, inverters and offers full solar solutions, factory based in China with worldwide shipping."
-  keywords="solar panels, china, supplier"
+  title="Homesun Solar | N-Type TOPCon & HJT Solar Panel China Manufacturer"
+  description="Direct China manufacturer of high-efficiency N-Type TOPCon & HJT solar panels (up to 750Wp), hybrid inverters, and lithium BESS. TÜV & Intertek certified with worldwide shipping."
+  keywords="solar panel manufacturer, N-Type TOPCon solar modules, HJT solar panels, lithium BESS supplier"
   isHome={true}
   preloadImage={HOME_BANNERS[0].img}
 >
   <div class="height"></div>
 
   <main class="hs-home">
-    <!-- 1. 首屏 Hero 轮播（支持后期自由更换无文字底图） -->
+    <!-- 1. 首屏 Hero 轮播 -->
     <section class="hs-hero-wrap" aria-label="Featured Highlights">
       <div class="swiper-banner index_banner hs-hero">
         <div class="swiper-wrapper">
@@ -140,9 +140,9 @@ const formatDate = (dateStr: string) => {
         <div class="hs-section-head hs-head-split">
           <div>
             <span class="hs-eyebrow">PRODUCT PORTFOLIO</span>
-            <h2 class="hs-title">Complete Solar Supply Chain</h2>
+            <h2 class="hs-title">Complete Solar &amp; Storage Supply Chain</h2>
             <p class="hs-subtitle">
-              From high-efficiency PV modules and smart inverters to lithium BESS and mounting structures.
+              Source high-efficiency PV modules, hybrid inverters, lithium BESS, and mounting systems from one integrated manufacturer.
             </p>
           </div>
           <a href="/category.html" class="hs-link-more">
@@ -186,14 +186,14 @@ const formatDate = (dateStr: string) => {
       </div>
     </section>
 
-    <!-- 4. HOT PRODUCTS 热门产品轮播（保留 .cat_content / .pro_scrollbar 以兼容 demo.js） -->
+    <!-- 4. Flagship Products 热门产品轮播（保留 .cat_content / .pro_scrollbar 以兼容 demo.js） -->
     <section class="hs-section cat_content hs-products">
       <div class="hs-container">
         <div class="hs-section-head hs-head-center">
           <span class="hs-eyebrow">FEATURED HARDWARE</span>
-          <h2 class="hs-title">Hot Products</h2>
+          <h2 class="hs-title">Flagship Solar Products</h2>
           <p class="hs-subtitle">
-            Direct-from-factory PV panels and core system components engineered for maximum yield and long-term durability.
+            Factory-direct PV modules and core balance-of-system hardware engineered for high energy yield and 30-year durability.
           </p>
         </div>
 
@@ -248,9 +248,9 @@ const formatDate = (dateStr: string) => {
       <div class="hs-container">
         <div class="hs-section-head hs-head-center">
           <span class="hs-eyebrow">WHY CHOOSE HOMESUN</span>
-          <h2 class="hs-title">Engineered for Reliability</h2>
+          <h2 class="hs-title">Engineered for Long-Term Reliability</h2>
           <p class="hs-subtitle">
-            A decade of vertical integration, rigorous third-party testing, and dependable global project support.
+            Over a decade of automated PV manufacturing, strict international certifications, and responsive engineering support.
           </p>
         </div>
 
@@ -262,17 +262,17 @@ const formatDate = (dateStr: string) => {
                 <source type="image/webp" srcset="/Public/theme/default/picture/1721045333_3vVNWtUjmd.webp" />
                 <img
                   src="/Public/theme/default/picture/1721045333_3vVNWtUjmd.png"
-                  alt="High Performance, Competitive Pricing"
+                  alt="High Efficiency, Lower LCOE"
                   loading="lazy"
                   decoding="async"
                 />
               </picture>
             </div>
             <div class="hs-why-body">
-              <h3>High Output, Factory Pricing</h3>
+              <h3>High Efficiency, Lower LCOE</h3>
               <p>
-                Homesun N-Type and HJT modules reach over 700Wp peak power to maximize generation per square meter.
-                With one-stop supply from system design to component delivery, we keep LCOE highly competitive.
+                Our N-Type TOPCon and HJT solar modules deliver over 700Wp peak output to maximize energy yield per square meter.
+                Combined with factory-direct supply across modules, inverters, and storage, we help EPCs and distributors achieve a lower LCOE.
               </p>
             </div>
           </article>
@@ -284,17 +284,17 @@ const formatDate = (dateStr: string) => {
                 <source type="image/webp" srcset="/Public/theme/default/picture/1721095476_ZCdp1MpELP.webp" />
                 <img
                   src="/Public/theme/default/picture/1721095476_ZCdp1MpELP.png"
-                  alt="Strict Quality Control"
+                  alt="Rigorous Quality Assurance"
                   loading="lazy"
                   decoding="async"
                 />
               </picture>
             </div>
             <div class="hs-why-body">
-              <h3>Strict Quality Control</h3>
+              <h3>Rigorous Quality Assurance</h3>
               <p>
-                Every production stage—from raw cell inspection and EL testing to export packaging—follows strict QC protocols
-                verified by independent international authorities including TÜV and Intertek.
+                Every module undergoes 100% dual-stage electroluminescence (EL) inspection and strict incoming material testing.
+                Our manufacturing lines adhere to IEC standards and are verified by independent authorities including TÜV and Intertek.
               </p>
             </div>
           </article>
@@ -306,17 +306,17 @@ const formatDate = (dateStr: string) => {
                 <source type="image/webp" srcset="/Public/theme/default/picture/1721808780_1USSy0dTM9.webp" />
                 <img
                   src="/Public/theme/default/picture/1721808780_1USSy0dTM9.png"
-                  alt="Technical & Engineering Support"
+                  alt="Dedicated Engineering Support"
                   loading="lazy"
                   decoding="async"
                 />
               </picture>
             </div>
             <div class="hs-why-body">
-              <h3>Technical Expertise</h3>
+              <h3>Dedicated Engineering Support</h3>
               <p>
-                Backed by experienced PV engineers and automated production teams, we provide responsive pre-sale system sizing,
-                inverter-to-module matching, and dedicated after-sales technical guidance.
+                Backed by seasoned PV engineers and automated production teams, we support your projects from initial system sizing
+                and inverter-to-module matching to single-line diagrams and after-sales commissioning guidance.
               </p>
             </div>
           </article>
@@ -328,19 +328,18 @@ const formatDate = (dateStr: string) => {
                 <source type="image/webp" srcset="/Public/theme/default/picture/1721095611_eUbkVjMtB9.webp" />
                 <img
                   src="/Public/theme/default/picture/1721095611_eUbkVjMtB9.png"
-                  alt="Responsible Energy Partner"
+                  alt="30-Year Warranty and Global Delivery"
                   loading="lazy"
                   decoding="async"
                 />
               </picture>
             </div>
             <div class="hs-why-body">
-              <h3>Mission &amp; Responsibility</h3>
-              <ul class="hs-why-list">
-                <li><strong>Mission:</strong> Illuminate the future with clean solar power.</li>
-                <li><strong>Vision:</strong> Build a reliable global green energy network.</li>
-                <li><strong>Values:</strong> Customer-centric service and integrity-driven manufacturing.</li>
-              </ul>
+              <h3>30-Year Warranty &amp; Global Delivery</h3>
+              <p>
+                We back every module with a 15-year product workmanship warranty and a 30-year linear power output guarantee.
+                With ready stock on core wattages and export-grade packaging, we ensure dependable worldwide fulfillment to 110+ countries.
+              </p>
             </div>
           </article>
         </div>
@@ -353,9 +352,9 @@ const formatDate = (dateStr: string) => {
         <div class="hs-section-head hs-head-split">
           <div>
             <span class="hs-eyebrow">GLOBAL FOOTPRINT</span>
-            <h2 class="hs-title">Explore Case Studies</h2>
+            <h2 class="hs-title">Featured Project Case Studies</h2>
             <p class="hs-subtitle">
-              Homesun PV systems and storage installations operating across more than 100 countries and regions.
+              Utility, commercial, and residential solar-plus-storage installations operating across 110+ countries and regions.
             </p>
           </div>
           <a href="/project.html" class="hs-link-more">
@@ -404,9 +403,9 @@ const formatDate = (dateStr: string) => {
         <div class="hs-section-head hs-head-split">
           <div>
             <span class="hs-eyebrow hs-eyebrow-light">SYSTEM SOLUTIONS</span>
-            <h2 class="hs-title hs-title-light">Tailored Solar Power Solutions</h2>
+            <h2 class="hs-title hs-title-light">Tailored Solar &amp; Storage Solutions</h2>
             <p class="hs-subtitle hs-subtitle-light">
-              Serving over 2,000 residential, commercial, and industrial clients in 110 countries with end-to-end engineering support.
+              Delivering turnkey grid-tied, hybrid, and off-grid solar power systems for residential, commercial, and industrial projects worldwide.
             </p>
           </div>
           <a href="/category-5.html" class="hs-link-more hs-link-light">
@@ -449,10 +448,9 @@ const formatDate = (dateStr: string) => {
         <div class="hs-knowledge-layout">
           <div class="hs-knowledge-intro">
             <span class="hs-eyebrow">SOLAR KNOWLEDGE HUB</span>
-            <h2 class="hs-title">Become a Solar Expert with <span>Homesun</span></h2>
+            <h2 class="hs-title">Technical Guides from <span>Homesun</span></h2>
             <p class="hs-subtitle">
-              Explore practical engineering guides covering how PV systems work, off-grid design tips,
-              storage sizing, and clean energy innovations.
+              In-depth articles covering PV module technologies, hybrid inverter sizing, off-grid battery configuration, and solar project economics.
             </p>
             <a href="/play-solar.html" class="hs-btn hs-btn-primary">
               Explore Knowledge Hub
@@ -492,9 +490,9 @@ const formatDate = (dateStr: string) => {
         <div class="hs-section-head hs-head-split">
           <div>
             <span class="hs-eyebrow">NEWS &amp; INSIGHTS</span>
-            <h2 class="hs-title">Latest News</h2>
+            <h2 class="hs-title">Industry Insights &amp; Company News</h2>
             <p class="hs-subtitle">
-              Solar industry trends, technical articles, and the latest updates from Homesun factory.
+              Market analysis, technical comparisons, and the latest manufacturing updates from Homesun.
             </p>
           </div>
           <a href="/news.html" class="hs-link-more">
@@ -541,7 +539,7 @@ const formatDate = (dateStr: string) => {
             <span class="hs-eyebrow hs-eyebrow-light">FACTORY DIRECT B2B SUPPLY</span>
             <h2>Ready to Power Your Next Solar Project?</h2>
             <p>
-              Get direct manufacturer pricing, datasheets, and tailored BOM proposals from our engineering team within 12 hours.
+              Request factory-direct pricing, full technical datasheets, and a tailored BOM proposal from our engineering team within 12 hours.
             </p>
           </div>
           <div class="hs-cta-actions">
@@ -625,14 +623,14 @@ const formatDate = (dateStr: string) => {
   }
 
   main.hs-home .hs-btn-glass {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(15, 23, 42, 0.32);
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.56);
     backdrop-filter: blur(8px);
   }
 
   main.hs-home .hs-btn-glass:hover {
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(15, 23, 42, 0.5);
     border-color: #ffffff;
     transform: translateY(-2px);
     color: #ffffff;
@@ -674,7 +672,7 @@ const formatDate = (dateStr: string) => {
 
   main.hs-home .hs-head-center {
     text-align: center;
-    max-width: 700px;
+    max-width: 720px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -707,6 +705,7 @@ const formatDate = (dateStr: string) => {
     letter-spacing: -0.02em;
     color: var(--hs-navy);
     margin: 0 0 12px;
+    text-wrap: balance;
   }
 
   main.hs-home .hs-title span {
@@ -722,6 +721,7 @@ const formatDate = (dateStr: string) => {
     line-height: 1.7;
     color: var(--hs-muted);
     margin: 0;
+    text-wrap: balance;
   }
 
   main.hs-home .hs-subtitle-light {
@@ -758,7 +758,7 @@ const formatDate = (dateStr: string) => {
     margin-top: 38px;
   }
 
-  /* ================= 1. Hero Banner（覆写旧版和 BaseLayout 约束） ================= */
+  /* ================= 1. Hero Banner（轻透渐变遮罩） ================= */
   main.hs-home .hs-hero-wrap {
     position: relative;
     background: var(--hs-navy);
@@ -801,19 +801,16 @@ const formatDate = (dateStr: string) => {
   }
 
   main.hs-home .hs-hero-overlay {
-  background: linear-gradient(
-    95deg,
-    rgba(15, 23, 42, 0.56) 0%,
-    rgba(15, 23, 42, 0.28) 48%,
-    rgba(15, 23, 42, 0.05) 100%
-  );
-}
-main.hs-home .hs-hero-title {
-  text-shadow: 0 2px 14px rgba(15, 23, 42, 0.45);
-}
-main.hs-home .hs-hero-desc {
-  text-shadow: 0 1px 10px rgba(15, 23, 42, 0.42);
-}
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+      95deg,
+      rgba(15, 23, 42, 0.56) 0%,
+      rgba(15, 23, 42, 0.28) 48%,
+      rgba(15, 23, 42, 0.05) 100%
+    );
+  }
 
   main.hs-home .hs-hero-content {
     position: relative;
@@ -833,9 +830,10 @@ main.hs-home .hs-hero-desc {
     align-items: center;
     padding: 6px 14px;
     border-radius: 999px;
-    background: rgba(37, 150, 209, 0.22);
-    border: 1px solid rgba(125, 211, 252, 0.45);
-    color: #bae6fd;
+    background: rgba(15, 23, 42, 0.42);
+    border: 1px solid rgba(186, 230, 253, 0.48);
+    backdrop-filter: blur(8px);
+    color: #e0f2fe;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -849,19 +847,21 @@ main.hs-home .hs-hero-desc {
     letter-spacing: -0.025em;
     color: #ffffff;
     margin: 0 0 18px;
+    text-shadow: 0 2px 14px rgba(15, 23, 42, 0.45);
   }
 
   main.hs-home .hs-hero-title span {
     display: block;
-    color: #56ccf2;
+    color: #7dd3fc;
   }
 
   main.hs-home .hs-hero-desc {
     font-size: 16.5px;
     line-height: 1.7;
-    color: rgba(241, 245, 249, 0.9);
+    color: rgba(248, 250, 252, 0.96);
     margin: 0 0 28px;
     max-width: 580px;
+    text-shadow: 0 1px 10px rgba(15, 23, 42, 0.42);
   }
 
   main.hs-home .hs-hero-actions {
@@ -876,8 +876,8 @@ main.hs-home .hs-hero-desc {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(15, 23, 42, 0.42) !important;
-    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: rgba(15, 23, 42, 0.36) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28);
     color: #ffffff !important;
     backdrop-filter: blur(6px);
     transition: background-color 0.2s ease, border-color 0.2s ease;
@@ -904,7 +904,7 @@ main.hs-home .hs-hero-desc {
     width: 10px !important;
     height: 10px !important;
     border-radius: 999px !important;
-    background: rgba(255, 255, 255, 0.45) !important;
+    background: rgba(255, 255, 255, 0.52) !important;
     opacity: 1 !important;
     transition: width 0.25s ease, background-color 0.25s ease;
   }
@@ -1307,25 +1307,6 @@ main.hs-home .hs-hero-desc {
     line-height: 1.72;
     color: var(--hs-muted);
     margin: 0;
-  }
-
-  main.hs-home .hs-why-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  main.hs-home .hs-why-list li {
-    font-size: 14.5px;
-    line-height: 1.6;
-    color: var(--hs-muted);
-  }
-
-  main.hs-home .hs-why-list li strong {
-    color: var(--hs-navy);
   }
 
   /* ================= 6. Global Case Studies ================= */
@@ -1782,8 +1763,8 @@ main.hs-home .hs-hero-desc {
     main.hs-home .hs-hero-overlay {
       background: linear-gradient(
         180deg,
-        rgba(15, 23, 42, 0.62) 0%,
-        rgba(15, 23, 42, 0.84) 100%
+        rgba(15, 23, 42, 0.36) 0%,
+        rgba(15, 23, 42, 0.62) 100%
       );
     }
     main.hs-home .hs-hero .swiper-button-prev,
